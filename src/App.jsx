@@ -40,7 +40,7 @@ const SEO = ({ title, description, image = "/maarten.jpg" }) => {
 };
 
 const LegacyBanner = () => (
-  <div className="bg-signal text-white py-2 sm:py-3 px-6 text-center relative z-[60] w-full">
+  <div className="bg-signal text-white py-2 sm:py-3 px-6 text-center relative z-[60] w-full border-b border-white/10">
     <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-4">
       <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em]">Looking for the legacy archive?</p>
       <a 
@@ -226,8 +226,8 @@ const HomeView = () => {
         </div>
       </section>
 
-      {/* Narrative Section */}
-      <section className="py-24 sm:py-32 lg:py-48 bg-white w-full border-b border-black/5">
+       {/* Narrative Section */}
+       <section className="py-24 sm:py-32 lg:py-48 bg-white w-full border-b border-black/5">
          <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
                <div className="lg:col-span-8">
@@ -262,37 +262,49 @@ const HomeView = () => {
   );
 };
 
-// BIOGRAPHY VIEW - REFINED SIDE SCROLLING
+// BIOGRAPHY VIEW - CLICK & DRAG TIMELINE
 const BiographyView = () => {
-  const horizontalSectionRef = useRef(null);
-  const triggerRef = useRef(null);
+  const containerRef = useRef(null);
+  const cursorRef = useRef(null);
+  const [isHovering, setIsHovering] = useState(false);
+  const [isMouseDown, setIsMouseDown] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
+  // Custom Cursor Follow
   useEffect(() => {
-    const mm = gsap.matchMedia();
-
-    mm.add("(min-width: 1024px)", () => {
-      const pin = gsap.fromTo(
-        horizontalSectionRef.current,
-        {
-          translateX: 0,
-        },
-        {
-          translateX: "-300vw",
-          ease: "none",
-          scrollTrigger: {
-            trigger: triggerRef.current,
-            pin: true,
-            scrub: 1,
-            end: () => `+=${horizontalSectionRef.current.offsetWidth}`,
-            invalidateOnRefresh: true,
-          },
-        }
-      );
-      return () => pin.kill();
-    });
-
-    return () => mm.revert();
+    const handleMouseMove = (e) => {
+      if (cursorRef.current) {
+        gsap.to(cursorRef.current, {
+           x: e.clientX,
+           y: e.clientY,
+           duration: 0.2,
+           ease: "power2.out"
+        });
+      }
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
+
+  const handleMouseDown = (e) => {
+    if (!containerRef.current) return;
+    setIsMouseDown(true);
+    setStartX(e.pageX - containerRef.current.offsetLeft);
+    setScrollLeft(containerRef.current.scrollLeft);
+  };
+
+  const handleMouseUp = () => {
+    setIsMouseDown(false);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isMouseDown || !containerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - containerRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // scroll-speed
+    containerRef.current.scrollLeft = scrollLeft - walk;
+  };
 
   const eras = [
     {
@@ -323,7 +335,6 @@ const BiographyView = () => {
       color: "bg-black",
       description: [
         "In 1996, Van der Vleuten founded <strong>Signum Recordings</strong> as a platform for his most experimental and personal artifacts. During this decade, he operated under a massive network of identities—including Pultec, Error 144, and Dj Zero-T.",
-        "His work spanned from multidisciplinary theater soundscapes to architectural installations, solidifying his role as a sound architect.",
         "In 2002, the release of <strong>Laiad</strong> showcased a move toward more hybrid, acoustic-synthetic soundscapes that would define his later years."
       ]
     },
@@ -334,68 +345,79 @@ const BiographyView = () => {
       color: "bg-signal",
       description: [
         "Since 2008, he has consolidated his output primarily under his own name or the initials <strong>MVDV</strong>. The release of <strong>High Intolerance Towards Low Energies</strong> and <strong>The Scars Remain</strong> marked a move toward a more cinematic language.",
-        "Modern artifacts like the <strong>Systematically Declassified</strong> series document the complete evolutionary history of his work.",
-        "Maarten remains active through a constant ritual of sonic distillation, bridging human emotion and clinical precision."
+        "Today, in 2024, Maarten remains active through a constant ritual of sonic distillation, bridging human emotion and clinical precision."
       ]
     }
   ];
 
   return (
-    <main className="bg-white w-full">
+    <main className="bg-white w-full overflow-x-hidden relative">
       <SEO 
         title="Timeline & History" 
-        description="A cinematic side-scrolling timeline of Maarten van der Vleuten's 35-year career. Explore four eras of electronic evolution." 
+        description="Explore the chronological evolution of Maarten van der Vleuten's 35-year career. Interactive click & drag timeline." 
       />
       
+      {/* Custom Cursor */}
+       <div 
+        ref={cursorRef}
+        className={cn(
+          "fixed top-0 left-0 w-24 h-24 rounded-full border-2 border-white pointer-events-none z-[100] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center mix-blend-difference transition-transform duration-300",
+          isHovering ? "scale-100 opacity-100" : "scale-0 opacity-0"
+        )}
+      >
+        <span className="text-[10px] font-black text-white uppercase tracking-widest">DRAG</span>
+      </div>
+
       {/* Intro (Vertical) */}
       <section className="pt-56 lg:pt-64 pb-32 max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
          <div className="space-y-12">
             <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-6 leading-none italic">EVOLUTION <br/> HISTORY</h1>
             <div className="w-24 h-2 bg-signal" />
-            <p className="text-[12px] font-black text-signal uppercase tracking-[0.6em] italic">Timeline 1987 — 2024</p>
+            <p className="text-[12px] font-black text-signal uppercase tracking-[0.6em] italic">Click and drag to explore 1987 — 2024</p>
          </div>
       </section>
 
-      {/* HORIZONTAL SECTION */}
-      <div ref={triggerRef} className="relative overflow-hidden h-[100vh] lg:h-[100vh] flex items-center bg-black">
-        <div ref={horizontalSectionRef} className="flex flex-nowrap w-[400vw] h-full items-center">
-           {eras.map((era, i) => (
-             <section key={i} className={cn("w-[100vw] h-full flex flex-col justify-center px-6 sm:px-12 lg:px-32 relative group", era.color)}>
-                <div className="max-w-4xl mx-auto w-full space-y-12 lg:space-y-16 relative z-10 text-white">
-                   <div className="flex items-center gap-8 mb-8">
-                      <span className="text-white font-mono text-4xl lg:text-8xl font-black opacity-10 italic">0{i+1}</span>
-                      <div className="w-20 lg:w-40 h-px bg-white/20" />
-                   </div>
-                   <div className="space-y-4">
-                      <span className="text-white/60 font-mono text-[11px] lg:text-[13px] font-black tracking-[0.5em] uppercase italic">{era.id}: {era.years}</span>
-                      <h3 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-none italic">{era.title}</h3>
-                   </div>
-                   <div className="space-y-8 text-white/50 text-lg lg:text-xl leading-relaxed font-medium max-w-3xl">
-                      {era.description.map((p, j) => (
-                        <p key={j} dangerouslySetInnerHTML={{ __html: p }} />
-                      ))}
-                   </div>
-                </div>
+      {/* CLICK & DRAG TIMELINE */}
+      <div 
+        ref={containerRef}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={() => { handleMouseUp(); setIsHovering(false); }}
+        onMouseMove={(e) => { handleMouseMove(e); setIsHovering(true); }}
+        onMouseEnter={() => setIsHovering(true)}
+        className="bg-black relative overflow-x-auto scrollbar-hide cursor-none flex select-none no-scrollbar snap-x snap-mandatory h-[70vh] lg:h-[80vh] items-stretch"
+        style={{ scrollBehavior: isMouseDown ? 'auto' : 'smooth' }}
+      >
+         {eras.map((era, i) => (
+           <section 
+             key={i} 
+             className={cn(
+               "shrink-0 w-[85vw] lg:w-[70vw] h-full flex flex-col justify-center px-10 sm:px-20 lg:px-32 relative border-r border-white/5 snap-center",
+               era.color
+             )}
+           >
+              <div className="max-w-4xl w-full space-y-12 lg:space-y-16 relative z-10 text-white">
+                 <div className="flex items-center gap-8 mb-8">
+                    <span className="text-white font-mono text-4xl lg:text-7xl font-black opacity-10 italic">0{i+1}</span>
+                    <div className="w-20 lg:w-40 h-px bg-white/20" />
+                 </div>
+                 <div className="space-y-4">
+                    <span className="text-white/60 font-mono text-[11px] lg:text-[13px] font-black tracking-[0.5em] uppercase italic">{era.id}: {era.years}</span>
+                    <h3 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-none italic">{era.title}</h3>
+                 </div>
+                 <div className="space-y-8 text-white/50 text-lg lg:text-xl leading-relaxed font-medium max-w-2xl">
+                    {era.description.map((p, j) => (
+                      <p key={j} dangerouslySetInnerHTML={{ __html: p }} />
+                    ))}
+                 </div>
+              </div>
 
-                {/* Year Watermark */}
-                <div className="absolute bottom-0 right-0 p-10 lg:p-20 opacity-5 pointer-events-none text-white">
-                   <span className="text-[25vw] font-black leading-none italic select-none">{era.years.split('—')[0]}</span>
-                </div>
-                
-                {/* Right Arrow (Desktop) */}
-                <div className="absolute right-12 top-1/2 -translate-y-1/2 hidden lg:block opacity-20 group-hover:opacity-100 transition-opacity">
-                   <ArrowRightIcon className="w-12 h-12 text-white" />
-                </div>
-             </section>
-           ))}
-        </div>
-        
-        {/* Navigation Indicator */}
-        <div className="hidden lg:flex absolute bottom-12 left-1/2 -translate-x-1/2 items-center gap-12 text-[10px] font-black uppercase tracking-[0.4em] text-white/30 z-20">
-           <ArrowLeft className="w-5 h-5 animate-pulse" />
-           <span>Vertical scroll scrolls horizontally</span>
-           <ArrowRightIcon className="w-5 h-5 animate-pulse" />
-        </div>
+              {/* Year Watermark */}
+              <div className="absolute bottom-0 right-0 p-10 lg:p-20 opacity-5 pointer-events-none text-white">
+                 <span className="text-[20vw] font-black leading-none italic select-none">{era.years.split('—')[0]}</span>
+              </div>
+           </section>
+         ))}
       </div>
 
       {/* Aliases (Vertical) */}
@@ -465,8 +487,8 @@ const ArchiveView = () => {
            <p className="text-[10px] font-black text-signal uppercase tracking-[0.5em] italic">Full History</p>
            <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none w-full italic">ARCHIVE</h1>
            <div className="flex flex-wrap gap-10 font-bold text-[10px] sm:text-[11px] tracking-widest text-black/30 w-full uppercase pt-6">
-              <a href="#" className="hover:text-black transition-colors italic underline underline-offset-8 decoration-signal/20">Bandcamp</a>
-              <a href="#" className="hover:text-black transition-colors italic underline underline-offset-8 decoration-signal/20">Discogs</a>
+              <span className="italic underline underline-offset-8 decoration-signal/20 cursor-pointer">Bandcamp</span>
+              <span className="italic underline underline-offset-8 decoration-signal/20 cursor-pointer">Discogs</span>
            </div>
         </div>
 
