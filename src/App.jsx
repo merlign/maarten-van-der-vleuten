@@ -20,6 +20,22 @@ function cn(...inputs) {
 
 // --- Components ---
 
+const LegacyBanner = () => (
+  <div className="bg-signal text-white py-3 px-6 text-center relative z-[60]">
+    <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
+      <p className="text-[10px] font-bold uppercase tracking-[0.2em]">Looking for the legacy archive?</p>
+      <a 
+        href="http://www.maartenvandervleuten.com/main.htm" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="text-[10px] font-black uppercase tracking-[0.2em] underline underline-offset-4 hover:opacity-80 transition-opacity flex items-center gap-2"
+      >
+        Access Old Website <ExternalLink className="w-3 h-3" />
+      </a>
+    </div>
+  </div>
+);
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
@@ -33,47 +49,50 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-white border-b border-black/5 py-4 sm:py-5 transition-all shadow-sm">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24 flex items-center justify-between">
-        <Link to="/" className="text-lg sm:text-xl font-black tracking-tighter text-black uppercase">
-          Maarten van der Vleuten
-        </Link>
+    <nav className="fixed top-0 left-0 w-full z-50 transition-all">
+      <LegacyBanner />
+      <div className="bg-white border-b border-black/5 py-4 sm:py-5 shadow-sm">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24 flex items-center justify-between">
+          <Link to="/" className="text-lg sm:text-xl font-black tracking-tighter text-black uppercase">
+            Maarten van der Vleuten
+          </Link>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-6 lg:gap-10">
-          {navLinks.map((link) => (
-            <Link 
-              key={link.name} 
-              to={link.path}
-              className={cn(
-                "text-[10px] font-bold uppercase tracking-[0.2em] transition-all hover:text-signal",
-                location.pathname === link.path ? "text-signal" : "text-black/60"
-              )}
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-6 lg:gap-10">
+            {navLinks.map((link) => (
+              <Link 
+                key={link.name} 
+                to={link.path}
+                className={cn(
+                  "text-[10px] font-bold uppercase tracking-[0.2em] transition-all hover:text-signal",
+                  location.pathname === link.path ? "text-signal" : "text-black/60"
+                )}
+              >
+                {link.name}
+              </Link>
+            ))}
+            <a 
+              href="https://maartenvandervleuten.bandcamp.com/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="px-5 py-2 rounded-full text-[10px] font-bold tracking-widest bg-black text-white hover:bg-signal transition-all"
             >
-              {link.name}
-            </Link>
-          ))}
-          <a 
-            href="https://maartenvandervleuten.bandcamp.com/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="px-5 py-2 rounded-full text-[10px] font-bold tracking-widest bg-black text-white hover:bg-signal transition-all"
-          >
-            SHOP
-          </a>
-        </div>
+              SHOP
+            </a>
+          </div>
 
-        {/* Mobile Toggle */}
-        <button className="md:hidden p-2 text-black" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          {isMenuOpen ? <X /> : <Menu />}
-        </button>
+          {/* Mobile Toggle */}
+          <button className="md:hidden p-2 text-black" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            {isMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden fixed inset-0 bg-white z-[60] flex flex-col p-8 sm:p-12 animate-in fade-in duration-300">
           <div className="flex justify-between items-center mb-12">
-             <span className="font-bold text-black text-sm tracking-widest">MENU</span>
+             <span className="font-bold text-black text-sm tracking-widest uppercase">Menu</span>
              <button onClick={() => setIsMenuOpen(false)}><X className="w-8 h-8 text-black" /></button>
           </div>
           <div className="flex flex-col gap-6">
@@ -148,9 +167,9 @@ const Footer = () => {
 
 const HomeView = () => {
   return (
-    <main className="bg-white overflow-hidden">
+    <main className="bg-white overflow-hidden pt-12 md:pt-16">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] lg:min-h-screen flex items-center pt-24">
+      <section className="relative min-h-[80vh] lg:min-h-[90vh] flex items-center pt-24">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-24">
             <div className="order-2 lg:order-1 relative z-10 py-12 lg:py-0">
@@ -177,7 +196,7 @@ const HomeView = () => {
                  className="w-full h-full object-cover object-top scale-110"
                  onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&auto=format"; }}
                />
-               <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent opacity-40" />
+               <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent opacity-40 translate-x-[-1px]" />
             </div>
           </div>
         </div>
@@ -327,7 +346,7 @@ const HomeView = () => {
 
 // BIOGRAPHY VIEW
 const BiographyView = () => (
-  <main className="pt-40 pb-32 bg-white">
+  <main className="pt-48 pb-32 bg-white">
     <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
         <div className="relative">
@@ -349,9 +368,9 @@ const BiographyView = () => (
            </div>
         </div>
         <div className="space-y-20">
-           <div className="space-y-8">
-              <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none">BIOGRAPHY</h2>
-              <div className="w-24 h-2 bg-signal" />
+           <div className="space-y-6 sm:space-y-8">
+              <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-none">BIOGRAPHY</h2>
+              <div className="w-16 sm:w-24 h-2 bg-signal" />
            </div>
            
            <div className="space-y-12 text-black/70 text-lg leading-relaxed font-medium">
@@ -383,7 +402,7 @@ const ArchiveView = () => {
   ];
 
   return (
-    <main className="pt-40 pb-32 bg-offwhite">
+    <main className="pt-48 pb-32 bg-offwhite">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24">
         <div className="mb-24">
            <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none mb-6">ARCHIVE</h2>
@@ -416,10 +435,10 @@ const ArchiveView = () => {
 
 // SIGNUM VIEW
 const SignumView = () => (
-  <main className="pt-40 pb-32 bg-white">
+  <main className="pt-48 pb-32 bg-white">
     <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24 space-y-24">
        <div className="space-y-6">
-          <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none text-black">SIGNUM RECORDINGS</h2>
+          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-none text-black">SIGNUM RECORDINGS</h2>
           <p className="text-[12px] font-bold text-signal uppercase tracking-[0.4em]">ESTABLISHED 1996 / VUGHT, NL</p>
        </div>
        
@@ -451,9 +470,9 @@ const SignumView = () => (
 
 // PRESS VIEW
 const PressView = () => (
-   <main className="pt-40 pb-32 bg-white">
+   <main className="pt-48 pb-32 bg-white">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24 space-y-24">
-         <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none">PRESS KIT</h2>
+         <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-none">PRESS KIT</h2>
          
          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl">
             {[
@@ -479,9 +498,9 @@ const PressView = () => (
 
 // CONTACT VIEW
 const ContactView = () => (
-  <main className="pt-40 pb-32 bg-white">
+  <main className="pt-48 pb-32 bg-white">
     <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24 space-y-24">
-       <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none">CONTACT</h2>
+       <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-none">CONTACT</h2>
        
        <div className="space-y-24">
           <div className="space-y-6">
