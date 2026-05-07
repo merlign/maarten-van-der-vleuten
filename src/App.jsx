@@ -225,6 +225,39 @@ const HomeView = () => {
           </div>
         </div>
       </section>
+
+      {/* Narrative Section */}
+      <section className="py-24 sm:py-32 lg:py-48 bg-white w-full border-b border-black/5">
+         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+               <div className="lg:col-span-8">
+                  <p className="text-[10px] font-bold text-signal uppercase tracking-[0.6em] mb-12 italic">Methodology</p>
+                  <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tighter leading-[1.1] mb-12 italic">
+                     Bridging human <br className="hidden sm:block"/> emotion and <br className="hidden sm:block"/> <span className="text-signal">clinical precision.</span>
+                  </h2>
+                  <div className="space-y-12 text-black/60 text-lg sm:text-xl leading-relaxed font-medium">
+                     <p>
+                        Maarten's work transcends simple electronic genres. It's a vertical timeline of discovery—a lifelong ritual of signal distillation and atmospheric architecture.
+                     </p>
+                     <Link to="/biography" className="inline-flex items-center gap-6 text-black font-black uppercase tracking-widest text-[10px] group border-b-2 border-signal pb-2 transition-all">
+                        <span>Read full history</span>
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-3 transition-transform" />
+                     </Link>
+                  </div>
+               </div>
+               <div className="lg:col-span-4 lg:pl-16 border-l border-black/5 pt-12 lg:pt-5 space-y-12">
+                  <div>
+                    <p className="text-[10px] font-black text-black/20 uppercase tracking-[0.4em] mb-3">Origin</p>
+                    <p className="text-xl font-black uppercase text-black italic">Vught, NL</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-black text-black/20 uppercase tracking-[0.4em] mb-3">Aliases</p>
+                    <p className="text-xl font-black uppercase text-black italic">24+ Identities</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
     </main>
   );
 };
@@ -269,7 +302,7 @@ const BiographyView = () => {
       color: "bg-black",
       description: [
         "Maarten van der Vleuten (Vught, 1967) emerged in the Dutch underground during the late eighties. He was architecturely involved in the first wave of electronics, with his first official recordings appearing under the name <strong>48V Phantom Power</strong> and <strong>Vandervleuten</strong> in 1987.",
-        "Based in his studio in Vught, he quickly established a reputation for high-fidelity sound design, contributing to the first wave of European techno and experimental house."
+        "Establishing a reputation for high-fidelity sound design, he contributed to the first wave of European techno and experimental house from his initial recording sessions."
       ]
     },
     {
@@ -290,6 +323,7 @@ const BiographyView = () => {
       color: "bg-black",
       description: [
         "In 1996, Van der Vleuten founded <strong>Signum Recordings</strong> as a platform for his most experimental and personal artifacts. During this decade, he operated under a massive network of identities—including Pultec, Error 144, and Dj Zero-T.",
+        "His work spanned from multidisciplinary theater soundscapes to architectural installations, solidifying his role as a sound architect.",
         "In 2002, the release of <strong>Laiad</strong> showcased a move toward more hybrid, acoustic-synthetic soundscapes that would define his later years."
       ]
     },
@@ -301,7 +335,7 @@ const BiographyView = () => {
       description: [
         "Since 2008, he has consolidated his output primarily under his own name or the initials <strong>MVDV</strong>. The release of <strong>High Intolerance Towards Low Energies</strong> and <strong>The Scars Remain</strong> marked a move toward a more cinematic language.",
         "Modern artifacts like the <strong>Systematically Declassified</strong> series document the complete evolutionary history of his work.",
-        "Today, in 2024, Maarten remains active from his Vught studio, bridging human emotion and clinical precision through a constant ritual of sonic distillation."
+        "Maarten remains active through a constant ritual of sonic distillation, bridging human emotion and clinical precision."
       ]
     }
   ];
