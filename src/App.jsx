@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, useMemo } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
@@ -19,6 +20,23 @@ function cn(...inputs) {
 }
 
 // --- Components ---
+
+const SEO = ({ title, description, image = "/maarten.jpg" }) => {
+  const fullTitle = `${title} | Maarten van der Vleuten`;
+  return (
+    <Helmet>
+      <title>{fullTitle}</title>
+      <meta name="description" content={description} />
+      <meta property="og:title" content={fullTitle} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={image} />
+      <meta property="og:type" content="website" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={fullTitle} />
+      <meta name="twitter:description" content={description} />
+    </Helmet>
+  );
+};
 
 const LegacyBanner = () => (
   <div className="bg-signal text-white py-2 sm:py-3 px-6 text-center relative z-[60] w-full">
@@ -161,8 +179,12 @@ const Footer = () => {
 
 const HomeView = () => {
   return (
-    <main className="bg-white overflow-hidden w-full pt-16 sm:pt-20">
-      {/* Refined Splitted Hero - More balanced spacing */}
+    <main className="bg-white overflow-hidden w-full">
+      <SEO 
+        title="Official Site" 
+        description="Official website of Maarten van der Vleuten. Dutch electronic pioneer, composer of cinematic artifacts and experimental frequencies since 1987." 
+      />
+      {/* Refined Splitted Hero */}
       <section className="relative py-24 sm:py-32 lg:py-48 w-full border-b border-black/5">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16 lg:gap-32">
@@ -186,7 +208,7 @@ const HomeView = () => {
                </div>
             </div>
 
-            {/* Right Image Column - Balanced size */}
+            {/* Right Image Column */}
             <div className="order-1 lg:order-2 w-full relative">
                <div className="aspect-[4/5] lg:aspect-[3/4] w-full max-w-lg mx-auto bg-offwhite rounded-[2.5rem] lg:rounded-[4rem] overflow-hidden shadow-2xl relative grayscale">
                   <img 
@@ -197,63 +219,21 @@ const HomeView = () => {
                   />
                   <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent opacity-40" />
                </div>
-               {/* Aesthetic detail */}
                <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-signal/5 rounded-full blur-3xl -z-10" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Intro Narrative Section */}
-      <section className="py-24 sm:py-32 lg:py-40 bg-white w-full">
-         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
-               <div className="lg:col-span-12 mb-8">
-                  <p className="text-[10px] font-bold text-signal uppercase tracking-[0.6em]">The Evolution</p>
-               </div>
-               <div className="lg:col-span-8">
-                  <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-none mb-12">
-                     Defying genre <br className="hidden sm:block"/> <span className="text-signal">since 1987.</span>
-                  </h2>
-                  <div className="space-y-12 text-black/60 text-lg lg:text-xl leading-relaxed font-medium">
-                     <p>
-                        Based in Vught, Maarten van der Vleuten has spent over three decades architecting the electronic landscape. Moving between clinical techno and experimental signal distillation, he has populated the catalogs of legendary imprints like R&S and Apollo.
-                     </p>
-                     <Link to="/biography" className="inline-flex items-center gap-6 text-black font-black uppercase tracking-widest text-[10px] group border-b-2 border-signal pb-2">
-                        <span>Read the narrative</span>
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-                     </Link>
-                  </div>
-               </div>
-               <div className="lg:col-span-4 lg:pl-16 border-l border-black/5 pt-12 lg:pt-2">
-                  <div className="space-y-12">
-                     <div>
-                        <p className="text-[9px] font-bold text-black/20 uppercase tracking-widest mb-3">Origins</p>
-                        <p className="text-xl font-bold uppercase tracking-tight text-black">Vught, Netherlands</p>
-                     </div>
-                     <div>
-                        <p className="text-[9px] font-bold text-black/20 uppercase tracking-widest mb-3">Identities</p>
-                        <p className="text-xl font-bold uppercase tracking-tight text-black">24+ Nodes</p>
-                     </div>
-                     <div>
-                        <p className="text-[9px] font-bold text-black/20 uppercase tracking-widest mb-3">Status</p>
-                        <p className="text-xl font-bold uppercase tracking-tight text-black">Active</p>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-
       {/* Featured Output - Latest Release */}
-      <section className="py-24 sm:py-32 lg:py-48 bg-offwhite border-y border-black/5 w-full">
+      <section className="py-24 sm:py-32 lg:py-48 bg-white w-full border-b border-black/5">
          <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-32 items-center">
                <div className="lg:col-span-6 order-2 lg:order-1 space-y-12 w-full">
-                  <p className="text-[10px] font-bold text-signal uppercase tracking-[0.4em]">Latest Registry</p>
+                  <p className="text-[10px] font-bold text-signal uppercase tracking-[0.4em]">Current Project</p>
                   <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tighter leading-none w-full">Systematically <br className="hidden sm:block"/> Declassified.</h2>
                   <p className="text-black/50 text-lg sm:text-xl leading-relaxed font-medium w-full">
-                    The ongoing series documenting the evolution of frequency and signal. A curated selection of newly distilled compositions and archived artifacts.
+                    The ongoing series documenting the evolution of frequency and signal. A curated collection of archived artifacts and newly distilled compositions. High-fidelity electronics direct from Vught.
                   </p>
                   <div className="pt-6">
                     <a href="https://maartenvandervleuten.bandcamp.com/" target="_blank" className="px-12 py-6 bg-black text-white rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-signal transition-all shadow-2xl inline-block">
@@ -262,54 +242,30 @@ const HomeView = () => {
                   </div>
                </div>
                <div className="lg:col-span-6 order-1 lg:order-2 w-full">
-                  <div className="aspect-square w-full max-w-lg mx-auto bg-white p-8 sm:p-12 rounded-[3rem] lg:rounded-[4rem] shadow-2xl relative overflow-hidden group">
+                  <div className="aspect-square w-full max-w-lg mx-auto bg-offwhite p-0 rounded-[3rem] lg:rounded-[4rem] shadow-2xl relative overflow-hidden group">
                      <img 
-                       src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=1200&auto=format" 
-                       className="w-full h-full object-cover rounded-[2rem] group-hover:scale-105 transition-transform duration-1000" 
+                       src="/maarten.jpg" 
+                       className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-1000" 
                      />
-                     <div className="absolute inset-0 bg-signal/10 opacity-10 pointer-events-none" />
+                     <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
                   </div>
                </div>
             </div>
          </div>
       </section>
 
-      {/* Archive Highlights - Grid with balanced spacing */}
-      <section className="py-32 lg:py-48 bg-black text-white w-full">
-         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 mb-24 w-full">
-               <div className="space-y-4">
-                  <p className="text-[10px] font-bold text-signal uppercase tracking-[0.6em]">Catalogue</p>
-                  <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tighter w-full">Registry Nodes.</h2>
-               </div>
-               <Link to="/archive" className="text-[10px] font-bold uppercase tracking-[0.4em] border-b-2 border-signal pb-2 hover:text-signal transition-colors group flex items-center gap-4">
-                  Full Archive <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-               </Link>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 w-full">
-               {[
-                  { title: "Moonwater", year: "1993", label: "Apollo", img: "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=800&auto=format" },
-                  { title: "Laiad", year: "2002", label: "Signum", img: "https://images.unsplash.com/photo-1514525253344-9337583624e5?w=800&auto=format" },
-                  { title: "The Scars Remain", year: "2010", label: "ToneFloat", img: "https://images.unsplash.com/photo-1459749411177-042180ce673c?w=800&auto=format" }
-               ].map((item, i) => (
-                  <div key={i} className="group cursor-pointer w-full">
-                     <div className="aspect-square bg-white/5 rounded-3xl overflow-hidden mb-10 relative grayscale group-hover:grayscale-0 transition-all duration-700 w-full shadow-2xl">
-                        <img src={item.img} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
-                        <div className="absolute top-8 right-8 w-12 h-12 bg-black/80 rounded-full flex items-center justify-center backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
-                           <Play className="w-5 h-5 text-white fill-current" />
-                        </div>
-                     </div>
-                     <p className="text-signal font-mono text-[9px] font-black uppercase tracking-[0.3em] mb-2 italic tracking-widest">SIG Node #{item.year}</p>
-                     <h4 className="text-2xl font-black uppercase tracking-tight mb-2 w-full">{item.title}</h4>
-                     <p className="text-white/30 text-[10px] font-bold uppercase tracking-widest">{item.label}</p>
-                  </div>
-               ))}
-            </div>
+      {/* Quotes & Philosophy */}
+      <section className="py-24 sm:py-32 lg:py-40 bg-black text-white text-center w-full shadow-inner">
+         <div className="max-w-4xl mx-auto px-6 w-full space-y-12">
+            <h2 className="text-4xl sm:text-7xl font-black uppercase tracking-tighter leading-tight italic mb-12 w-full">
+               "No Loops. <br className="sm:hidden"/> <span className="text-signal">Just Evolution.</span>"
+            </h2>
+            <div className="w-32 h-1.5 bg-signal mx-auto mb-12" />
+            <p className="text-white/20 text-[11px] font-bold uppercase tracking-[0.6em] whitespace-nowrap italic">Vught, Netherlands — Signal Center</p>
          </div>
       </section>
 
-      {/* Final Nav Blocks */}
+      {/* Grid: Nav Cards */}
       <section className="py-24 sm:py-40 w-full bg-white">
          <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 w-full">
@@ -319,7 +275,7 @@ const HomeView = () => {
                   </div>
                   <h3 className="text-3xl font-black uppercase leading-none mb-6 w-full text-black group-hover:text-white transition-colors">Signum <br/> Recordings</h3>
                   <p className="text-black/40 group-hover:text-white/40 text-[13px] leading-relaxed mb-12 w-full font-medium">
-                     The independent node founded in 1996 for non-mainstream artifacts.
+                     The independent node founded in 1996 for non-mainstream frequency artifacts.
                   </p>
                   <Link to="/signum" className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest border-b-2 border-signal pb-1 transition-all group-hover:gap-6">
                      Access Label <ArrowUpRight className="w-4 h-4" />
@@ -328,41 +284,30 @@ const HomeView = () => {
 
                <div className="bg-offwhite p-12 rounded-[2.5rem] border border-black/5 hover:bg-black hover:text-white transition-all duration-500 group w-full shadow-sm">
                   <div className="w-14 h-14 bg-signal rounded-full flex items-center justify-center text-white mb-10">
-                     <BookOpen className="w-7 h-7" />
+                     <Music className="w-7 h-7" />
                   </div>
-                  <h3 className="text-3xl font-black uppercase leading-none mb-6 w-full text-black group-hover:text-white transition-colors">Press Kit <br/> Assets</h3>
+                  <h3 className="text-3xl font-black uppercase leading-none mb-6 w-full text-black group-hover:text-white transition-colors">The Alias <br/> Network</h3>
                   <p className="text-black/40 group-hover:text-white/40 text-[13px] leading-relaxed mb-12 w-full font-medium">
-                     High-resolution portraits and professional narrative notes.
+                     A complete registry of over 24 identities reflecting his 35-year sonic career.
                   </p>
-                  <Link to="/press" className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest border-b-2 border-signal pb-1 transition-all group-hover:gap-6">
-                     Download <ArrowUpRight className="w-4 h-4" />
+                  <Link to="/biography" className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest border-b-2 border-signal pb-1 transition-all group-hover:gap-6">
+                     View Registry <ArrowUpRight className="w-4 h-4" />
                   </Link>
                </div>
 
                <div className="bg-offwhite p-12 rounded-[2.5rem] border border-black/5 hover:bg-black hover:text-white transition-all duration-500 group md:col-span-2 lg:col-span-1 w-full shadow-sm">
                   <div className="w-14 h-14 bg-signal rounded-full flex items-center justify-center text-white mb-10">
-                     <Mail className="w-7 h-7" />
+                     <BookOpen className="w-7 h-7" />
                   </div>
-                  <h3 className="text-3xl font-black uppercase leading-none mb-6 w-full text-black group-hover:text-white transition-colors">Direct <br/> Inquiry</h3>
+                  <h3 className="text-3xl font-black uppercase leading-none mb-6 w-full text-black group-hover:text-white transition-colors">Press & <br/> Assets</h3>
                   <p className="text-black/40 group-hover:text-white/40 text-[13px] leading-relaxed mb-12 w-full font-medium">
-                     For cinema scoring, archival requests or studio booking.
+                     High-resolution portraits and official professional narrative notes.
                   </p>
-                  <Link to="/contact" className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest border-b-2 border-signal pb-1 transition-all group-hover:gap-6">
-                     Get in Touch <ArrowUpRight className="w-4 h-4" />
+                  <Link to="/press" className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest border-b-2 border-signal pb-1 transition-all group-hover:gap-6">
+                     Download <ArrowUpRight className="w-4 h-4" />
                   </Link>
                </div>
             </div>
-         </div>
-      </section>
-
-      {/* Quote Footer Section */}
-      <section className="py-48 bg-black text-white text-center w-full">
-         <div className="max-w-4xl mx-auto px-6 w-full space-y-12">
-            <h2 className="text-4xl sm:text-7xl font-black uppercase tracking-tighter leading-tight italic mb-12 w-full">
-               "No Loops. <br className="sm:hidden"/> <span className="text-signal">Just Evolution.</span>"
-            </h2>
-            <div className="w-32 h-1.5 bg-signal mx-auto mb-12" />
-            <p className="text-white/20 text-[11px] font-bold uppercase tracking-[0.6em] whitespace-nowrap italic">Vught, Netherlands — Operational Center</p>
          </div>
       </section>
     </main>
@@ -372,6 +317,10 @@ const HomeView = () => {
 // BIOGRAPHY VIEW
 const BiographyView = () => (
   <main className="pt-56 lg:pt-64 pb-48 bg-white w-full">
+    <SEO 
+      title="Biography" 
+      description="The definitive history of Maarten van der Vleuten. From the early days of 48V Phantom Power and Flux to the current MVDV distillation." 
+    />
     <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-32 items-start w-full">
         
@@ -388,7 +337,7 @@ const BiographyView = () => (
                  <h3 className="text-3xl sm:text-5xl font-black uppercase tracking-tighter leading-none group-hover:text-signal transition-colors">THE SIGNAL ARRIVAL</h3>
                  <div className="space-y-8 text-black/60 text-lg sm:text-xl leading-relaxed font-medium">
                   <p>
-                    Maarten van der Vleuten (Vught, 1967) emerged in the Dutch underground during the late eighties. He was architecturely involved in the first wave of electronics, with his first official recordings appearing under the name **48V Phantom Power** in 1987.
+                    Maarten van der Vleuten (Vught, 1967) emerged in the Dutch underground during the late eighties. He was architecturely involved in the first wave of electronics, with his first official recordings appearing under the name <strong>48V Phantom Power</strong> in 1987.
                   </p>
                   <p>
                     Based in his studio in Vught, he quickly established a reputation for high-fidelity sound design, contributing to the first wave of European techno and experimental house.
@@ -401,10 +350,10 @@ const BiographyView = () => (
                  <h3 className="text-3xl sm:text-5xl font-black uppercase tracking-tighter leading-none group-hover:text-signal transition-colors">UNDERGROUND ARCHITECTURE</h3>
                  <div className="space-y-8 text-black/60 text-lg sm:text-xl leading-relaxed font-medium">
                   <p>
-                    This period marked his international recognition. Under the alias **In-Existence**, he released the seminal ambient work *Moonwater* (1993) on Apollo Records, a sublabel of the legendary R&S.
+                    This period marked his international recognition. Under the alias <strong>In-Existence</strong>, he released the seminal ambient work <strong>Moonwater</strong> (1993) on Apollo Records, a sublabel of the legendary R&S.
                   </p>
                   <p>
-                    Parallel to his ambient work, he became a core figure in the techno scene as **Flux**, releasing high-intensity works on Djax-Up-Beats and contributing to the evolution of the hardware-driven sound.
+                    Parallel to his ambient work, he became a core figure in the techno scene as <strong>Flux</strong>, releasing high-intensity works on Djax-Up-Beats and contributing to the evolution of the hardware-driven sound.
                   </p>
                  </div>
               </section>
@@ -414,7 +363,7 @@ const BiographyView = () => (
                  <h3 className="text-3xl sm:text-5xl font-black uppercase tracking-tighter leading-none group-hover:text-signal transition-colors">POLYMORPHIC DISCOVERY</h3>
                  <div className="space-y-8 text-black/60 text-lg sm:text-xl leading-relaxed font-medium">
                   <p>
-                    In 1996, Van der Vleuten founded **Signum Recordings** as a platform for his most experimental and personal artifacts. During this decade, he operated under over 24 different aliases—including Vandervleuten, Pultec, and Error 144—populating the catalogs of Klang Elektronik and See Saw.
+                    In 1996, Van der Vleuten founded <strong>Signum Recordings</strong> as a platform for his most experimental and personal artifacts. During this decade, he operated under over 24 different identities—including Vandervleuten, Pultec, and Error 144—populating the catalogs of Klang Elektronik and See Saw.
                   </p>
                   <p>
                     His work spanned from multidisciplinary theater soundscapes to architectural installations, solidifying his role as a sound architect rather than just a music producer.
@@ -427,11 +376,33 @@ const BiographyView = () => (
                  <h3 className="text-3xl sm:text-5xl font-black uppercase tracking-tighter leading-none group-hover:text-signal transition-colors">IDENTITY CONSOLIDATION</h3>
                  <div className="space-y-8 text-black/60 text-lg sm:text-xl leading-relaxed font-medium">
                   <p>
-                    In 2008, he announced a pivot to release exclusively under his own name or the initials **MVDV**. The release of *High Intolerance Towards Low Energies* marked a move toward a more cinematic, mature, and conceptually driven sonic language.
+                    In 2008, he announced a pivot to release exclusively under his own name or the initials <strong>MVDV</strong>. The release of <strong>High Intolerance Towards Low Energies</strong> marked a move toward a more cinematic, mature, and conceptually driven sonic language.
                   </p>
                   <p>
                     Today, his work focuses on distilled compositions and audio archives, continuing to bridge the gap between human emotion and clinical precision from his home base in Vught.
                   </p>
+                 </div>
+              </section>
+
+              {/* The Alias Registry */}
+              <section className="pt-24 border-t-4 border-black space-y-16">
+                 <div className="space-y-4">
+                    <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tighter">THE ALIAS <br/> NETWORK</h2>
+                    <p className="text-signal font-mono text-[11px] font-black tracking-[0.4em] uppercase">24 Registry Nodes Documented</p>
+                 </div>
+                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-12">
+                    {[
+                      "48V Phantom Power", "Flux", "In-Existence", "Vandervleuten",
+                      "Dj Zero-T", "Error 144", "Pultec", "Zimt", "Integrity",
+                      "Orpheus", "Gangrene", "Cliche", "Cryptic", "G-Force",
+                      "Major Malfunction", "Mental Measuretech", "M.V.D.V.",
+                      "Neat", "The Nighttripper", "P.A.T.C.H.", "Sinn", "Vlytron"
+                    ].map((alias, i) => (
+                      <div key={i} className="group cursor-default">
+                         <span className="block text-[8px] font-bold text-black/20 group-hover:text-signal mb-1">NODE #{i+1}</span>
+                         <span className="text-lg sm:text-2xl font-black uppercase tracking-tighter text-black/30 group-hover:text-black transition-colors">{alias}</span>
+                      </div>
+                    ))}
                  </div>
               </section>
            </div>
@@ -450,10 +421,10 @@ const BiographyView = () => (
            </div>
            
            <div className="mt-12 bg-offwhite p-12 rounded-[3rem] border border-black/5 space-y-10 shadow-sm">
-              <h4 className="text-[10px] font-black uppercase tracking-[0.5em] text-signal italic">Registry Registry</h4>
+              <h4 className="text-[10px] font-black uppercase tracking-[0.5em] text-signal italic">Master Registry</h4>
               <div className="space-y-6 text-[11px] font-bold uppercase tracking-widest text-black/50">
                  <div className="flex justify-between border-b border-black/5 pb-4">
-                    <span>Base Node</span>
+                    <span>Operational Base</span>
                     <span className="text-black">Vught, NL</span>
                  </div>
                  <div className="flex justify-between border-b border-black/5 pb-4">
@@ -461,8 +432,8 @@ const BiographyView = () => (
                     <span className="text-black">1987</span>
                  </div>
                  <div className="flex justify-between border-b border-black/5 pb-4">
-                    <span>Imprints</span>
-                    <span className="text-black">Apollo / R&S / Signum</span>
+                    <span>Network Nodes</span>
+                    <span className="text-black">24+ Identities</span>
                  </div>
               </div>
            </div>
@@ -490,9 +461,13 @@ const ArchiveView = () => {
 
   return (
     <main className="pt-56 lg:pt-64 pb-48 bg-offwhite w-full">
+      <SEO 
+        title="Catalogue" 
+        description="A curated selection of the discography of Maarten van der Vleuten. Over 35 years of electronic frequency artifacts." 
+      />
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
         <div className="mb-32 w-full space-y-10">
-           <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none w-full">DISCOGRAPHY</h1>
+           <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none w-full">CATALOGUE</h1>
            <div className="flex flex-wrap gap-8 sm:gap-12 font-bold text-[10px] sm:text-[11px] tracking-widest text-black/30 w-full uppercase">
               <a href="#" className="hover:text-signal transition-colors group flex items-center gap-2 italic underline underline-offset-4 decoration-signal/20">Bandcamp <ArrowUpRight className="w-3 h-3"/></a>
               <a href="#" className="hover:text-signal transition-colors group flex items-center gap-2 italic underline underline-offset-4 decoration-signal/20">Discogs <ArrowUpRight className="w-3 h-3"/></a>
@@ -526,6 +501,10 @@ const ArchiveView = () => {
 // SIGNUM VIEW
 const SignumView = () => (
   <main className="pt-56 lg:pt-64 pb-48 bg-white w-full">
+    <SEO 
+      title="Signum Recordings" 
+      description="About Signum Recordings. The independent vessel for the experimental electronic output of Maarten van der Vleuten since 1996." 
+    />
     <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-32 w-full">
        <div className="space-y-8 w-full">
           <h1 className="text-4xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-none text-black w-full">SIGNUM RECORDINGS</h1>
@@ -548,10 +527,10 @@ const SignumView = () => (
 
        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-20 pt-16 border-t-2 border-black/5 w-full">
           {[
-            { label: "Founded", val: "1996" },
-            { label: "Location", val: "Vught, NL" },
             { label: "Status", val: "Operational" },
-            { label: "Distro", val: "Direct" }
+            { label: "Founded", val: "1996" },
+            { label: "Origin", val: "Vught" },
+            { label: "Network", val: "Closed" }
           ].map((item, i) => (
             <div key={i} className="w-full space-y-4">
                <p className="text-[10px] font-black text-black/20 uppercase tracking-[0.4em] truncate italic">{item.label}</p>
@@ -566,15 +545,19 @@ const SignumView = () => (
 // PRESS VIEW
 const PressView = () => (
    <main className="pt-56 lg:pt-64 pb-48 bg-white w-full">
+      <SEO 
+        title="Press" 
+        description="Official press kit and media assets for Maarten van der Vleuten. Biography, high-res portraits, and identity marks." 
+      />
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-32 w-full">
          <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none w-full">ASSET REGISTRY</h1>
          
          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 lg:gap-12 max-w-5xl w-full">
             {[
-               { title: "Story Set", size: "Compact & Extended Narrative" },
-               { title: "Visual Artifacts", size: "High-Resolution Portrait Hub" },
-               { title: "Official Marks", size: "Scalable Identity Files" },
-               { title: "Full Repository", size: "Consolidated Asset Archive" }
+               { title: "Story Set", size: "Biography (NL/EN) & Era Narrative" },
+               { title: "Visual Artifacts", size: "High-Resolution Portrait Gallery" },
+               { title: "Official Marks", size: "Identity Wordmarks [SVG/PNG]" },
+               { title: "Full Repository", size: "Consolidated Asset Archive [.ZIP]" }
             ].map((item, i) => (
               <div key={i} className="p-12 bg-offwhite rounded-[3rem] flex items-center justify-between group hover:bg-black hover:text-white transition-all border border-black/5 w-full shadow-lg">
                  <div className="min-w-0 pr-8">
@@ -594,6 +577,10 @@ const PressView = () => (
 // CONTACT VIEW
 const ContactView = () => (
   <main className="pt-56 lg:pt-64 pb-48 bg-white w-full">
+    <SEO 
+      title="Contact" 
+      description="Get in touch with Maarten van der Vleuten for cinematic scoring, archive requests or studio bookings." 
+    />
     <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-32 w-full overflow-hidden">
        <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none w-full">INQUIRY</h1>
        
@@ -628,18 +615,20 @@ const App = () => {
   }, [location]);
 
   return (
-    <div className="relative bg-white min-h-screen selection:bg-signal selection:text-white antialiased overflow-x-hidden pt-[112px] sm:pt-[128px]">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<HomeView />} />
-        <Route path="/biography" element={<BiographyView />} />
-        <Route path="/archive" element={<ArchiveView />} />
-        <Route path="/signum" element={<SignumView />} />
-        <Route path="/press" element={<PressView />} />
-        <Route path="/contact" element={<ContactView />} />
-      </Routes>
-      <Footer />
-    </div>
+    <HelmetProvider>
+      <div className="relative bg-white min-h-screen selection:bg-signal selection:text-white antialiased overflow-x-hidden pt-[112px] sm:pt-[128px]">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomeView />} />
+          <Route path="/biography" element={<BiographyView />} />
+          <Route path="/archive" element={<ArchiveView />} />
+          <Route path="/signum" element={<SignumView />} />
+          <Route path="/press" element={<PressView />} />
+          <Route path="/contact" element={<ContactView />} />
+        </Routes>
+        <Footer />
+      </div>
+    </HelmetProvider>
   );
 };
 
