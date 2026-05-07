@@ -7,7 +7,8 @@ import {
   Menu, X, Music, Disc, BookOpen, ExternalLink, 
   ShoppingCart, Mail, Globe, Play, ChevronRight,
   Archive, FileText, ArrowRight, Zap, Download,
-  Camera, Newspaper, Calendar, ArrowUpRight
+  Camera, Newspaper, Calendar, ArrowUpRight,
+  ArrowLeft, ArrowRight as ArrowRightIcon
 } from 'lucide-react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -200,10 +201,10 @@ const HomeView = () => {
                </p>
                <div className="flex flex-wrap gap-4 pt-4">
                   <Link to="/biography" className="px-10 py-5 bg-black text-white rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-signal transition-all shadow-xl">
-                    Full Biography
+                    Evolution History
                   </Link>
                   <Link to="/archive" className="px-10 py-5 border-2 border-black text-black rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-black hover:text-white transition-all">
-                    Discography
+                    Archive
                   </Link>
                </div>
             </div>
@@ -257,215 +258,174 @@ const HomeView = () => {
             </div>
          </div>
       </section>
-
-      {/* Grid: Secondary Nav */}
-      <section className="py-24 sm:py-40 w-full bg-offwhite">
-         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 w-full">
-               <div className="bg-white p-12 rounded-[2.5rem] border border-black/5 hover:bg-black hover:text-white transition-all duration-500 group shadow-lg">
-                  <div className="w-14 h-14 bg-signal rounded-full flex items-center justify-center text-white mb-10">
-                     <Archive className="w-7 h-7" />
-                  </div>
-                  <h3 className="text-3xl font-black uppercase leading-none mb-6 text-black group-hover:text-white transition-colors tracking-tighter italic">Signum <br/> Recordings</h3>
-                  <p className="text-black/40 group-hover:text-white/40 text-[13px] leading-relaxed mb-12 font-medium">
-                     The independent vessel for experimental frequency artifacts since 1996.
-                  </p>
-                  <Link to="/signum" className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest border-b-2 border-signal pb-1 transition-all group-hover:gap-6">
-                     Access Label <ArrowUpRight className="w-4 h-4" />
-                  </Link>
-               </div>
-
-               <div className="bg-white p-12 rounded-[2.5rem] border border-black/5 hover:bg-black hover:text-white transition-all duration-500 group shadow-lg">
-                  <div className="w-14 h-14 bg-signal rounded-full flex items-center justify-center text-white mb-10">
-                     <Music className="w-7 h-7" />
-                  </div>
-                  <h3 className="text-3xl font-black uppercase leading-none mb-6 text-black group-hover:text-white transition-colors tracking-tighter italic">Aliases & <br/> Identitities</h3>
-                  <p className="text-black/40 group-hover:text-white/40 text-[13px] leading-relaxed mb-12 font-medium">
-                     A complete mapping of 24 historical identities and 35 years of output.
-                  </p>
-                  <Link to="/biography" className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest border-b-2 border-signal pb-1 transition-all group-hover:gap-6">
-                     View Timeline <ArrowUpRight className="w-4 h-4" />
-                  </Link>
-               </div>
-
-               <div className="bg-white p-12 rounded-[2.5rem] border border-black/5 hover:bg-black hover:text-white transition-all duration-500 group md:col-span-2 lg:col-span-1 shadow-lg">
-                  <div className="w-14 h-14 bg-signal rounded-full flex items-center justify-center text-white mb-10">
-                     <BookOpen className="w-7 h-7" />
-                  </div>
-                  <h3 className="text-3xl font-black uppercase leading-none mb-6 text-black group-hover:text-white transition-colors tracking-tighter italic">Press <br/> Assets</h3>
-                  <p className="text-black/40 group-hover:text-white/40 text-[13px] leading-relaxed mb-12 font-medium">
-                     High-resolution portraits and professional narrative kits for press use.
-                  </p>
-                  <Link to="/press" className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest border-b-2 border-signal pb-1 transition-all group-hover:gap-6">
-                     Download Kits <ArrowUpRight className="w-4 h-4" />
-                  </Link>
-               </div>
-            </div>
-         </div>
-      </section>
-
-      {/* Quote Static */}
-      <section className="py-48 bg-black text-white text-center w-full shadow-inner">
-         <div className="max-w-4xl mx-auto px-6 w-full space-y-12">
-            <h2 className="text-4xl sm:text-7xl font-black uppercase tracking-tighter leading-tight italic mb-12">
-               "No Loops. <br className="sm:hidden"/> <span className="text-signal">Just Evolution.</span>"
-            </h2>
-            <div className="w-32 h-1.5 bg-signal mx-auto mb-12" />
-            <p className="text-white/20 text-[11px] font-black uppercase tracking-[0.6em] whitespace-nowrap italic">Operational Center Vught — Netherlands</p>
-         </div>
-      </section>
     </main>
   );
 };
 
-// BIOGRAPHY VIEW - TIMELINE MODE
-const BiographyView = () => (
-  <main className="pt-56 lg:pt-64 pb-48 bg-white w-full">
-    <SEO 
-      title="Timeline & Biography" 
-      description="The definitive history of Maarten van der Vleuten. A vertical timeline spanning 1987 to 2024, documenting 24 identities." 
-    />
-    <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-32 items-start w-full relative">
+// BIOGRAPHY VIEW - SIDE SCROLLING TIMELINE
+const BiographyView = () => {
+  const horizontalSectionRef = useRef(null);
+  const triggerRef = useRef(null);
+
+  useEffect(() => {
+    // Media query to check if we should apply horizontal scroll (desktop only)
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 1024px)", () => {
+      const pin = gsap.fromTo(
+        horizontalSectionRef.current,
+        {
+          translateX: 0,
+        },
+        {
+          translateX: "-300vw", // Move by the width of the extra Eras
+          ease: "none",
+          scrollTrigger: {
+            trigger: triggerRef.current,
+            pin: true,
+            scrub: 1,
+            end: () => `+=${horizontalSectionRef.current.offsetWidth}`,
+            invalidateOnRefresh: true,
+          },
+        }
+      );
+      return () => pin.kill();
+    });
+
+    return () => mm.revert();
+  }, []);
+
+  const eras = [
+    {
+      id: "ERA I",
+      years: "1987—1991",
+      title: "THE SIGNAL ARRIVAL",
+      description: [
+        "Maarten van der Vleuten (Vught, 1967) emerged in the Dutch underground during the late eighties. He was architecturely involved in the first wave of electronics, with his first official recordings appearing under the name <strong>48V Phantom Power</strong> and <strong>Vandervleuten</strong> in 1987.",
+        "Based in his studio in Vught, he quickly established a reputation for high-fidelity sound design, contributing to the first wave of European techno and experimental house."
+      ]
+    },
+    {
+      id: "ERA II",
+      years: "1992—1995",
+      title: "UNDERGROUND ARCHITECTURE",
+      description: [
+        "This period marked his international recognition. Under the alias <strong>In-Existence</strong>, he released the seminal ambient work <strong>Moonwater</strong> (1993) on Apollo Records, a sublabel of the legendary R&S.",
+        "Parallel to his ambient work, he became a core figure in the techno scene as <strong>Flux</strong>, releasing high-intensity works on Djax-Up-Beats and contributing to the evolution of the hardware-driven sound.",
+        "By 1995, his discography had already expanded into over 10 different aliases, populating every corner of the electronic spectrum."
+      ]
+    },
+    {
+      id: "ERA III",
+      years: "1996—2007",
+      title: "POLYMORPHIC DISCOVERY",
+      description: [
+        "In 1996, Van der Vleuten founded <strong>Signum Recordings</strong> as a platform for his most experimental and personal artifacts. During this decade, he operated under a massive network of identities—including Pultec, Error 144, and Dj Zero-T.",
+        "His work spanned from multidisciplinary theater soundscapes to architectural installations, solidifying his role as a sound architect.",
+        "In 2002, the release of <strong>Laiad</strong> showcased a move toward more hybrid, acoustic-synthetic soundscapes that would define his later years."
+      ]
+    },
+    {
+      id: "ERA IV",
+      years: "2008—PRESENT",
+      title: "IDENTITY CONSOLIDATION",
+      description: [
+        "Since 2008, he has consolidated his output primarily under his own name or the initials <strong>MVDV</strong>. The release of <strong>High Intolerance Towards Low Energies</strong> and <strong>The Scars Remain</strong> marked a move toward a more cinematic language.",
+        "The 2020s have been defined by the <strong>Systematically Declassified</strong> series—an ongoing archival and newly distilled project that documents the complete evolutionary history of his work.",
+        "Today, in 2024, Maarten remains active from his Vught studio, bridging human emotion and clinical precision through a constant ritual of sonic distillation."
+      ]
+    }
+  ];
+
+  return (
+    <main className="bg-white w-full">
+      <SEO 
+        title="Timeline & History" 
+        description="A cinematic side-scrolling timeline of Maarten van der Vleuten's 35-year career. From Era I to the present day." 
+      />
+      
+      {/* Top Intro Section (Vertical) */}
+      <section className="pt-56 lg:pt-64 pb-32 max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
+         <div className="space-y-12">
+            <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-6 leading-none italic">EVOLUTION <br/> HISTORY</h1>
+            <div className="w-24 h-2 bg-signal" />
+            <p className="text-[12px] font-black text-signal uppercase tracking-[0.6em] italic">Timeline 1987 — 2024</p>
+         </div>
+      </section>
+
+      {/* Horizontal SCROLL SECTION */}
+      <div ref={triggerRef} className="bg-black text-white relative overflow-hidden h-[100vh] lg:h-[100vh] flex items-center">
+        <div ref={horizontalSectionRef} className="flex flex-nowrap w-[400vw] h-full items-center">
+           {eras.map((era, i) => (
+             <section key={i} className="w-[100vw] h-full flex flex-col justify-center px-6 sm:px-12 lg:px-32 relative group">
+                <div className="max-w-4xl mx-auto w-full space-y-12 lg:space-y-16">
+                   <div className="flex items-center gap-8 mb-8">
+                      <span className="text-signal font-mono text-4xl lg:text-8xl font-black opacity-20 italic">0{i+1}</span>
+                      <div className="w-20 lg:w-40 h-px bg-signal/30" />
+                   </div>
+                   <div className="space-y-4">
+                      <span className="text-signal font-mono text-[11px] lg:text-[13px] font-black tracking-[0.5em] uppercase italic">{era.id}: {era.years}</span>
+                      <h3 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-none italic group-hover:text-signal transition-colors">{era.title}</h3>
+                   </div>
+                   <div className="space-y-8 text-white/40 text-lg lg:text-xl leading-relaxed font-medium max-w-3xl">
+                      {era.description.map((p, j) => (
+                        <p key={j} dangerouslySetInnerHTML={{ __html: p }} />
+                      ))}
+                   </div>
+                </div>
+
+                {/* Aesthetic Number / Year Background */}
+                <div className="absolute bottom-0 right-0 p-20 opacity-5 pointer-events-none">
+                   <span className="text-[20vw] font-black leading-none italic select-none">{era.years.split('—')[0]}</span>
+                </div>
+             </section>
+           ))}
+        </div>
         
-        {/* Vertical Timeline Content */}
-        <div className="order-2 lg:order-1 space-y-32 w-full relative">
-           
-           {/* Visual Timeline Line - Desktop Only */}
-           <div className="hidden lg:block absolute left-0 top-[350px] bottom-0 w-px bg-black/10 -ml-16" />
-
-           <div className="space-y-12">
-              <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-6 leading-none italic">EVOLUTION <br/> HISTORY</h1>
-              <div className="w-24 h-2 bg-signal" />
-              <p className="text-[12px] font-black text-signal uppercase tracking-[0.6em] italic">Timeline 1987 — 2024</p>
-           </div>
-
-           <div className="space-y-48 relative">
-              
-              <section className="space-y-10 group relative">
-                 <div className="absolute -left-[68px] top-2 w-2 h-2 bg-signal rounded-full hidden lg:block" />
-                 <span className="text-signal font-mono text-[11px] font-black tracking-[0.5em] uppercase border-b-2 border-signal/20 pb-2 italic">ERA I: 1987—1991</span>
-                 <h3 className="text-3xl sm:text-5xl font-black uppercase tracking-tighter leading-none group-hover:text-signal transition-colors italic">THE SIGNAL ARRIVAL</h3>
-                 <div className="space-y-8 text-black/60 text-lg sm:text-xl leading-relaxed font-medium">
-                  <p>
-                    Maarten van der Vleuten (Vught, 1967) emerged in the Dutch underground during the late eighties. He was architecturely involved in the first wave of electronics, with his first official recordings appearing under the name <strong>48V Phantom Power</strong> and <strong>Vandervleuten</strong> in 1987.
-                  </p>
-                  <p>
-                    Based in his studio in Vught, he quickly established a reputation for high-fidelity sound design, contributing to the first wave of European techno and experimental house.
-                  </p>
-                 </div>
-              </section>
-
-              <section className="space-y-10 group relative">
-                 <div className="absolute -left-[68px] top-2 w-2 h-2 bg-black rounded-full hidden lg:block" />
-                 <span className="text-signal font-mono text-[11px] font-black tracking-[0.5em] uppercase border-b-2 border-signal/20 pb-2 italic">ERA II: 1992—1995</span>
-                 <h3 className="text-3xl sm:text-5xl font-black uppercase tracking-tighter leading-none group-hover:text-signal transition-colors italic">UNDERGROUND ARCHITECTURE</h3>
-                 <div className="space-y-8 text-black/60 text-lg sm:text-xl leading-relaxed font-medium">
-                  <p>
-                    This period marked his international recognition. Under the alias <strong>In-Existence</strong>, he released the seminal ambient work <strong>Moonwater</strong> (1993) on Apollo Records, a sublabel of the legendary R&S.
-                  </p>
-                  <p>
-                    Parallel to his ambient work, he became a core figure in the techno scene as <strong>Flux</strong>, releasing high-intensity works on Djax-Up-Beats and contributing to the evolution of the hardware-driven sound. 
-                  </p>
-                  <p>
-                    By 1995, his discography had already expanded into over 10 different aliases, populating every corner of the electronic spectrum.
-                  </p>
-                 </div>
-              </section>
-
-              <section className="space-y-10 group relative">
-                 <div className="absolute -left-[68px] top-2 w-2 h-2 bg-black rounded-full hidden lg:block" />
-                 <span className="text-signal font-mono text-[11px] font-black tracking-[0.5em] uppercase border-b-2 border-signal/20 pb-2 italic">ERA III: 1996—2007</span>
-                 <h3 className="text-3xl sm:text-5xl font-black uppercase tracking-tighter leading-none group-hover:text-signal transition-colors italic">POLYMORPHIC DISCOVERY</h3>
-                 <div className="space-y-8 text-black/60 text-lg sm:text-xl leading-relaxed font-medium">
-                  <p>
-                    In 1996, Van der Vleuten founded <strong>Signum Recordings</strong> as a platform for his most experimental and personal artifacts. During this decade, he operated under a massive network of identities—including Pultec, Error 144, and Dj Zero-T.
-                  </p>
-                  <p>
-                    His work spanned from multidisciplinary theater soundscapes to architectural installations, solidifying his role as a sound architect. 
-                  </p>
-                  <p>
-                    In 2002, the release of <strong>Laiad</strong> showcased a move toward more hybrid, acoustic-synthetic soundscapes that would define his later years.
-                  </p>
-                 </div>
-              </section>
-
-              <section className="space-y-10 group relative">
-                 <div className="absolute -left-[68px] top-2 w-2 h-2 bg-signal rounded-full hidden lg:block" />
-                 <span className="text-signal font-mono text-[11px] font-black tracking-[0.5em] uppercase border-b-2 border-signal/20 pb-2 italic">ERA IV: 2008—PRESENT</span>
-                 <h3 className="text-3xl sm:text-5xl font-black uppercase tracking-tighter leading-none group-hover:text-signal transition-colors italic">IDENTITY CONSOLIDATION</h3>
-                 <div className="space-y-8 text-black/60 text-lg sm:text-xl leading-relaxed font-medium">
-                  <p>
-                    Since 2008, he has consolidated his output primarily under his own name or the initials <strong>MVDV</strong>. The release of <strong>High Intolerance Towards Low Energies</strong> and <strong>The Scars Remain</strong> marked a move toward a more cinematic language.
-                  </p>
-                  <p>
-                    The 2020s have been defined by the <strong>Systematically Declassified</strong> series—an ongoing archival and newly distilled project that documents the complete evolutionary history of his work.
-                  </p>
-                  <p>
-                    Today, in 2024, Maarten remains active from his Vught studio, bridging human emotion and clinical precision through a constant ritual of sonic distillation.
-                  </p>
-                 </div>
-              </section>
-
-              {/* Identity Hub */}
-              <section className="pt-32 border-t-8 border-black space-y-20 relative">
-                 <div className="space-y-6">
-                    <h2 className="text-5xl sm:text-7xl font-black uppercase tracking-tighter leading-none italic">THE ALIASES</h2>
-                    <p className="text-signal font-mono text-[11px] font-black tracking-[0.5em] uppercase italic">24 Historical Identities Documented</p>
-                 </div>
-                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-10 gap-y-16">
-                    {[
-                      "48V Phantom Power", "Flux", "In-Existence", "Vandervleuten",
-                      "Dj Zero-T", "Error 144", "Pultec", "Zimt", "Integrity",
-                      "Orpheus", "Gangrene", "Cliche", "Cryptic", "G-Force",
-                      "Major Malfunction", "Mental Measuretech", "M.V.D.V.",
-                      "Neat", "The Nighttripper", "P.A.T.C.H.", "Sinn", "Vlytron"
-                    ].map((alias, i) => (
-                      <div key={i} className="group cursor-default">
-                         <span className="block text-[9px] font-black text-black/10 group-hover:text-signal mb-1">ID #{i+1}</span>
-                         <span className="text-xl sm:text-3xl font-black uppercase tracking-tighter text-black/20 group-hover:text-black transition-colors">{alias}</span>
-                      </div>
-                    ))}
-                 </div>
-              </section>
-           </div>
+        {/* Indicators and Instructions (Desktop Only) */}
+        <div className="hidden lg:flex absolute bottom-12 left-1/2 -translate-x-1/2 items-center gap-12 text-[10px] font-black uppercase tracking-[0.4em] text-white/20">
+           <ArrowLeft className="w-5 h-5 animate-pulse" />
+           <span>Scroll to navigate through eras</span>
+           <ArrowRightIcon className="w-5 h-5 animate-pulse" />
         </div>
-
-        {/* Sticky Portrait Overlay */}
-        <div className="order-1 lg:order-2 lg:sticky lg:top-48 w-full py-8 lg:py-0">
-           <div className="relative group overflow-hidden rounded-[3rem] lg:rounded-[4rem] shadow-2xl bg-offwhite aspect-[4/5] lg:aspect-[3/4]">
-              <img 
-                src="/maarten.jpg" 
-                alt="Maarten van der Vleuten" 
-                className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-1000"
-                onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&auto=format"; }}
-              />
-              <div className="absolute inset-0 bg-signal/5 opacity-20 pointer-events-none" />
-           </div>
-           
-           <div className="mt-12 bg-offwhite p-12 rounded-[3rem] border border-black/5 space-y-12 shadow-inner">
-              <h4 className="text-[10px] font-black uppercase tracking-[0.5em] text-signal italic">Master Info</h4>
-              <div className="space-y-6 text-[12px] font-bold uppercase tracking-widest text-black/50">
-                 <div className="flex justify-between border-b border-black/5 pb-5">
-                    <span>Base Station</span>
-                    <span className="text-black">Vught, NL</span>
-                 </div>
-                 <div className="flex justify-between border-b border-black/5 pb-5">
-                    <span>Active Since</span>
-                    <span className="text-black">1987</span>
-                 </div>
-                 <div className="flex justify-between border-b border-black/5 pb-5">
-                    <span>Aliases</span>
-                    <span className="text-black text-signal">24+ Identities</span>
-                 </div>
-              </div>
-           </div>
-        </div>
-
       </div>
-    </div>
-  </main>
-);
+
+      {/* Final Alias Registry (Back to Vertical) */}
+      <section className="py-32 lg:py-64 max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
+         <div className="space-y-24">
+            <div className="space-y-6">
+                <h2 className="text-5xl sm:text-7xl font-black uppercase tracking-tighter leading-none italic">THE ALIASES</h2>
+                <p className="text-signal font-mono text-[11px] font-black tracking-[0.5em] uppercase italic">24 Historical Identities Documented</p>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-16">
+                {[
+                  "48V Phantom Power", "Flux", "In-Existence", "Vandervleuten",
+                  "Dj Zero-T", "Error 144", "Pultec", "Zimt", "Integrity",
+                  "Orpheus", "Gangrene", "Cliche", "Cryptic", "G-Force",
+                  "Major Malfunction", "Mental Measuretech", "M.V.D.V.",
+                  "Neat", "The Nighttripper", "P.A.T.C.H.", "Sinn", "Vlytron"
+                ].map((alias, i) => (
+                  <div key={i} className="group cursor-default">
+                     <span className="block text-[9px] font-black text-black/10 group-hover:text-signal mb-1">ID #{i+1}</span>
+                     <span className="text-xl sm:text-2xl lg:text-3xl font-black uppercase tracking-tighter text-black/20 group-hover:text-black transition-colors">{alias}</span>
+                  </div>
+                ))}
+            </div>
+         </div>
+      </section>
+
+      {/* Press Kit Teaser */}
+      <section className="py-32 bg-offwhite border-t border-black/5">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-12">
+           <h3 className="text-3xl font-black uppercase tracking-tighter italic">Need visual assets for publication?</h3>
+           <Link to="/press" className="px-12 py-6 bg-black text-white rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-signal transition-all shadow-xl flex items-center gap-4">
+              Access Press Kit <ArrowUpRight className="w-5 h-5"/>
+           </Link>
+        </div>
+      </section>
+    </main>
+  );
+};
 
 // CATALOGUE VIEW
 const ArchiveView = () => {
@@ -493,8 +453,8 @@ const ArchiveView = () => {
   return (
     <main className="pt-56 lg:pt-64 pb-48 bg-offwhite w-full">
       <SEO 
-        title="Catalogue & Discography" 
-        description="Explore the complete catalogue of Maarten van der Vleuten. A chronological archive of frequency artifacts from 1987 to 2024." 
+        title="Archive & Discography" 
+        description="Explore the complete chronological archive of Maarten van der Vleuten's frequency artifacts from 1987 to 2024." 
       />
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
         <div className="mb-32 w-full space-y-12">
@@ -535,7 +495,7 @@ const SignumView = () => (
   <main className="pt-56 lg:pt-64 pb-48 bg-white w-full">
     <SEO 
       title="Signum Recordings" 
-      description="About Signum Recordings. The independent label for frequency exploration based in Vught, Netherlands since 1996." 
+      description="The independent vessel for frequency exploration based in Vught, Netherlands since 1996." 
     />
     <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-32 w-full">
        <div className="space-y-8 w-full">
@@ -553,7 +513,7 @@ const SignumView = () => (
                   Founded in 1996 as a primary label for non-mainstream sound, Signum Recordings bypasses clinical distribution in favor of direct-to-listener signal transmission. It serves as the master archive for the works of Maarten van der Vleuten.
                </p>
                <p>
-                  The label operates as a closed loop system—focused on the preservation and distillation of frequency over cultural trends. Every release is an artifact of a specific era of exploration.
+                  The label operates as a closed loop system—focused on the preservation and distillation of frequency over cultural trends.
                </p>
             </div>
           </div>
@@ -565,7 +525,7 @@ const SignumView = () => (
        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-20 pt-20 border-t-4 border-black/5 w-full">
           {[
             { label: "Established", val: "1996" },
-            { label: "Operation Center", val: "Vught, NL" },
+            { label: "Location", val: "Vught, NL" },
             { label: "Status", val: "Operational" },
             { label: "Distribution", val: "Direct" }
           ].map((item, i) => (
@@ -584,16 +544,16 @@ const PressView = () => (
    <main className="pt-56 lg:pt-64 pb-48 bg-white w-full">
       <SEO 
         title="Press Kit" 
-        description="Official media assets and narratives for Maarten van der Vleuten. Access narratives, portraits and wordmarks." 
+        description="Official media assets and narratives for Maarten van der Vleuten. Biography, visual assets and wordmarks." 
       />
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-32 w-full">
          <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none w-full italic">PRESS KIT</h1>
          
          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 lg:gap-16 max-w-5xl w-full">
             {[
-               { title: "Story Set", size: "Narratives (NL/EN) & Full Archive Bio" },
+               { title: "Story Set", size: "Narratives (NL/EN) & Full History" },
                { title: "Visual Assets", size: "High-Resolution Portrait Gallery" },
-               { title: "Identity Marks", size: "Scalable Vector Wordmarks & Brand Matrix" },
+               { title: "Identity Marks", size: "Vector Wordmarks [SVG/PNG]" },
                { title: "Complete Pack", size: "Consolidated Archive Bundle [.ZIP]" }
             ].map((item, i) => (
               <div key={i} className="p-12 lg:p-16 bg-offwhite rounded-[3rem] flex flex-col items-start justify-between group hover:bg-black hover:text-white transition-all border border-black/5 w-full shadow-2xl">
@@ -616,7 +576,7 @@ const ContactView = () => (
   <main className="pt-56 lg:pt-64 pb-48 bg-white w-full">
     <SEO 
       title="Contact" 
-      description="Direct communication portal for Maarten van der Vleuten. Cinema scoring, archive inquiries or studio bookings." 
+      description="Direct communication portal for Maarten van der Vleuten. Archive inquiries or studio bookings." 
     />
     <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-32 w-full overflow-hidden">
        <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none w-full italic">CONTACT</h1>
