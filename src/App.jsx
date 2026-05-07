@@ -262,48 +262,50 @@ const HomeView = () => {
   );
 };
 
-// BIOGRAPHY VIEW - CLICK & DRAG TIMELINE
+// BIOGRAPHY VIEW - REFINED DRAGGABLE TIMELINE
 const BiographyView = () => {
-  const containerRef = useRef(null);
+  const scrollContainerRef = useRef(null);
   const cursorRef = useRef(null);
   const [isHovering, setIsHovering] = useState(false);
-  const [isMouseDown, setIsMouseDown] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-
-  // Custom Cursor Follow
+  const [isDragging, setIsDragging] = useState(false);
+  
+  // Custom Cursor Mouse Listener
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const onMouseMove = (e) => {
       if (cursorRef.current) {
-        gsap.to(cursorRef.current, {
-           x: e.clientX,
-           y: e.clientY,
-           duration: 0.2,
-           ease: "power2.out"
-        });
+        cursorRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
       }
     };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', onMouseMove);
+    return () => window.removeEventListener('mousemove', onMouseMove);
   }, []);
 
-  const handleMouseDown = (e) => {
-    if (!containerRef.current) return;
-    setIsMouseDown(true);
-    setStartX(e.pageX - containerRef.current.offsetLeft);
-    setScrollLeft(containerRef.current.scrollLeft);
+  // Dragging Logic
+  const pos = useRef({ left: 0, x: 0 });
+
+  const mouseDownHandler = (e) => {
+    if (!scrollContainerRef.current) return;
+    setIsDragging(true);
+    pos.current = {
+      left: scrollContainerRef.current.scrollLeft,
+      x: e.clientX,
+    };
+    scrollContainerRef.current.style.cursor = 'grabbing';
+    scrollContainerRef.current.style.userSelect = 'none';
   };
 
-  const handleMouseUp = () => {
-    setIsMouseDown(false);
+  const mouseMoveHandler = (e) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+    const dx = e.clientX - pos.current.x;
+    scrollContainerRef.current.scrollLeft = pos.current.left - dx;
   };
 
-  const handleMouseMove = (e) => {
-    if (!isMouseDown || !containerRef.current) return;
-    e.preventDefault();
-    const x = e.pageX - containerRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // scroll-speed
-    containerRef.current.scrollLeft = scrollLeft - walk;
+  const mouseUpHandler = () => {
+    setIsDragging(false);
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.style.cursor = 'none';
+      scrollContainerRef.current.style.removeProperty('user-select');
+    }
   };
 
   const eras = [
@@ -354,18 +356,25 @@ const BiographyView = () => {
     <main className="bg-white w-full overflow-x-hidden relative">
       <SEO 
         title="Timeline & History" 
-        description="Explore the chronological evolution of Maarten van der Vleuten's 35-year career. Interactive click & drag timeline." 
+        description="Explore the chronological evolution of Maarten van der Vleuten. Drag through 35 years of electronic output." 
       />
       
-      {/* Custom Cursor */}
+      {/* Custom Global Cursor (Circle) */}
        <div 
         ref={cursorRef}
         className={cn(
-          "fixed top-0 left-0 w-24 h-24 rounded-full border-2 border-white pointer-events-none z-[100] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center mix-blend-difference transition-transform duration-300",
-          isHovering ? "scale-100 opacity-100" : "scale-0 opacity-0"
+          "fixed top-0 left-0 w-24 h-24 rounded-full border-2 border-white pointer-events-none z-[100] flex items-center justify-center mix-blend-difference transition-opacity duration-300",
+          isHovering ? "opacity-100" : "opacity-0"
         )}
+        style={{ marginLeft: '-48px', marginTop: '-48px', willChange: 'transform' }}
       >
-        <span className="text-[10px] font-black text-white uppercase tracking-widest">DRAG</span>
+        <div className="flex flex-col items-center">
+            <span className="text-[10px] font-black text-white uppercase tracking-widest mb-1 italic">DRAG</span>
+            <div className="flex gap-2">
+                <ArrowLeft className="w-3 h-3" />
+                <ArrowRightIcon className="w-3 h-3" />
+            </div>
+        </div>
       </div>
 
       {/* Intro (Vertical) */}
@@ -373,51 +382,58 @@ const BiographyView = () => {
          <div className="space-y-12">
             <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-6 leading-none italic">EVOLUTION <br/> HISTORY</h1>
             <div className="w-24 h-2 bg-signal" />
-            <p className="text-[12px] font-black text-signal uppercase tracking-[0.6em] italic">Click and drag to explore 1987 — 2024</p>
+            <p className="text-[12px] font-black text-signal uppercase tracking-[0.6em] italic">Timeline 1987 — 2024</p>
          </div>
       </section>
 
-      {/* CLICK & DRAG TIMELINE */}
+      {/* DRAGGABLE CONTAINER */}
       <div 
-        ref={containerRef}
-        onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={() => { handleMouseUp(); setIsHovering(false); }}
-        onMouseMove={(e) => { handleMouseMove(e); setIsHovering(true); }}
+        className="w-full bg-black relative"
         onMouseEnter={() => setIsHovering(true)}
-        className="bg-black relative overflow-x-auto scrollbar-hide cursor-none flex select-none no-scrollbar snap-x snap-mandatory h-[70vh] lg:h-[80vh] items-stretch"
-        style={{ scrollBehavior: isMouseDown ? 'auto' : 'smooth' }}
+        onMouseLeave={() => { setIsHovering(false); mouseUpHandler(); }}
       >
-         {eras.map((era, i) => (
-           <section 
-             key={i} 
-             className={cn(
-               "shrink-0 w-[85vw] lg:w-[70vw] h-full flex flex-col justify-center px-10 sm:px-20 lg:px-32 relative border-r border-white/5 snap-center",
-               era.color
-             )}
-           >
-              <div className="max-w-4xl w-full space-y-12 lg:space-y-16 relative z-10 text-white">
-                 <div className="flex items-center gap-8 mb-8">
-                    <span className="text-white font-mono text-4xl lg:text-7xl font-black opacity-10 italic">0{i+1}</span>
-                    <div className="w-20 lg:w-40 h-px bg-white/20" />
-                 </div>
-                 <div className="space-y-4">
-                    <span className="text-white/60 font-mono text-[11px] lg:text-[13px] font-black tracking-[0.5em] uppercase italic">{era.id}: {era.years}</span>
-                    <h3 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-none italic">{era.title}</h3>
-                 </div>
-                 <div className="space-y-8 text-white/50 text-lg lg:text-xl leading-relaxed font-medium max-w-2xl">
-                    {era.description.map((p, j) => (
-                      <p key={j} dangerouslySetInnerHTML={{ __html: p }} />
-                    ))}
-                 </div>
-              </div>
+          <div 
+            ref={scrollContainerRef}
+            onMouseDown={mouseDownHandler}
+            onMouseMove={mouseMoveHandler}
+            onMouseUp={mouseUpHandler}
+            className="flex overflow-x-auto scrollbar-hide select-none no-scrollbar snap-x snap-mandatory h-[75vh] lg:h-[80vh] items-stretch cursor-none"
+            style={{ 
+                scrollSnapType: isDragging ? 'none' : 'x mandatory',
+                WebkitOverflowScrolling: 'touch' 
+            }}
+          >
+             {eras.map((era, i) => (
+               <section 
+                 key={i} 
+                 className={cn(
+                   "shrink-0 w-[90vw] lg:w-[75vw] h-full flex flex-col justify-center px-10 sm:px-24 lg:px-40 relative border-r border-white/5 snap-center",
+                   era.color
+                 )}
+               >
+                  <div className="max-w-4xl w-full space-y-12 lg:space-y-16 relative z-10 text-white pointer-events-none">
+                     <div className="flex items-center gap-12 mb-8">
+                        <span className="text-white font-mono text-5xl lg:text-9xl font-black opacity-10 italic">0{i+1}</span>
+                        <div className="w-20 lg:w-48 h-px bg-white/20" />
+                     </div>
+                     <div className="space-y-4">
+                        <span className="text-white/60 font-mono text-[11px] lg:text-[13px] font-black tracking-[0.5em] uppercase italic">{era.id}: {era.years}</span>
+                        <h3 className="text-4xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-none italic">{era.title}</h3>
+                     </div>
+                     <div className="space-y-8 text-white/50 text-lg lg:text-2xl leading-relaxed font-medium max-w-2xl">
+                        {era.description.map((p, j) => (
+                          <p key={j} dangerouslySetInnerHTML={{ __html: p }} />
+                        ))}
+                     </div>
+                  </div>
 
-              {/* Year Watermark */}
-              <div className="absolute bottom-0 right-0 p-10 lg:p-20 opacity-5 pointer-events-none text-white">
-                 <span className="text-[20vw] font-black leading-none italic select-none">{era.years.split('—')[0]}</span>
-              </div>
-           </section>
-         ))}
+                  {/* Year Watermark */}
+                  <div className="absolute bottom-0 right-0 p-10 lg:p-20 opacity-5 pointer-events-none text-white overflow-hidden">
+                     <span className="text-[30vw] font-black leading-none italic select-none">{era.years.split('—')[0]}</span>
+                  </div>
+               </section>
+             ))}
+          </div>
       </div>
 
       {/* Aliases (Vertical) */}
