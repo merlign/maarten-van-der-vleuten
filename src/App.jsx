@@ -6,8 +6,7 @@ import {
   Menu, X, Music, Disc, BookOpen, ExternalLink, 
   ShoppingCart, Mail, Globe, Play, ChevronRight,
   Archive, FileText, ArrowRight, Zap, Download,
-  Instagram, Twitter, Linkedin, Facebook, Camera,
-  Newspaper, Calendar, ArrowUpRight
+  Camera, Newspaper, Calendar, ArrowUpRight
 } from 'lucide-react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
