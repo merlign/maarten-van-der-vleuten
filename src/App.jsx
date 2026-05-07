@@ -22,7 +22,7 @@ function cn(...inputs) {
 
 const LegacyBanner = () => (
   <div className="bg-signal text-white py-2 sm:py-3 px-6 text-center relative z-[60] w-full">
-    <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-4">
+    <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-4">
       <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em]">Looking for the legacy archive?</p>
       <a 
         href="http://www.maartenvandervleuten.com/main.htm" 
@@ -49,16 +49,16 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 transition-all">
+    <nav className="fixed top-0 left-0 w-full z-50 transition-all shadow-sm bg-white border-b border-black/5">
       <LegacyBanner />
-      <div className="bg-white border-b border-black/5 py-4 sm:py-5 shadow-sm w-full">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24 flex items-center justify-between">
-          <Link to="/" className="text-lg sm:text-xl font-black tracking-tighter text-black uppercase truncate mr-4">
-            Maarten van der Vleuten
+      <div className="py-5 sm:py-8 w-full">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 flex items-center justify-between">
+          <Link to="/" className="text-xl font-black tracking-tighter text-black uppercase truncate mr-8">
+            MAARTEN VAN DER VLEUTEN
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-6 lg:gap-10">
+          <div className="hidden lg:flex items-center gap-10">
             {navLinks.map((link) => (
               <Link 
                 key={link.name} 
@@ -75,14 +75,14 @@ const Navbar = () => {
               href="https://maartenvandervleuten.bandcamp.com/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="px-5 py-2 rounded-full text-[10px] font-bold tracking-widest bg-black text-white hover:bg-signal transition-all"
+              className="px-8 py-3 rounded-full text-[10px] font-bold tracking-widest bg-black text-white hover:bg-signal transition-all shadow-lg"
             >
               SHOP
             </a>
           </div>
 
           {/* Mobile Toggle */}
-          <button className="md:hidden p-2 text-black" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button className="lg:hidden p-2 text-black" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X /> : <Menu />}
           </button>
         </div>
@@ -90,29 +90,23 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-white z-[60] flex flex-col p-8 sm:p-12 animate-in fade-in duration-300">
-          <div className="flex justify-between items-center mb-12">
-             <span className="font-bold text-black text-sm tracking-widest uppercase">Menu</span>
+        <div className="md:hidden fixed inset-0 bg-white z-[60] flex flex-col p-10 animate-in fade-in duration-300">
+          <div className="flex justify-between items-center mb-16">
+             <span className="font-bold text-black text-sm tracking-widest uppercase italic">The Registry</span>
              <button onClick={() => setIsMenuOpen(false)}><X className="w-8 h-8 text-black" /></button>
           </div>
-          <div className="flex flex-col gap-6 overflow-y-auto">
+          <div className="flex flex-col gap-8">
             {navLinks.map((link) => (
               <Link 
                 key={link.name} 
                 to={link.path}
                 onClick={() => setIsMenuOpen(false)}
-                className="text-3xl font-bold text-black border-b border-black/5 pb-4 flex justify-between items-center"
+                className="text-4xl font-black text-black border-b border-black/5 pb-6 flex justify-between items-center group hover:text-signal transition-colors"
               >
                 {link.name}
-                <ArrowRight className="w-6 h-6 opacity-20" />
+                <ArrowRight className="w-8 h-8 opacity-10 group-hover:opacity-100 transition-opacity" />
               </Link>
             ))}
-            <a 
-              href="https://maartenvandervleuten.bandcamp.com/" 
-              className="mt-4 bg-black text-white py-4 rounded-xl text-center font-bold uppercase tracking-widest text-xs"
-            >
-              BANDCAMP SHOP
-            </a>
           </div>
         </div>
       )}
@@ -122,19 +116,19 @@ const Navbar = () => {
 
 const Footer = () => {
   return (
-    <footer className="bg-white text-black py-24 px-6 sm:px-8 lg:px-24 border-t border-black/5 w-full">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16">
-          <div className="lg:col-span-2 space-y-8">
-            <h2 className="text-3xl font-black leading-none uppercase">MAARTEN <br/> VAN DER VLEUTEN</h2>
-            <p className="text-black/40 text-[10px] sm:text-xs font-mono uppercase tracking-widest leading-loose max-w-sm">
+    <footer className="bg-white text-black py-32 px-6 sm:px-10 lg:px-12 border-t border-black/5 w-full">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-24">
+          <div className="lg:col-span-2 space-y-12">
+            <h2 className="text-4xl font-black leading-none uppercase tracking-tighter">MAARTEN <br/> VAN DER VLEUTEN</h2>
+            <p className="text-black/40 text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] leading-loose max-w-sm">
               Professional composer and recording artist. Pioneer of the Dutch electronic underground since 1987. Founder of Signum Recordings. Vught, Netherlands.
             </p>
           </div>
           
           <div>
-             <h4 className="text-[10px] font-bold uppercase tracking-[0.4em] text-signal mb-8">Navigation</h4>
-             <ul className="space-y-4 text-[10px] sm:text-xs font-bold text-black/40 uppercase tracking-widest">
+             <h4 className="text-[10px] font-bold uppercase tracking-[0.4em] text-signal mb-10">Navigation</h4>
+             <ul className="space-y-5 text-[10px] sm:text-xs font-bold text-black/40 uppercase tracking-widest">
                 <li><Link to="/biography" className="hover:text-black transition-colors">Biography</Link></li>
                 <li><Link to="/archive" className="hover:text-black transition-colors">Archive</Link></li>
                 <li><Link to="/signum" className="hover:text-black transition-colors">Signum Recordings</Link></li>
@@ -143,17 +137,17 @@ const Footer = () => {
           </div>
 
           <div>
-             <h4 className="text-[10px] font-bold uppercase tracking-[0.4em] text-signal mb-8">Socials</h4>
-             <ul className="space-y-4 text-[10px] sm:text-xs font-bold text-black/40 uppercase tracking-widest">
+             <h4 className="text-[10px] font-bold uppercase tracking-[0.4em] text-signal mb-10">Channels</h4>
+             <ul className="space-y-5 text-[10px] sm:text-xs font-bold text-black/40 uppercase tracking-widest">
                 <li><a href="#" className="hover:text-black transition-colors">Instagram</a></li>
                 <li><a href="#" className="hover:text-black transition-colors">Bandcamp</a></li>
                 <li><a href="#" className="hover:text-black transition-colors">Discogs</a></li>
              </ul>
           </div>
         </div>
-        <div className="mt-24 pt-8 border-t border-black/5 flex flex-col sm:flex-row justify-between items-center gap-8 text-[10px] font-bold text-black/20 uppercase tracking-widest">
+        <div className="mt-32 pt-10 border-t border-black/5 flex flex-col sm:flex-row justify-between items-center gap-8 text-[10px] font-bold text-black/20 uppercase tracking-widest">
            <p>&copy; {new Date().getFullYear()} Maarten van der Vleuten</p>
-           <div className="flex gap-12 font-mono italic">
+           <div className="flex gap-12 font-mono">
               <span>EST. 1987</span>
               <span>VUGHT, NL</span>
            </div>
@@ -168,115 +162,146 @@ const Footer = () => {
 const HomeView = () => {
   return (
     <main className="bg-white overflow-hidden w-full pt-16 sm:pt-20">
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center pt-16 sm:pt-24 w-full">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-24 overflow-hidden">
-            <div className="order-2 lg:order-1 relative z-10 py-8 lg:py-0 w-full">
-               <p className="text-[10px] font-bold text-signal uppercase tracking-[0.6em] mb-6 whitespace-nowrap">COMPOSER / PIONEER</p>
-               <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-black leading-[1] tracking-tighter uppercase mb-10 w-full">
-                 MAARTEN <br className="hidden sm:block"/> <span className="text-signal">VAN DER</span> <br className="hidden lg:block"/> <span className="text-signal">VLEUTEN.</span>
+      {/* Refined Splitted Hero - More balanced spacing */}
+      <section className="relative py-24 sm:py-32 lg:py-48 w-full border-b border-black/5">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16 lg:gap-32">
+            
+            {/* Left Content Column */}
+            <div className="order-2 lg:order-1 relative z-10 w-full space-y-12">
+               <p className="text-[10px] font-bold text-signal uppercase tracking-[0.8em]">COMPOSER / PIONEER</p>
+               <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black text-black leading-[0.95] tracking-tighter uppercase">
+                 MAARTEN <br/> <span className="text-signal lg:text-black">VAN DER</span> <br className="hidden lg:block"/> <span className="text-signal">VLEUTEN.</span>
                </h1>
-               <p className="text-black/50 text-base md:text-lg leading-relaxed max-w-lg mb-12 font-medium">
-                 Pioneering the Dutch electronic scene for over three decades. From industrial techno to refined cinematic scoring and experimental sound design.
+               <p className="text-black/50 text-base sm:text-lg lg:text-xl leading-relaxed max-w-xl font-medium">
+                 A Dutch electronic pioneer for over 35 years. From industrial techno under numerous aliases to refined cinematic scoring and experimental sound design.
                </p>
-               <div className="flex flex-wrap gap-4">
-                  <Link to="/biography" className="px-8 sm:px-10 py-4 sm:py-5 bg-black text-white rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-signal transition-all shadow-xl whitespace-nowrap">
+               <div className="flex flex-wrap gap-4 pt-4">
+                  <Link to="/biography" className="px-10 py-5 bg-black text-white rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-signal transition-all shadow-xl">
                     Biography
                   </Link>
-                  <Link to="/archive" className="px-8 sm:px-10 py-4 sm:py-5 border border-black text-black rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all whitespace-nowrap">
+                  <Link to="/archive" className="px-10 py-5 border-2 border-black text-black rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all">
                     Full Archive
                   </Link>
                </div>
             </div>
-            <div className="order-1 lg:order-2 w-full h-[40vh] sm:h-[50vh] lg:h-[70vh] rounded-[2rem] lg:rounded-[4rem] overflow-hidden shadow-2xl relative grayscale">
-               <img 
-                 src="/maarten.jpg" 
-                 alt="Maarten van der Vleuten" 
-                 className="w-full h-full object-cover object-top scale-110"
-                 onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&auto=format"; }}
-               />
-               <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent opacity-40 translate-x-[-1px]" />
+
+            {/* Right Image Column - Balanced size */}
+            <div className="order-1 lg:order-2 w-full relative">
+               <div className="aspect-[4/5] lg:aspect-[3/4] w-full max-w-lg mx-auto bg-offwhite rounded-[2.5rem] lg:rounded-[4rem] overflow-hidden shadow-2xl relative grayscale">
+                  <img 
+                    src="/maarten.jpg" 
+                    alt="Maarten van der Vleuten" 
+                    className="w-full h-full object-cover object-top scale-105"
+                    onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&auto=format"; }}
+                  />
+                  <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent opacity-40" />
+               </div>
+               {/* Aesthetic detail */}
+               <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-signal/5 rounded-full blur-3xl -z-10" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Intro Bio Snippet */}
-      <section className="py-24 sm:py-32 bg-offwhite border-y border-black/5 w-full">
-         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24 w-full">
-            <div className="max-w-3xl w-full">
-               <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tighter mb-12 leading-tight w-full">
-                  Defying genre since <br/> the late eighties.
-               </h2>
-               <div className="space-y-8 text-black/60 text-lg leading-relaxed font-medium w-full">
-                  <p>
-                    Operating from his studio in Vught, Maarten built a legacy under dozens of identities including Flux and In-Existence. He has populated the catalogs of legendary labels like R&S Records and Apollo.
-                  </p>
-                  <Link to="/biography" className="inline-flex items-center gap-4 text-black font-bold uppercase tracking-widest text-[10px] group">
-                    <span>Explore the narrative</span>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-                  </Link>
+      {/* Intro Narrative Section */}
+      <section className="py-24 sm:py-32 lg:py-40 bg-white w-full">
+         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+               <div className="lg:col-span-12 mb-8">
+                  <p className="text-[10px] font-bold text-signal uppercase tracking-[0.6em]">The Evolution</p>
                </div>
-            </div>
-         </div>
-      </section>
-
-      {/* Featured Output / Latest Release */}
-      <section className="py-32 lg:py-48 w-full">
-         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24 w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-32 items-center overflow-hidden">
-               <div className="lg:col-span-6 order-2 lg:order-1 w-full">
-                  <p className="text-[10px] font-bold text-signal uppercase tracking-[0.4em] mb-6">Latest Release</p>
-                  <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-none mb-8 w-full">Systematically <br className="hidden sm:block"/> Declassified.</h2>
-                  <p className="text-black/50 text-lg leading-relaxed mb-12 font-medium w-full">
-                    The ongoing series documenting the evolution of frequency and signal. A curated registry of archived artifacts and newly distilled compositions.
-                  </p>
-                  <a href="https://maartenvandervleuten.bandcamp.com/" target="_blank" className="px-10 py-5 bg-black text-white rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-signal transition-all shadow-lg inline-block whitespace-nowrap">
-                    LISTEN ON BANDCAMP
-                  </a>
+               <div className="lg:col-span-8">
+                  <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-none mb-12">
+                     Defying genre <br className="hidden sm:block"/> <span className="text-signal">since 1987.</span>
+                  </h2>
+                  <div className="space-y-12 text-black/60 text-lg lg:text-xl leading-relaxed font-medium">
+                     <p>
+                        Based in Vught, Maarten van der Vleuten has spent over three decades architecting the electronic landscape. Moving between clinical techno and experimental signal distillation, he has populated the catalogs of legendary imprints like R&S and Apollo.
+                     </p>
+                     <Link to="/biography" className="inline-flex items-center gap-6 text-black font-black uppercase tracking-widest text-[10px] group border-b-2 border-signal pb-2">
+                        <span>Read the narrative</span>
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                     </Link>
+                  </div>
                </div>
-               <div className="lg:col-span-6 order-1 lg:order-2 w-full">
-                  <div className="aspect-square bg-offwhite p-6 sm:p-12 rounded-[2.5rem] sm:rounded-[3.5rem] shadow-inner relative overflow-hidden group w-full">
-                     <img 
-                       src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=1200&auto=format" 
-                       className="w-full h-full object-cover rounded-[1.5rem] sm:rounded-[2rem] shadow-2xl group-hover:scale-105 transition-transform duration-700" 
-                     />
-                     <div className="absolute inset-0 bg-signal/10 opacity-20 pointer-events-none" />
+               <div className="lg:col-span-4 lg:pl-16 border-l border-black/5 pt-12 lg:pt-2">
+                  <div className="space-y-12">
+                     <div>
+                        <p className="text-[9px] font-bold text-black/20 uppercase tracking-widest mb-3">Origins</p>
+                        <p className="text-xl font-bold uppercase tracking-tight text-black">Vught, Netherlands</p>
+                     </div>
+                     <div>
+                        <p className="text-[9px] font-bold text-black/20 uppercase tracking-widest mb-3">Identities</p>
+                        <p className="text-xl font-bold uppercase tracking-tight text-black">24+ Nodes</p>
+                     </div>
+                     <div>
+                        <p className="text-[9px] font-bold text-black/20 uppercase tracking-widest mb-3">Status</p>
+                        <p className="text-xl font-bold uppercase tracking-tight text-black">Active</p>
+                     </div>
                   </div>
                </div>
             </div>
          </div>
       </section>
 
-      {/* Archive Highlights */}
-      <section className="py-32 bg-black text-white w-full">
-         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24 w-full">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 mb-20 w-full overflow-hidden">
-               <div>
-                  <p className="text-[10px] font-bold text-signal uppercase tracking-[0.6em] mb-6">Selected Works</p>
-                  <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tighter w-full">Archive Highlights.</h2>
+      {/* Featured Output - Latest Release */}
+      <section className="py-24 sm:py-32 lg:py-48 bg-offwhite border-y border-black/5 w-full">
+         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-32 items-center">
+               <div className="lg:col-span-6 order-2 lg:order-1 space-y-12 w-full">
+                  <p className="text-[10px] font-bold text-signal uppercase tracking-[0.4em]">Latest Registry</p>
+                  <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tighter leading-none w-full">Systematically <br className="hidden sm:block"/> Declassified.</h2>
+                  <p className="text-black/50 text-lg sm:text-xl leading-relaxed font-medium w-full">
+                    The ongoing series documenting the evolution of frequency and signal. A curated selection of newly distilled compositions and archived artifacts.
+                  </p>
+                  <div className="pt-6">
+                    <a href="https://maartenvandervleuten.bandcamp.com/" target="_blank" className="px-12 py-6 bg-black text-white rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-signal transition-all shadow-2xl inline-block">
+                      LISTEN ON BANDCAMP
+                    </a>
+                  </div>
                </div>
-               <Link to="/archive" className="text-[10px] font-bold uppercase tracking-[0.4em] border-b-2 border-signal pb-2 hover:text-signal transition-colors whitespace-nowrap">
-                  View Full Registry
+               <div className="lg:col-span-6 order-1 lg:order-2 w-full">
+                  <div className="aspect-square w-full max-w-lg mx-auto bg-white p-8 sm:p-12 rounded-[3rem] lg:rounded-[4rem] shadow-2xl relative overflow-hidden group">
+                     <img 
+                       src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=1200&auto=format" 
+                       className="w-full h-full object-cover rounded-[2rem] group-hover:scale-105 transition-transform duration-1000" 
+                     />
+                     <div className="absolute inset-0 bg-signal/10 opacity-10 pointer-events-none" />
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      {/* Archive Highlights - Grid with balanced spacing */}
+      <section className="py-32 lg:py-48 bg-black text-white w-full">
+         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 mb-24 w-full">
+               <div className="space-y-4">
+                  <p className="text-[10px] font-bold text-signal uppercase tracking-[0.6em]">Catalogue</p>
+                  <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tighter w-full">Registry Nodes.</h2>
+               </div>
+               <Link to="/archive" className="text-[10px] font-bold uppercase tracking-[0.4em] border-b-2 border-signal pb-2 hover:text-signal transition-colors group flex items-center gap-4">
+                  Full Archive <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 w-full">
                {[
                   { title: "Moonwater", year: "1993", label: "Apollo", img: "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=800&auto=format" },
                   { title: "Laiad", year: "2002", label: "Signum", img: "https://images.unsplash.com/photo-1514525253344-9337583624e5?w=800&auto=format" },
                   { title: "The Scars Remain", year: "2010", label: "ToneFloat", img: "https://images.unsplash.com/photo-1459749411177-042180ce673c?w=800&auto=format" }
                ].map((item, i) => (
                   <div key={i} className="group cursor-pointer w-full">
-                     <div className="aspect-square bg-white/5 rounded-3xl overflow-hidden mb-8 relative grayscale group-hover:grayscale-0 transition-all duration-500 w-full">
-                        <img src={item.img} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                        <div className="absolute top-6 right-6 w-10 h-10 bg-black/80 rounded-full flex items-center justify-center backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
-                           <Play className="w-4 h-4 text-white fill-current" />
+                     <div className="aspect-square bg-white/5 rounded-3xl overflow-hidden mb-10 relative grayscale group-hover:grayscale-0 transition-all duration-700 w-full shadow-2xl">
+                        <img src={item.img} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
+                        <div className="absolute top-8 right-8 w-12 h-12 bg-black/80 rounded-full flex items-center justify-center backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
+                           <Play className="w-5 h-5 text-white fill-current" />
                         </div>
                      </div>
-                     <p className="text-signal font-mono text-[9px] uppercase tracking-widest mb-1 italic">#{item.year}</p>
-                     <h4 className="text-2xl font-black uppercase tracking-tight mb-1 w-full">{item.title}</h4>
+                     <p className="text-signal font-mono text-[9px] font-black uppercase tracking-[0.3em] mb-2 italic tracking-widest">SIG Node #{item.year}</p>
+                     <h4 className="text-2xl font-black uppercase tracking-tight mb-2 w-full">{item.title}</h4>
                      <p className="text-white/30 text-[10px] font-bold uppercase tracking-widest">{item.label}</p>
                   </div>
                ))}
@@ -284,45 +309,45 @@ const HomeView = () => {
          </div>
       </section>
 
-      {/* Grid: Nav Cards */}
-      <section className="py-32 w-full">
-         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24 w-full">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
-               <div className="bg-offwhite p-10 sm:p-12 rounded-[2.5rem] border border-black/5 hover:bg-black hover:text-white transition-all duration-500 group w-full">
-                  <div className="w-12 h-12 bg-signal rounded-full flex items-center justify-center text-white mb-8">
-                     <Archive className="w-6 h-6" />
+      {/* Final Nav Blocks */}
+      <section className="py-24 sm:py-40 w-full bg-white">
+         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 w-full">
+               <div className="bg-offwhite p-12 rounded-[2.5rem] border border-black/5 hover:bg-black hover:text-white transition-all duration-500 group w-full shadow-sm">
+                  <div className="w-14 h-14 bg-signal rounded-full flex items-center justify-center text-white mb-10">
+                     <Archive className="w-7 h-7" />
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-black uppercase leading-none mb-6 w-full">SIGNUM <br/> RECORDINGS</h3>
-                  <p className="text-black/40 group-hover:text-white/40 text-sm leading-relaxed mb-10 w-full">
-                     Founded in 1996 for experimental artifacts.
+                  <h3 className="text-3xl font-black uppercase leading-none mb-6 w-full text-black group-hover:text-white transition-colors">Signum <br/> Recordings</h3>
+                  <p className="text-black/40 group-hover:text-white/40 text-[13px] leading-relaxed mb-12 w-full font-medium">
+                     The independent node founded in 1996 for non-mainstream artifacts.
                   </p>
-                  <Link to="/signum" className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest border-b-2 border-signal pb-1 transition-all group-hover:gap-5">
-                     Label Info <ArrowUpRight className="w-4 h-4" />
+                  <Link to="/signum" className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest border-b-2 border-signal pb-1 transition-all group-hover:gap-6">
+                     Access Label <ArrowUpRight className="w-4 h-4" />
                   </Link>
                </div>
 
-               <div className="bg-offwhite p-10 sm:p-12 rounded-[2.5rem] border border-black/5 hover:bg-black hover:text-white transition-all duration-500 group w-full">
-                  <div className="w-12 h-12 bg-signal rounded-full flex items-center justify-center text-white mb-8">
-                     <BookOpen className="w-6 h-6" />
+               <div className="bg-offwhite p-12 rounded-[2.5rem] border border-black/5 hover:bg-black hover:text-white transition-all duration-500 group w-full shadow-sm">
+                  <div className="w-14 h-14 bg-signal rounded-full flex items-center justify-center text-white mb-10">
+                     <BookOpen className="w-7 h-7" />
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-black uppercase leading-none mb-6 w-full">PRESS KIT <br/> ASSETS</h3>
-                  <p className="text-black/40 group-hover:text-white/40 text-sm leading-relaxed mb-10 w-full">
-                     High-res portraits and official narrative notes.
+                  <h3 className="text-3xl font-black uppercase leading-none mb-6 w-full text-black group-hover:text-white transition-colors">Press Kit <br/> Assets</h3>
+                  <p className="text-black/40 group-hover:text-white/40 text-[13px] leading-relaxed mb-12 w-full font-medium">
+                     High-resolution portraits and professional narrative notes.
                   </p>
-                  <Link to="/press" className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest border-b-2 border-signal pb-1 transition-all group-hover:gap-5">
+                  <Link to="/press" className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest border-b-2 border-signal pb-1 transition-all group-hover:gap-6">
                      Download <ArrowUpRight className="w-4 h-4" />
                   </Link>
                </div>
 
-               <div className="bg-offwhite p-10 sm:p-12 rounded-[2.5rem] border border-black/5 hover:bg-black hover:text-white transition-all duration-500 group md:col-span-2 lg:col-span-1 w-full">
-                  <div className="w-12 h-12 bg-signal rounded-full flex items-center justify-center text-white mb-8">
-                     <Mail className="w-6 h-6" />
+               <div className="bg-offwhite p-12 rounded-[2.5rem] border border-black/5 hover:bg-black hover:text-white transition-all duration-500 group md:col-span-2 lg:col-span-1 w-full shadow-sm">
+                  <div className="w-14 h-14 bg-signal rounded-full flex items-center justify-center text-white mb-10">
+                     <Mail className="w-7 h-7" />
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-black uppercase leading-none mb-6 w-full">DIRECT <br/> INQUIRY</h3>
-                  <p className="text-black/40 group-hover:text-white/40 text-sm leading-relaxed mb-10 w-full">
-                     For cinema scoring or archive requests.
+                  <h3 className="text-3xl font-black uppercase leading-none mb-6 w-full text-black group-hover:text-white transition-colors">Direct <br/> Inquiry</h3>
+                  <p className="text-black/40 group-hover:text-white/40 text-[13px] leading-relaxed mb-12 w-full font-medium">
+                     For cinema scoring, archival requests or studio booking.
                   </p>
-                  <Link to="/contact" className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest border-b-2 border-signal pb-1 transition-all group-hover:gap-5">
+                  <Link to="/contact" className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest border-b-2 border-signal pb-1 transition-all group-hover:gap-6">
                      Get in Touch <ArrowUpRight className="w-4 h-4" />
                   </Link>
                </div>
@@ -330,14 +355,14 @@ const HomeView = () => {
          </div>
       </section>
 
-      {/* Quote Footer */}
-      <section className="py-40 bg-black text-white text-center w-full">
-         <div className="max-w-4xl mx-auto px-6 w-full">
-            <h2 className="text-3xl sm:text-6xl font-black uppercase tracking-tighter leading-tight italic mb-8 w-full">
+      {/* Quote Footer Section */}
+      <section className="py-48 bg-black text-white text-center w-full">
+         <div className="max-w-4xl mx-auto px-6 w-full space-y-12">
+            <h2 className="text-4xl sm:text-7xl font-black uppercase tracking-tighter leading-tight italic mb-12 w-full">
                "No Loops. <br className="sm:hidden"/> <span className="text-signal">Just Evolution.</span>"
             </h2>
-            <div className="w-24 h-1 bg-signal mx-auto mb-10" />
-            <p className="text-white/20 text-[10px] font-bold uppercase tracking-[0.5em] whitespace-nowrap">Vught, Netherlands</p>
+            <div className="w-32 h-1.5 bg-signal mx-auto mb-12" />
+            <p className="text-white/20 text-[11px] font-bold uppercase tracking-[0.6em] whitespace-nowrap italic">Vught, Netherlands — Operational Center</p>
          </div>
       </section>
     </main>
@@ -346,45 +371,103 @@ const HomeView = () => {
 
 // BIOGRAPHY VIEW
 const BiographyView = () => (
-  <main className="pt-40 lg:pt-48 pb-32 bg-white w-full">
-    <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24 w-full">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start w-full overflow-hidden">
-        <div className="relative w-full">
-           <img 
-             src="/maarten.jpg" 
-             alt="Maarten van der Vleuten" 
-             className="w-full h-auto aspect-[4/5] object-cover grayscale rounded-[2.5rem] sm:rounded-[3rem] shadow-2xl mb-12 sm:min-w-0"
-             onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&auto=format"; }}
-           />
-           <div className="grid grid-cols-2 gap-8 border-t border-black/5 pt-8 font-bold uppercase text-[11px] tracking-widest text-black/40 w-full">
-              <div>
-                 <p className="text-black mb-1">Base</p>
-                 <p>Vught (NL)</p>
-              </div>
-              <div>
-                 <p className="text-black mb-1">Active</p>
-                 <p>35+ Years</p>
-              </div>
-           </div>
-        </div>
-        <div className="space-y-16 lg:space-y-20 w-full">
-           <div className="space-y-8 w-full">
-              <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none w-full">BIOGRAPHY</h2>
+  <main className="pt-56 lg:pt-64 pb-48 bg-white w-full">
+    <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-32 items-start w-full">
+        
+        {/* Biography Content */}
+        <div className="order-2 lg:order-1 space-y-32 w-full">
+           <div className="space-y-6">
+              <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-6 leading-none">BIOGRAPHY</h1>
               <div className="w-24 h-2 bg-signal" />
            </div>
-           
-           <div className="space-y-12 text-black/70 text-lg sm:text-xl leading-relaxed font-medium w-full">
-              <p>
-                Maarten van der Vleuten (Vught, 1967) is a prolific Dutch composer and producer who emerged in the late 1980s as a key architect of the electronic landscape.
-              </p>
-              <p>
-                Operating under over two dozen aliases—Flux, In-Existence, Vandervleuten—he populated the catalogs of legendary labels like R&S Records and Apollo.
-              </p>
-              <p>
-                Since 2008, he has released exclusively under his own name, focusing on multidisciplinary composition, cinematic artifacts, and his own Signum Recordings label.
-              </p>
+
+           <div className="space-y-32">
+              <section className="space-y-10 group">
+                 <span className="text-signal font-mono text-[11px] font-black tracking-[0.5em] uppercase border-b-2 border-signal/20 pb-2">ERA I: 1967—1991</span>
+                 <h3 className="text-3xl sm:text-5xl font-black uppercase tracking-tighter leading-none group-hover:text-signal transition-colors">THE SIGNAL ARRIVAL</h3>
+                 <div className="space-y-8 text-black/60 text-lg sm:text-xl leading-relaxed font-medium">
+                  <p>
+                    Maarten van der Vleuten (Vught, 1967) emerged in the Dutch underground during the late eighties. He was architecturely involved in the first wave of electronics, with his first official recordings appearing under the name **48V Phantom Power** in 1987.
+                  </p>
+                  <p>
+                    Based in his studio in Vught, he quickly established a reputation for high-fidelity sound design, contributing to the first wave of European techno and experimental house.
+                  </p>
+                 </div>
+              </section>
+
+              <section className="space-y-10 group">
+                 <span className="text-signal font-mono text-[11px] font-black tracking-[0.5em] uppercase border-b-2 border-signal/20 pb-2">ERA II: 1992—1995</span>
+                 <h3 className="text-3xl sm:text-5xl font-black uppercase tracking-tighter leading-none group-hover:text-signal transition-colors">UNDERGROUND ARCHITECTURE</h3>
+                 <div className="space-y-8 text-black/60 text-lg sm:text-xl leading-relaxed font-medium">
+                  <p>
+                    This period marked his international recognition. Under the alias **In-Existence**, he released the seminal ambient work *Moonwater* (1993) on Apollo Records, a sublabel of the legendary R&S.
+                  </p>
+                  <p>
+                    Parallel to his ambient work, he became a core figure in the techno scene as **Flux**, releasing high-intensity works on Djax-Up-Beats and contributing to the evolution of the hardware-driven sound.
+                  </p>
+                 </div>
+              </section>
+
+              <section className="space-y-10 group">
+                 <span className="text-signal font-mono text-[11px] font-black tracking-[0.5em] uppercase border-b-2 border-signal/20 pb-2">ERA III: 1996—2007</span>
+                 <h3 className="text-3xl sm:text-5xl font-black uppercase tracking-tighter leading-none group-hover:text-signal transition-colors">POLYMORPHIC DISCOVERY</h3>
+                 <div className="space-y-8 text-black/60 text-lg sm:text-xl leading-relaxed font-medium">
+                  <p>
+                    In 1996, Van der Vleuten founded **Signum Recordings** as a platform for his most experimental and personal artifacts. During this decade, he operated under over 24 different aliases—including Vandervleuten, Pultec, and Error 144—populating the catalogs of Klang Elektronik and See Saw.
+                  </p>
+                  <p>
+                    His work spanned from multidisciplinary theater soundscapes to architectural installations, solidifying his role as a sound architect rather than just a music producer.
+                  </p>
+                 </div>
+              </section>
+
+              <section className="space-y-10 group">
+                 <span className="text-signal font-mono text-[11px] font-black tracking-[0.5em] uppercase border-b-2 border-signal/20 pb-2">ERA IV: 2008—PRESENT</span>
+                 <h3 className="text-3xl sm:text-5xl font-black uppercase tracking-tighter leading-none group-hover:text-signal transition-colors">IDENTITY CONSOLIDATION</h3>
+                 <div className="space-y-8 text-black/60 text-lg sm:text-xl leading-relaxed font-medium">
+                  <p>
+                    In 2008, he announced a pivot to release exclusively under his own name or the initials **MVDV**. The release of *High Intolerance Towards Low Energies* marked a move toward a more cinematic, mature, and conceptually driven sonic language.
+                  </p>
+                  <p>
+                    Today, his work focuses on distilled compositions and audio archives, continuing to bridge the gap between human emotion and clinical precision from his home base in Vught.
+                  </p>
+                 </div>
+              </section>
            </div>
         </div>
+
+        {/* Right: Focused Portrait */}
+        <div className="order-1 lg:order-2 lg:sticky lg:top-48 w-full py-8 lg:py-0">
+           <div className="relative group overflow-hidden rounded-[3rem] lg:rounded-[4rem] shadow-2xl bg-offwhite aspect-[4/5] lg:aspect-[3/4]">
+              <img 
+                src="/maarten.jpg" 
+                alt="Maarten van der Vleuten" 
+                className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-1000"
+                onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&auto=format"; }}
+              />
+              <div className="absolute inset-0 bg-signal/10 opacity-10 group-hover:opacity-0 transition-opacity" />
+           </div>
+           
+           <div className="mt-12 bg-offwhite p-12 rounded-[3rem] border border-black/5 space-y-10 shadow-sm">
+              <h4 className="text-[10px] font-black uppercase tracking-[0.5em] text-signal italic">Registry Registry</h4>
+              <div className="space-y-6 text-[11px] font-bold uppercase tracking-widest text-black/50">
+                 <div className="flex justify-between border-b border-black/5 pb-4">
+                    <span>Base Node</span>
+                    <span className="text-black">Vught, NL</span>
+                 </div>
+                 <div className="flex justify-between border-b border-black/5 pb-4">
+                    <span>Established</span>
+                    <span className="text-black">1987</span>
+                 </div>
+                 <div className="flex justify-between border-b border-black/5 pb-4">
+                    <span>Imprints</span>
+                    <span className="text-black">Apollo / R&S / Signum</span>
+                 </div>
+              </div>
+           </div>
+        </div>
+
       </div>
     </div>
   </main>
@@ -393,37 +476,44 @@ const BiographyView = () => (
 // ARCHIVE VIEW
 const ArchiveView = () => {
   const releases = [
-    { title: "Moonwater", year: "1993", label: "Apollo" },
-    { title: "Laiad", year: "2002", label: "Signum" },
-    { title: "Vow Of Silence", year: "2005", label: "ToneFloat" },
-    { title: "High Intolerance...", year: "2008", label: "MVDV" },
-    { title: "The Scars Remain", year: "2010", label: "MVDV" },
-    { title: "I Break The Waves", year: "2018", label: "MVDV" },
+    { title: "Moonwater", year: "1993", label: "Apollo", alias: "In-Existence" },
+    { title: "Laiad", year: "2002", label: "Signum", alias: "Flux" },
+    { title: "Vow Of Silence", year: "2005", label: "ToneFloat", alias: "In-Existence" },
+    { title: "De Verkenningen", year: "2006", label: "Signum", alias: "In-Existence" },
+    { title: "High Intolerance...", year: "2008", label: "ToneFloat", alias: "MVDV" },
+    { title: "The Scars Remain", year: "2010", label: "ToneFloat", alias: "MVDV" },
+    { title: "Are You Worthy?", year: "2012", label: "ToneFloat", alias: "MVDV" },
+    { title: "I Break The Waves", year: "2018", label: "MVDV", alias: "MVDV" },
+    { title: "Systematically Declassified", year: "2020", label: "Signum", alias: "MVDV" },
+    { title: "Archived Signal Vol 1", year: "2023", label: "MVDV", alias: "MVDV" },
   ];
 
   return (
-    <main className="pt-40 lg:pt-48 pb-32 bg-offwhite w-full">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24 w-full">
-        <div className="mb-16 sm:mb-24 w-full">
-           <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tighter leading-none mb-6 w-full truncate">ARCHIVE</h2>
-           <div className="flex flex-wrap gap-6 sm:gap-10 font-bold text-[10px] sm:text-[11px] tracking-widest text-black/30 w-full uppercase">
-              <a href="#" className="hover:text-signal transition-colors">BANDCAMP</a>
-              <a href="#" className="hover:text-signal transition-colors">DISCOGS</a>
+    <main className="pt-56 lg:pt-64 pb-48 bg-offwhite w-full">
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
+        <div className="mb-32 w-full space-y-10">
+           <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none w-full">DISCOGRAPHY</h1>
+           <div className="flex flex-wrap gap-8 sm:gap-12 font-bold text-[10px] sm:text-[11px] tracking-widest text-black/30 w-full uppercase">
+              <a href="#" className="hover:text-signal transition-colors group flex items-center gap-2 italic underline underline-offset-4 decoration-signal/20">Bandcamp <ArrowUpRight className="w-3 h-3"/></a>
+              <a href="#" className="hover:text-signal transition-colors group flex items-center gap-2 italic underline underline-offset-4 decoration-signal/20">Discogs <ArrowUpRight className="w-3 h-3"/></a>
            </div>
         </div>
 
-        <div className="space-y-4 max-w-4xl w-full">
+        <div className="space-y-6 max-w-5xl w-full">
            {releases.map((rel, i) => (
-             <div key={i} className="bg-white p-6 sm:p-10 rounded-[1.5rem] sm:rounded-[2.5rem] flex items-center justify-between group hover:bg-black hover:text-white transition-all shadow-sm w-full">
-                <div className="flex items-center gap-6 sm:gap-12 min-w-0">
-                   <span className="text-[10px] sm:text-[11px] font-bold text-signal font-mono shrink-0">{rel.year}</span>
-                   <div className="min-w-0">
-                      <h4 className="text-lg sm:text-2xl font-black uppercase leading-none mb-1 group-hover:text-white transition-colors truncate">{rel.title}</h4>
-                      <p className="text-[10px] font-bold text-black/30 group-hover:text-white/40 uppercase tracking-widest truncate">{rel.label}</p>
+             <div key={i} className="bg-white p-8 sm:p-12 rounded-[2.5rem] lg:rounded-[3rem] flex items-center justify-between group hover:bg-black hover:text-white transition-all shadow-sm w-full border border-black/5">
+                <div className="flex items-center gap-8 sm:gap-16 min-w-0 flex-1">
+                   <div className="shrink-0 flex flex-col items-center">
+                      <span className="text-[10px] sm:text-[11px] font-black text-signal font-mono tracking-widest">{rel.year}</span>
+                      <div className="w-1 h-8 bg-black/5 group-hover:bg-white/10 mt-2 rounded-full" />
+                   </div>
+                   <div className="min-w-0 pr-6">
+                      <h4 className="text-xl sm:text-3xl font-black uppercase leading-[1.1] mb-2 group-hover:text-white transition-colors truncate tracking-tighter">{rel.title}</h4>
+                      <p className="text-[10px] sm:text-[11px] font-bold text-black/30 group-hover:text-white/40 uppercase tracking-[0.2em] truncate">{rel.alias} — {rel.label}</p>
                    </div>
                 </div>
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-offwhite text-black rounded-full flex items-center justify-center shrink-0 group-hover:bg-signal group-hover:text-white transition-all">
-                   <ArrowUpRight className="w-5 h-5" />
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-offwhite text-black rounded-full flex items-center justify-center shrink-0 group-hover:bg-signal group-hover:text-white transition-all shadow-lg pointer-events-none">
+                   <ArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
              </div>
            ))}
@@ -435,32 +525,37 @@ const ArchiveView = () => {
 
 // SIGNUM VIEW
 const SignumView = () => (
-  <main className="pt-40 lg:pt-48 pb-32 bg-white w-full">
-    <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24 space-y-16 lg:space-y-24 w-full">
-       <div className="space-y-6 w-full">
-          <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tighter leading-none text-black w-full">SIGNUM RECORDINGS</h2>
-          <p className="text-[10px] sm:text-[12px] font-bold text-signal uppercase tracking-[0.4em] w-full">ESTABLISHED 1996 / VUGHT, NL</p>
+  <main className="pt-56 lg:pt-64 pb-48 bg-white w-full">
+    <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-32 w-full">
+       <div className="space-y-8 w-full">
+          <h1 className="text-4xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-none text-black w-full">SIGNUM RECORDINGS</h1>
+          <p className="text-[10px] sm:text-[12px] font-black text-signal uppercase tracking-[0.5em] w-full border-b-2 border-signal/10 pb-4 inline-block italic">ESTABLISHED 1996 / VUGHT, NETHERLANDS</p>
        </div>
        
-       <div className="bg-offwhite p-8 sm:p-16 lg:p-20 rounded-[2.5rem] sm:rounded-[4rem] border border-black/5 space-y-12 w-full">
-          <p className="text-xl sm:text-3xl lg:text-4xl font-bold leading-tight max-w-5xl text-black w-full">
-             Established as an independent vessel for frequency exploration. Signum has served as the core archive for Maarten's experimental electronic output for over 25 years.
-          </p>
-          <a href="https://maartenvandervleuten.bandcamp.com/" target="_blank" className="inline-flex px-10 py-5 bg-black text-white font-bold uppercase tracking-widest text-[10px] rounded-full hover:bg-signal transition-all shadow-xl whitespace-nowrap">
-             Explore Release Registry
+       <div className="bg-offwhite p-12 sm:p-20 lg:p-24 rounded-[3rem] lg:rounded-[5rem] border border-black/5 space-y-16 w-full shadow-2xl">
+          <div className="space-y-12 max-w-5xl">
+            <p className="text-2xl sm:text-4xl lg:text-5xl font-black leading-[1.1] text-black tracking-tighter uppercase">
+               An independent vessel for <br className="hidden lg:block"/> experimental frequency artifacts.
+            </p>
+            <p className="text-black/50 text-lg sm:text-2xl leading-relaxed font-medium">
+               Founded in 1996 as a primary node for non-mainstream sound, Signum Recordings bypasses clinical distribution in favor of direct-to-listener signal transmission. It serves as the master registry for the works of Maarten van der Vleuten.
+            </p>
+          </div>
+          <a href="https://maartenvandervleuten.bandcamp.com/" target="_blank" className="inline-flex px-14 py-7 bg-black text-white font-bold uppercase tracking-widest text-[11px] rounded-full hover:bg-signal transition-all shadow-2xl">
+             ACCESS ARCHIVE REGISTRY
           </a>
        </div>
 
-       <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 pt-12 border-t border-black/5 w-full">
+       <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-20 pt-16 border-t-2 border-black/5 w-full">
           {[
             { label: "Founded", val: "1996" },
-            { label: "Origin", val: "Vught" },
-            { label: "Status", val: "Active" },
-            { label: "Legacy", val: "Archive" }
+            { label: "Location", val: "Vught, NL" },
+            { label: "Status", val: "Operational" },
+            { label: "Distro", val: "Direct" }
           ].map((item, i) => (
-            <div key={i} className="w-full">
-               <p className="text-[9px] sm:text-[10px] font-bold text-black/20 uppercase tracking-widest mb-2 truncate">{item.label}</p>
-               <p className="text-base sm:text-xl font-bold uppercase text-black truncate">{item.val}</p>
+            <div key={i} className="w-full space-y-4">
+               <p className="text-[10px] font-black text-black/20 uppercase tracking-[0.4em] truncate italic">{item.label}</p>
+               <p className="text-xl sm:text-2xl font-black uppercase text-black truncate tracking-tighter">{item.val}</p>
             </div>
           ))}
        </div>
@@ -470,24 +565,24 @@ const SignumView = () => (
 
 // PRESS VIEW
 const PressView = () => (
-   <main className="pt-40 lg:pt-48 pb-32 bg-white w-full">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24 space-y-16 sm:space-y-24 w-full">
-         <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none w-full truncate">PRESS SET</h2>
+   <main className="pt-56 lg:pt-64 pb-48 bg-white w-full">
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-32 w-full">
+         <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none w-full">ASSET REGISTRY</h1>
          
-         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-5xl w-full">
+         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 lg:gap-12 max-w-5xl w-full">
             {[
-               { title: "Story Node", size: "Compact & Extended Bio" },
-               { title: "Visual Assets", size: "High-Res Gallery" },
-               { title: "Brand Identity", size: "Vector Marks" },
-               { title: "Full Registry", size: "Consolidated Pack" }
+               { title: "Story Set", size: "Compact & Extended Narrative" },
+               { title: "Visual Artifacts", size: "High-Resolution Portrait Hub" },
+               { title: "Official Marks", size: "Scalable Identity Files" },
+               { title: "Full Repository", size: "Consolidated Asset Archive" }
             ].map((item, i) => (
-              <div key={i} className="p-8 sm:p-12 bg-offwhite rounded-[2rem] sm:rounded-[3rem] flex items-center justify-between group hover:bg-black hover:text-white transition-all border border-black/5 w-full">
-                 <div className="min-w-0 pr-4">
-                    <h3 className="text-xl font-black uppercase leading-none mb-1 truncate">{item.title}</h3>
-                    <p className="text-[10px] font-bold text-black/30 group-hover:text-white/40 uppercase tracking-widest truncate">{item.size}</p>
+              <div key={i} className="p-12 bg-offwhite rounded-[3rem] flex items-center justify-between group hover:bg-black hover:text-white transition-all border border-black/5 w-full shadow-lg">
+                 <div className="min-w-0 pr-8">
+                    <h3 className="text-2xl font-black uppercase leading-none mb-3 truncate tracking-tighter">{item.title}</h3>
+                    <p className="text-[10px] font-bold text-black/30 group-hover:text-white/40 uppercase tracking-[0.2em] truncate">{item.size}</p>
                  </div>
-                 <button className="w-10 h-10 sm:w-12 sm:h-12 bg-white text-black rounded-full flex items-center justify-center shrink-0 group-hover:bg-signal group-hover:text-white transition-all shadow-sm">
-                    <Download className="w-5 h-5" />
+                 <button className="w-14 h-14 bg-white text-black rounded-full flex items-center justify-center shrink-0 group-hover:bg-signal group-hover:text-white transition-all shadow-xl">
+                    <Download className="w-6 h-6" />
                  </button>
               </div>
             ))}
@@ -498,24 +593,24 @@ const PressView = () => (
 
 // CONTACT VIEW
 const ContactView = () => (
-  <main className="pt-40 lg:pt-48 pb-32 bg-white w-full">
-    <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24 space-y-16 sm:space-y-24 w-full overflow-hidden">
-       <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none w-full truncate">CONTACT</h2>
+  <main className="pt-56 lg:pt-64 pb-48 bg-white w-full">
+    <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-32 w-full overflow-hidden">
+       <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none w-full">INQUIRY</h1>
        
-       <div className="space-y-24 w-full">
-          <div className="space-y-6 w-full">
-             <p className="text-[10px] font-bold text-signal uppercase tracking-[0.4em]">Inquiry</p>
-             <a href="mailto:contact@maartenvandervleuten.eu" className="text-2xl sm:text-5xl lg:text-6xl font-black tracking-tight hover:text-signal transition-colors break-words leading-none uppercase max-w-full inline-block">
+       <div className="space-y-32 w-full font-bold">
+          <div className="space-y-8 w-full">
+             <p className="text-[11px] font-black text-signal uppercase tracking-[0.5em] italic">Direct Transmission</p>
+             <a href="mailto:contact@maartenvandervleuten.eu" className="text-2xl sm:text-5xl lg:text-7xl font-black tracking-tighter hover:text-signal transition-colors break-words leading-none uppercase max-w-full inline-block decoration-signal/10 decoration-8 underline underline-offset-[12px]">
                 contact@maartenvandervleuten.eu
              </a>
           </div>
 
-          <div className="space-y-6 w-full">
-             <p className="text-[10px] font-bold text-signal uppercase tracking-[0.4em]">Social Channels</p>
-             <div className="flex flex-wrap gap-8 sm:gap-16 font-bold text-black/40 uppercase text-[10px] sm:text-sm tracking-[0.2em] w-full">
-                <a href="#" className="hover:text-black transition-colors whitespace-nowrap">Instagram</a>
-                <a href="#" className="hover:text-black transition-colors whitespace-nowrap">Bandcamp</a>
-                <a href="#" className="hover:text-black transition-colors whitespace-nowrap">Discogs</a>
+          <div className="space-y-12 w-full">
+             <p className="text-[11px] font-black text-signal uppercase tracking-[0.5em] italic">Registry Channels</p>
+             <div className="flex flex-wrap gap-12 sm:gap-24 font-black text-black/30 uppercase text-sm sm:text-xl tracking-tighter w-full">
+                <a href="#" className="hover:text-black transition-colors whitespace-nowrap hover:underline underline-offset-8 decoration-signal">Instagram</a>
+                <a href="#" className="hover:text-black transition-colors whitespace-nowrap hover:underline underline-offset-8 decoration-signal">Bandcamp</a>
+                <a href="#" className="hover:text-black transition-colors whitespace-nowrap hover:underline underline-offset-8 decoration-signal">Discogs</a>
              </div>
           </div>
        </div>
@@ -533,7 +628,7 @@ const App = () => {
   }, [location]);
 
   return (
-    <div className="relative bg-white min-h-screen selection:bg-signal selection:text-white antialiased overflow-x-hidden">
+    <div className="relative bg-white min-h-screen selection:bg-signal selection:text-white antialiased overflow-x-hidden pt-[112px] sm:pt-[128px]">
       <Navbar />
       <Routes>
         <Route path="/" element={<HomeView />} />
