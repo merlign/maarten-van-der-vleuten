@@ -124,7 +124,7 @@ const Footer = () => {
           </div>
 
           <div>
-             <h4 className="text-[10px] font-bold uppercase tracking-[0.4em] text-signal mb-6">Follow</h4>
+             <h4 className="text-[10px] font-bold uppercase tracking-[0.4em] text-signal mb-6">Socials</h4>
              <ul className="space-y-3 text-[10px] sm:text-xs font-bold text-black/40 uppercase tracking-widest">
                 <li><a href="#" className="hover:text-black transition-colors">Instagram</a></li>
                 <li><a href="#" className="hover:text-black transition-colors">Bandcamp</a></li>
@@ -134,9 +134,8 @@ const Footer = () => {
         </div>
         <div className="mt-20 pt-8 border-t border-black/5 flex flex-col sm:flex-row justify-between items-center gap-6 text-[9px] font-bold text-black/20 uppercase tracking-widest">
            <p>&copy; {new Date().getFullYear()} Maarten van der Vleuten</p>
-           <div className="flex gap-8">
-              <span>Sig-01</span>
-              <span>Vught, NL</span>
+           <div className="flex gap-8 italic">
+              <span>Vught, Netherlands</span>
            </div>
         </div>
       </div>
@@ -157,7 +156,7 @@ const HomeView = () => {
             
             {/* Left Content Column */}
             <div className="order-2 lg:order-1 relative z-10 py-12 lg:py-0">
-               <p className="text-[10px] font-bold text-signal uppercase tracking-[0.6em] mb-6 inline-block">ESTABLISHED 1987 / VUGHT</p>
+               <p className="text-[10px] font-bold text-signal uppercase tracking-[0.6em] mb-6 inline-block">SINCE 1987 / VUGHT</p>
                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-black leading-[1] tracking-tighter uppercase mb-10">
                  MAARTEN <br/> <span className="text-signal lg:text-black">VAN DER</span> <br className="hidden lg:block"/> <span className="text-signal">VLEUTEN.</span>
                </h1>
@@ -174,7 +173,7 @@ const HomeView = () => {
                </div>
             </div>
 
-            {/* Right Image Column - Persistent with Gradient */}
+            {/* Right Image Column */}
             <div className="order-1 lg:order-2 relative h-[40vh] sm:h-[50vh] lg:h-[70vh] w-full">
                <div className="absolute inset-0 grayscale rounded-[2rem] lg:rounded-[4rem] overflow-hidden shadow-2xl">
                   <img 
@@ -185,14 +184,9 @@ const HomeView = () => {
                       e.target.src = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&auto=format";
                     }}
                   />
-                  {/* Subtle Gradient from White (Left) to Transparent (Right) on Desktop */}
                   <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent opacity-40 translate-x-[-1px]" />
-                  {/* Bottom Gradient for stacked mobile view */}
                   <div className="lg:hidden absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
                </div>
-               
-               {/* Detail Mark */}
-               <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-signal rounded-full hidden lg:flex items-center justify-center text-white text-xs font-black">M</div>
             </div>
 
           </div>
@@ -210,10 +204,10 @@ const HomeView = () => {
                   </div>
                   <h3 className="text-2xl sm:text-3xl font-black uppercase leading-none">SIGNUM <br/> RECORDINGS</h3>
                   <p className="text-black/40 group-hover:text-white/50 text-xs sm:text-sm leading-relaxed">
-                     Independent label founded in 1996 for experimental artifacts and sound documents.
+                     Independent label founded in 1996 for experimental artifacts.
                   </p>
                   <Link to="/signum" className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest border-b-2 border-signal pb-1">
-                     LABEL HUB <ArrowUpRight className="w-4 h-4" />
+                     VIEW LABEL <ArrowUpRight className="w-4 h-4" />
                   </Link>
                </div>
 
@@ -224,10 +218,10 @@ const HomeView = () => {
                   </div>
                   <h3 className="text-2xl sm:text-3xl font-black uppercase leading-none">SONIC <br/> ARCHIVE</h3>
                   <p className="text-black/40 group-hover:text-white/50 text-xs sm:text-sm leading-relaxed">
-                     A complete registry of over 24 identities reflecting the evolution of electronic music.
+                     A complete registry of over 24 identities reflecting his career.
                   </p>
                   <Link to="/archive" className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest border-b-2 border-signal pb-1">
-                     VIEW REGISTRY <ArrowUpRight className="w-4 h-4" />
+                     VIEW ARCHIVE <ArrowUpRight className="w-4 h-4" />
                   </Link>
                </div>
 
@@ -241,7 +235,7 @@ const HomeView = () => {
                      Hard copies and digital nodes. Direct from the source in Vught.
                   </p>
                   <a href="https://maartenvandervleuten.bandcamp.com/" target="_blank" className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest border-b-2 border-signal pb-1">
-                     ACCESS STORE <ExternalLink className="w-4 h-4" />
+                     SHOP NOW <ExternalLink className="w-4 h-4" />
                   </a>
                </div>
             </div>
@@ -255,7 +249,7 @@ const HomeView = () => {
                "No Loops. <br className="sm:hidden"/> <span className="text-signal">Just Evolution.</span>"
             </h2>
             <div className="w-16 sm:w-24 h-1 bg-signal mx-auto mb-10 sm:mb-12" />
-            <p className="text-white/30 text-[8px] sm:text-[10px] font-bold uppercase tracking-[0.5em]">Node Check: Vught / Registry Operational</p>
+            <p className="text-white/30 text-[8px] sm:text-[10px] font-bold uppercase tracking-[0.5em]">Vught, Netherlands</p>
          </div>
       </section>
     </main>
@@ -280,7 +274,7 @@ const BiographyView = () => (
                  <p>Vught (NL)</p>
               </div>
               <div>
-                 <p className="text-black mb-1">Legacy</p>
+                 <p className="text-black mb-1">Active</p>
                  <p>35+ Years</p>
               </div>
            </div>
@@ -336,7 +330,9 @@ const ArchiveView = () => {
                 <div className="flex items-center gap-6 sm:gap-12">
                    <span className="text-[9px] sm:text-[11px] font-bold text-signal font-mono">{rel.year}</span>
                    <div>
-                      <h4 className="text-lg sm:text-2xl font-black uppercase leading-none mb-1 group-hover:text-white">{rel.title}</h4>
+                      <h4 className="text-lg sm:text-2xl font-black uppercase leading-none mb-1 group-hover:text-white">
+                        {rel.title}
+                      </h4>
                       <p className="text-[8px] sm:text-[10px] font-bold text-black/30 group-hover:text-white/40 uppercase tracking-widest">{rel.label}</p>
                    </div>
                 </div>
@@ -365,16 +361,16 @@ const SignumView = () => (
              Established as an independent vessel for frequency exploration. Signum has served as the core archive for Maarten's experimental electronic output for over 25 years.
           </p>
           <a href="https://maartenvandervleuten.bandcamp.com/" target="_blank" className="inline-flex px-10 py-5 bg-black text-white font-bold uppercase tracking-widest text-[10px] rounded-full hover:bg-signal transition-all shadow-xl">
-             Explore Registry
+             Explore Catalog
           </a>
        </div>
 
        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 pt-12 border-t border-black/5">
           {[
-            { label: "Status", val: "Operational" },
             { label: "Founded", val: "1996" },
             { label: "Location", val: "Vught" },
-            { label: "Format", val: "Archive" }
+            { label: "Legacy", val: "Archive" },
+            { label: "Status", val: "Active" }
           ].map((item, i) => (
             <div key={i}>
                <p className="text-[9px] sm:text-[10px] font-bold text-black/20 uppercase tracking-widest mb-2">{item.label}</p>
@@ -394,10 +390,10 @@ const PressView = () => (
          
          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl">
             {[
-               { title: "Story Node", desc: "Bio Pack" },
+               { title: "Story", desc: "Biography Pack" },
                { title: "Visual Assets", desc: "Portrait Hub" },
-               { title: "Brand Identity", desc: "Logo Vector" },
-               { title: "Registry Pack", desc: "Full ZIP" }
+               { title: "Identity", desc: "Logo Files" },
+               { title: "Archive Pack", desc: "Full ZIP" }
             ].map((item, i) => (
               <div key={i} className="p-8 sm:p-12 bg-offwhite rounded-[2rem] sm:rounded-[3rem] flex items-center justify-between group hover:bg-black hover:text-white transition-all border border-black/5">
                  <div>
@@ -429,7 +425,7 @@ const ContactView = () => (
           </div>
 
           <div className="space-y-6">
-             <p className="text-[10px] font-bold text-signal uppercase tracking-[0.4em]">Registry Locations</p>
+             <p className="text-[10px] font-bold text-signal uppercase tracking-[0.4em]">Social Channels</p>
              <div className="flex flex-wrap gap-8 sm:gap-16 font-bold text-black/40 uppercase text-[10px] sm:text-sm tracking-[0.2em]">
                 <a href="#" className="hover:text-black transition-colors">Instagram</a>
                 <a href="#" className="hover:text-black transition-colors">Bandcamp</a>
