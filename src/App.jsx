@@ -350,12 +350,9 @@ const BiographyView = () => {
                                     <span className="text-signal text-3xl sm:text-4xl lg:text-5xl font-black italic whitespace-nowrap">{era.years}</span>
                                     <div className="flex-1 h-px bg-signal/20" />
                                 </header>
-                                <div className="space-y-3">
-                                    <p className="text-[11px] font-black text-black/20 uppercase tracking-[0.4em]">Chronicle Node</p>
-                                    <p className="text-xl font-black uppercase tracking-tighter italic leading-none text-black">Era #{era.id}</p>
-                                </div>
-                                <div className="hidden md:block pt-8 space-y-8">
-                                    <p className="text-[11px] font-black text-black/20 uppercase tracking-[0.4em]">Registry Tags</p>
+                                
+                                <div className="hidden md:block pt-4 space-y-8">
+                                    <p className="text-[11px] font-black text-black/20 uppercase tracking-[0.4em]">Key Artifacts</p>
                                     <ul className="space-y-4">
                                         {era.releases.map((rel, j) => (
                                             <li key={j} className="text-xs font-bold text-black uppercase tracking-widest flex items-center gap-3">
@@ -376,7 +373,6 @@ const BiographyView = () => {
                 ))}
             </section>
 
-            {/* Restore Full Alias Hub */}
             <section className="py-24 sm:py-32 max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
                 <div className="space-y-20 sm:space-y-24">
                     <div className="space-y-8 max-w-4xl">
