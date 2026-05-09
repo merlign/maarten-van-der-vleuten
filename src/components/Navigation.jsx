@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ArrowRight, ExternalLink } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { SOCIAL_LINKS } from '../data/content';
+import { SpotifyIcon, DiscogsIcon, InstagramIcon } from './BrandIcons';
 
 const LegacyBanner = () => (
   <aside className="bg-signal text-white py-2.5 px-6 text-center relative z-[60] w-full border-b border-white/10">
@@ -95,11 +96,11 @@ export const Footer = () => (
                 </div>
                 <div className="space-y-8">
                     <h3 className="text-[11px] font-bold uppercase tracking-[0.4em] text-signal">Connect</h3>
-                    <ul className="space-y-4 text-xs font-bold text-black/40 uppercase tracking-widest">
-                        <li><a href={SOCIAL_LINKS.spotify} target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Spotify</a></li>
-                        <li><a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Bandcamp</a></li>
-                        <li><a href={SOCIAL_LINKS.discogs} target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Discogs</a></li>
-                    </ul>
+                    <div className="flex gap-6 items-center">
+                        <a href={SOCIAL_LINKS.spotify} target="_blank" rel="noopener noreferrer" className="text-black/40 hover:text-signal transition-colors"><SpotifyIcon className="w-5 h-5"/></a>
+                        <a href={SOCIAL_LINKS.discogs} target="_blank" rel="noopener noreferrer" className="text-black/40 hover:text-signal transition-colors"><DiscogsIcon className="w-5 h-5"/></a>
+                        <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="text-black/40 hover:text-signal transition-colors"><InstagramIcon className="w-5 h-5"/></a>
+                    </div>
                 </div>
             </div>
         </div>

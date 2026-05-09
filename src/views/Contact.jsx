@@ -1,7 +1,8 @@
 import React from 'react';
-import { Mail, Music, ShoppingCart, Database, Camera } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
 import { SEO, PageHeader, PageWrapper } from '../components/Layout';
 import { SOCIAL_LINKS } from '../data/content';
+import { SpotifyIcon, DiscogsIcon, InstagramIcon } from '../components/BrandIcons';
 
 export const ContactView = () => (
     <PageWrapper>
@@ -17,15 +18,15 @@ export const ContactView = () => (
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 pt-16 border-t border-black/5">
                 {[
-                    { label: "Spotify", icon: Music, link: SOCIAL_LINKS.spotify, action: "Listen" },
+                    { label: "Spotify", icon: SpotifyIcon, link: SOCIAL_LINKS.spotify, action: "Listen" },
                     { label: "Bandcamp", icon: ShoppingCart, link: SOCIAL_LINKS.bandcamp, action: "Shop" },
-                    { label: "Discogs", icon: Database, link: SOCIAL_LINKS.discogs, action: "Archive" },
-                    { label: "Instagram", icon: Camera, link: SOCIAL_LINKS.instagram, action: "Photos" }
+                    { label: "Discogs", icon: DiscogsIcon, link: SOCIAL_LINKS.discogs, action: "Archive" },
+                    { label: "Instagram", icon: InstagramIcon, link: SOCIAL_LINKS.instagram, action: "Photos" }
                 ].map((item, i) => (
-                    <div key={i} className="space-y-6">
-                        <h3 className="text-[11px] font-black uppercase text-black/20 tracking-[0.4em] italic">{item.label}</h3>
-                        <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-xl font-black uppercase italic hover:text-signal transition-colors flex items-center gap-3">
-                            <item.icon className="w-6 h-6"/> {item.action}
+                    <div key={i} className="space-y-6 group">
+                        <h3 className="text-[11px] font-black uppercase text-black/20 tracking-[0.4em] italic group-hover:text-signal transition-colors">{item.label}</h3>
+                        <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-xl font-black uppercase italic hover:text-signal transition-colors flex items-center gap-4 group-hover:translate-x-2 transition-transform">
+                            <item.icon className="w-7 h-7"/> {item.action}
                         </a>
                     </div>
                 ))}

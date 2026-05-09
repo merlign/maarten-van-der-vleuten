@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Music, ShoppingCart, Database, Disc, ArrowRight, ExternalLink, ArrowUpRight } from 'lucide-react';
+import { ShoppingCart, Disc, ArrowRight, ExternalLink } from 'lucide-react';
 import { SEO, PageWrapper } from '../components/Layout';
 import { LATEST_RELEASES, SOCIAL_LINKS } from '../data/content';
+import { SpotifyIcon, DiscogsIcon, InstagramIcon } from '../components/BrandIcons';
 
 export const HomeView = () => (
   <PageWrapper>
@@ -23,6 +24,12 @@ export const HomeView = () => (
             <div className="flex flex-wrap gap-4 pt-2">
               <Link to="/biography" className="px-8 py-4 bg-black text-white rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-signal transition-all shadow-xl active:scale-95">Evolution History</Link>
               <Link to="/archive" className="px-8 py-4 border-2 border-black text-black rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-black hover:text-white transition-all active:scale-95">Archive Registry</Link>
+            </div>
+            <div className="flex gap-8 pt-4 items-center">
+              <a href={SOCIAL_LINKS.spotify} target="_blank" rel="noopener noreferrer" className="transition-all hover:text-signal hover:scale-110" title="Spotify"><SpotifyIcon className="w-6 h-6"/></a>
+              <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="transition-all hover:text-signal hover:scale-110" title="Bandcamp"><ShoppingCart className="w-6 h-6"/></a>
+              <a href={SOCIAL_LINKS.discogs} target="_blank" rel="noopener noreferrer" className="transition-all hover:text-signal hover:scale-110" title="Discogs"><DiscogsIcon className="w-6 h-6"/></a>
+              <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="transition-all hover:text-signal hover:scale-110" title="Instagram"><InstagramIcon className="w-6 h-6"/></a>
             </div>
           </header>
           <div className="order-1 lg:order-2">
