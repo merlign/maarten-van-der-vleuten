@@ -201,10 +201,10 @@ const HomeView = () => {
                </p>
                <div className="flex flex-wrap gap-4 pt-4">
                   <Link to="/biography" className="px-10 py-5 bg-black text-white rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-signal transition-all shadow-xl">
-                    Evolution History
+                    Full Biography
                   </Link>
                   <Link to="/archive" className="px-10 py-5 border-2 border-black text-black rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-black hover:text-white transition-all">
-                    Archive
+                    Discography
                   </Link>
                </div>
             </div>
@@ -262,211 +262,170 @@ const HomeView = () => {
   );
 };
 
-// BIOGRAPHY VIEW - REFINED DRAGGABLE TIMELINE
+// NEW BIOGRAPHY VIEW - STICKY VERTICAL LEDGER DESIGN
 const BiographyView = () => {
-  const scrollContainerRef = useRef(null);
-  const cursorRef = useRef(null);
-  const [isHovering, setIsHovering] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
-  
-  // Custom Cursor Mouse Listener
-  useEffect(() => {
-    const onMouseMove = (e) => {
-      if (cursorRef.current) {
-        cursorRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-      }
-    };
-    window.addEventListener('mousemove', onMouseMove);
-    return () => window.removeEventListener('mousemove', onMouseMove);
-  }, []);
-
-  // Dragging Logic
-  const pos = useRef({ left: 0, x: 0 });
-
-  const mouseDownHandler = (e) => {
-    if (!scrollContainerRef.current) return;
-    setIsDragging(true);
-    pos.current = {
-      left: scrollContainerRef.current.scrollLeft,
-      x: e.clientX,
-    };
-    scrollContainerRef.current.style.cursor = 'grabbing';
-    scrollContainerRef.current.style.userSelect = 'none';
-  };
-
-  const mouseMoveHandler = (e) => {
-    if (!isDragging || !scrollContainerRef.current) return;
-    const dx = e.clientX - pos.current.x;
-    scrollContainerRef.current.scrollLeft = pos.current.left - dx;
-  };
-
-  const mouseUpHandler = () => {
-    setIsDragging(false);
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.style.cursor = 'none';
-      scrollContainerRef.current.style.removeProperty('user-select');
-    }
-  };
-
   const eras = [
     {
-      id: "ERA I",
+      id: "01",
       years: "1987—1991",
       title: "THE SIGNAL ARRIVAL",
-      color: "bg-black",
       description: [
-        "Maarten van der Vleuten (Vught, 1967) emerged in the Dutch underground during the late eighties. He was architecturely involved in the first wave of electronics, with his first official recordings appearing under the name <strong>48V Phantom Power</strong> and <strong>Vandervleuten</strong> in 1987.",
-        "Establishing a reputation for high-fidelity sound design, he contributed to the first wave of European techno and experimental house from his initial recording sessions."
-      ]
+        "Maarten van der Vleuten emerged in the Dutch electronic underground in 1987. His initial works under masks such as <strong>48V Phantom Power</strong> and <strong>Vandervleuten</strong> signaled the arrival of a producer focused on the architecture of sound rather than the trends of the dance floor.",
+        "Operating from a meticulously tuned studio environment, he contributed to the first waves of European techno, establishing a high-fidelity aesthetic that would remain his signature for over three decades."
+      ],
+      releases: ["48V Phantom Power (1987)", "Vught Sessions (1989)", "Early Waves (1990)"]
     },
     {
-      id: "ERA II",
+      id: "02",
       years: "1992—1995",
       title: "UNDERGROUND ARCHITECTURE",
-      color: "bg-[#0a0a0a]",
       description: [
-        "This period marked his international recognition. Under the alias <strong>In-Existence</strong>, he released the seminal ambient work <strong>Moonwater</strong> (1993) on Apollo Records, a sublabel of the legendary R&S.",
-        "Parallel to his ambient work, he became a core figure in the techno scene as <strong>Flux</strong>, releasing high-intensity works on Djax-Up-Beats and contributing to the evolution of the hardware-driven sound.",
-        "By 1995, his discography had already expanded into over 10 different aliases, populating every corner of the electronic spectrum."
-      ]
+        "International recognition followed with the seminal ambient work <strong>Moonwater</strong> (1993) on Apollo/R&S. This era saw a polymorphic expansion of his output, defining the sound of the hardware-driven underground.",
+        "As <strong>Flux</strong>, he pushed the boundaries of high-intensity techno on labels like Djax-Up-Beats, while his alias network grew to document every frequency within the electronic spectrum."
+      ],
+      releases: ["Moonwater (1993)", "Metamorphism (1991)", "Flux Amenity (1994)"]
     },
     {
-      id: "ERA III",
+      id: "03",
       years: "1996—2007",
       title: "POLYMORPHIC DISCOVERY",
-      color: "bg-black",
       description: [
-        "In 1996, Van der Vleuten founded <strong>Signum Recordings</strong> as a platform for his most experimental and personal artifacts. During this decade, he operated under a massive network of identities—including Pultec, Error 144, and Dj Zero-T.",
-        "In 2002, the release of <strong>Laiad</strong> showcased a move toward more hybrid, acoustic-synthetic soundscapes that would define his later years."
-      ]
+        "The founding of <strong>Signum Recordings</strong> in 1996 provided a permanent vessel for his most experimental artifacts. This decade was defined by a massive network of identities documenting multidisciplinary explorations.",
+        "His work moved into theater soundscapes and architectural installations, culminating in the acoustic-synthetic hybrid soundscapes of <strong>Laiad</strong> in 2002."
+      ],
+      releases: ["Signum 001 (1996)", "Laiad (2002)", "Archive Artifacts (2005)"]
     },
     {
-      id: "ERA IV",
+      id: "04",
       years: "2008—PRESENT",
       title: "IDENTITY CONSOLIDATION",
-      color: "bg-signal",
       description: [
-        "Since 2008, he has consolidated his output primarily under his own name or the initials <strong>MVDV</strong>. The release of <strong>High Intolerance Towards Low Energies</strong> and <strong>The Scars Remain</strong> marked a move toward a more cinematic language.",
-        "Today, in 2024, Maarten remains active through a constant ritual of sonic distillation, bridging human emotion and clinical precision."
-      ]
+        "In the modern era, Maarten has consolidated his output under his own name and the <strong>MVDV</strong> initials. His recent works explore a more cinematic, distilled language focused on the human-emotional spectrum.",
+        "The ongoing <strong>Systematically Declassified</strong> series serves as a definitive archival project, bridging the gap between his pioneer roots and his contemporary sonic methodology."
+      ],
+      releases: ["The Scars Remain (2010)", "Systematically Declassified (2020)", "Current Signal (2024)"]
     }
   ];
 
   return (
-    <main className="bg-white w-full overflow-x-hidden relative">
+    <main className="bg-white min-h-screen">
       <SEO 
-        title="Timeline & History" 
-        description="Explore the chronological evolution of Maarten van der Vleuten. Drag through 35 years of electronic output." 
+        title="History & Evolution" 
+        description="The definitive history of Maarten van der Vleuten. A vertical editorial ledger documenting 35 years of electronic evolution." 
       />
       
-      {/* Custom Global Cursor (Circle) */}
-       <div 
-        ref={cursorRef}
-        className={cn(
-          "fixed top-0 left-0 w-24 h-24 rounded-full border-2 border-white pointer-events-none z-[100] flex items-center justify-center mix-blend-difference transition-opacity duration-300",
-          isHovering ? "opacity-100" : "opacity-0"
-        )}
-        style={{ marginLeft: '-48px', marginTop: '-48px', willChange: 'transform' }}
-      >
-        <div className="flex flex-col items-center">
-            <span className="text-[10px] font-black text-white uppercase tracking-widest mb-1 italic">DRAG</span>
-            <div className="flex gap-2">
-                <ArrowLeft className="w-3 h-3" />
-                <ArrowRightIcon className="w-3 h-3" />
-            </div>
+      {/* Editorial Header */}
+      <header className="pt-56 lg:pt-64 pb-32 max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full border-b border-black/5">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-end">
+           <div className="lg:col-span-8 space-y-12">
+              <span className="text-[12px] font-black text-signal uppercase tracking-[0.6em] italic">Full Historical Ledger</span>
+              <h1 className="text-6xl md:text-9xl font-black uppercase tracking-tighter leading-[0.85] italic">EVOLUTION <br/> HISTORY.</h1>
+           </div>
+           <div className="lg:col-span-4 lg:text-right font-mono text-[11px] font-black text-black/20 uppercase tracking-[0.4em]">
+              Vught, Netherlands <br/> 1987 — 2024
+           </div>
         </div>
-      </div>
+      </header>
 
-      {/* Intro (Vertical) */}
-      <section className="pt-56 lg:pt-64 pb-32 max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
-         <div className="space-y-12">
-            <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-6 leading-none italic">EVOLUTION <br/> HISTORY</h1>
-            <div className="w-24 h-2 bg-signal" />
-            <p className="text-[12px] font-black text-signal uppercase tracking-[0.6em] italic">Timeline 1987 — 2024</p>
-         </div>
+      {/* THE NEW VERTICAL TIMELINE DESIGN */}
+      <section className="bg-white">
+        {eras.map((era, i) => (
+          <div key={i} className="border-b border-black/5 relative hover:bg-offwhite transition-colors duration-700">
+            <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full py-32 lg:py-48 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-32">
+              
+              {/* Sticky Meta Column */}
+              <div className="lg:col-span-4 lg:sticky lg:top-48 self-start space-y-12">
+                 <div className="flex items-center gap-6">
+                    <span className="text-signal text-5xl lg:text-7xl font-black italic">{era.id}</span>
+                    <div className="w-12 h-px bg-signal/30" />
+                 </div>
+                 <div className="space-y-4">
+                    <p className="text-[10px] font-black text-black/20 uppercase tracking-[0.6em]">Era Frame</p>
+                    <p className="text-2xl font-black uppercase tracking-tighter italic">{era.years}</p>
+                 </div>
+                 <div className="hidden lg:block pt-12">
+                    <p className="text-[10px] font-black text-black/20 uppercase tracking-[0.6em] mb-8">Key Release Registry</p>
+                    <ul className="space-y-4">
+                       {era.releases.map((rel, j) => (
+                         <li key={j} className="text-[11px] font-bold text-black uppercase tracking-widest flex items-center gap-3">
+                            <Disc className="w-3 h-3 text-signal" /> {rel}
+                         </li>
+                       ))}
+                    </ul>
+                 </div>
+              </div>
+
+              {/* Content Column */}
+              <div className="lg:col-span-8 space-y-16">
+                 <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tighter leading-none italic">{era.title}</h2>
+                 <div className="space-y-10 text-black/60 text-lg sm:text-xl lg:text-2xl leading-relaxed font-medium max-w-4xl">
+                    {era.description.map((p, j) => (
+                      <p key={j} dangerouslySetInnerHTML={{ __html: p }} />
+                    ))}
+                 </div>
+                 <div className="lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-6 pt-12 border-t border-black/5">
+                    <div>
+                       <p className="text-[9px] font-black uppercase tracking-widest text-black/20 mb-4">Registry Nodes</p>
+                       <ul className="space-y-3">
+                        {era.releases.map((rel, j) => (
+                          <li key={j} className="text-[10px] font-bold uppercase tracking-widest">{rel}</li>
+                        ))}
+                       </ul>
+                    </div>
+                 </div>
+              </div>
+            </div>
+            {/* Background Graphic */}
+            <div className="absolute right-0 bottom-0 pointer-events-none opacity-[0.02] -z-10">
+               <span className="text-[40vw] font-black leading-none italic select-none">#{era.id}</span>
+            </div>
+          </div>
+        ))}
       </section>
 
-      {/* DRAGGABLE CONTAINER */}
-      <div 
-        className="w-full bg-black relative"
-        onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={() => { setIsHovering(false); mouseUpHandler(); }}
-      >
-          <div 
-            ref={scrollContainerRef}
-            onMouseDown={mouseDownHandler}
-            onMouseMove={mouseMoveHandler}
-            onMouseUp={mouseUpHandler}
-            className="flex overflow-x-auto scrollbar-hide select-none no-scrollbar snap-x snap-mandatory h-[75vh] lg:h-[80vh] items-stretch cursor-none"
-            style={{ 
-                scrollSnapType: isDragging ? 'none' : 'x mandatory',
-                WebkitOverflowScrolling: 'touch' 
-            }}
-          >
-             {eras.map((era, i) => (
-               <section 
-                 key={i} 
-                 className={cn(
-                   "shrink-0 w-[90vw] lg:w-[75vw] h-full flex flex-col justify-center px-10 sm:px-24 lg:px-40 relative border-r border-white/5 snap-center",
-                   era.color
-                 )}
-               >
-                  <div className="max-w-4xl w-full space-y-12 lg:space-y-16 relative z-10 text-white pointer-events-none">
-                     <div className="flex items-center gap-12 mb-8">
-                        <span className="text-white font-mono text-5xl lg:text-9xl font-black opacity-10 italic">0{i+1}</span>
-                        <div className="w-20 lg:w-48 h-px bg-white/20" />
-                     </div>
-                     <div className="space-y-4">
-                        <span className="text-white/60 font-mono text-[11px] lg:text-[13px] font-black tracking-[0.5em] uppercase italic">{era.id}: {era.years}</span>
-                        <h3 className="text-4xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-none italic">{era.title}</h3>
-                     </div>
-                     <div className="space-y-8 text-white/50 text-lg lg:text-2xl leading-relaxed font-medium max-w-2xl">
-                        {era.description.map((p, j) => (
-                          <p key={j} dangerouslySetInnerHTML={{ __html: p }} />
-                        ))}
-                     </div>
-                  </div>
-
-                  {/* Year Watermark */}
-                  <div className="absolute bottom-0 right-0 p-10 lg:p-20 opacity-5 pointer-events-none text-white overflow-hidden">
-                     <span className="text-[30vw] font-black leading-none italic select-none">{era.years.split('—')[0]}</span>
-                  </div>
-               </section>
-             ))}
-          </div>
-      </div>
-
-      {/* Aliases (Vertical) */}
-      <section className="py-32 lg:py-64 max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full bg-white">
-         <div className="space-y-24">
-            <div className="space-y-6">
-                <h2 className="text-5xl sm:text-7xl font-black uppercase tracking-tighter leading-none italic">THE ALIASES</h2>
-                <p className="text-signal font-mono text-[11px] font-black tracking-[0.5em] uppercase italic">24 Historical Identities Documented</p>
+      {/* Alias Hub */}
+      <section className="py-48 max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
+         <div className="space-y-32">
+            <div className="space-y-8 max-w-4xl">
+               <span className="text-[12px] font-black text-signal uppercase tracking-[0.6em] italic">Identity Registry</span>
+               <h2 className="text-6xl sm:text-8xl font-black uppercase tracking-tighter leading-tight italic">THE <br className="sm:hidden"/> ALIASES.</h2>
+               <p className="text-black/40 text-lg font-medium leading-relaxed italic">
+                  Documenting 24 unique identities across 35 years of frequency artifacts.
+               </p>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-16">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-8 gap-y-16">
                 {[
                   "48V Phantom Power", "Flux", "In-Existence", "Vandervleuten",
                   "Dj Zero-T", "Error 144", "Pultec", "Zimt", "Integrity",
                   "Orpheus", "Gangrene", "Cliche", "Cryptic", "G-Force",
                   "Major Malfunction", "Mental Measuretech", "M.V.D.V.",
-                  "Neat", "The Nighttripper", "P.A.T.C.H.", "Sinn", "Vlytron"
+                  "Neat", "The Nighttripper", "P.A.T.C.H.", "Sinn", "Vlytron", "Zero"
                 ].map((alias, i) => (
-                  <div key={i} className="group cursor-default">
-                     <span className="block text-[9px] font-black text-black/10 group-hover:text-signal mb-1">ID #{i+1}</span>
-                     <span className="text-xl sm:text-2xl lg:text-3xl font-black uppercase tracking-tighter text-black/20 group-hover:text-black transition-colors">{alias}</span>
+                  <div key={i} className="group cursor-default border-t border-black/5 pt-8">
+                     <span className="block text-[9px] font-black text-black/10 group-hover:text-signal transition-colors mb-2">NODE #{i+1}</span>
+                     <span className="text-lg lg:text-xl font-black uppercase tracking-tighter text-black/30 group-hover:text-black transition-colors">{alias}</span>
                   </div>
                 ))}
             </div>
          </div>
       </section>
 
-      <section className="py-32 bg-offwhite border-t border-black/5">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-12">
-           <h3 className="text-3xl font-black uppercase tracking-tighter italic">Need visual assets for publication?</h3>
-           <Link to="/press" className="px-12 py-6 bg-black text-white rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-signal transition-all shadow-xl flex items-center gap-4">
-              Access Press Kit <ArrowUpRight className="w-5 h-5"/>
-           </Link>
-        </div>
+      {/* Visual Break / CTAs */}
+      <section className="bg-black py-48 w-full shadow-inner overflow-hidden relative">
+         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+               <div className="space-y-12">
+                  <h3 className="text-4xl sm:text-6xl font-black text-white uppercase tracking-tighter leading-tight italic">
+                    Access the <br/> complete <br className="hidden sm:block"/> <span className="text-signal text-5xl sm:text-7xl">media kit.</span>
+                  </h3>
+                  <p className="text-white/40 text-[11px] font-black uppercase tracking-[0.4em] italic mb-12">Narrative nodes & visual artifacts for publication</p>
+                  <Link to="/press" className="inline-flex px-12 py-6 bg-signal text-white rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-black transition-all shadow-2xl">
+                    Download Kit
+                  </Link>
+               </div>
+               <div className="aspect-square bg-white/5 rounded-full blur-3xl absolute -right-48 -top-48 w-[40rem] -z-10" />
+            </div>
+         </div>
       </section>
     </main>
   );
