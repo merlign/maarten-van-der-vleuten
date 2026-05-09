@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ArrowRight, ExternalLink } from 'lucide-react';
 import { cn } from '../lib/utils';
@@ -19,6 +19,16 @@ const LegacyBanner = () => (
 export const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const location = useLocation();
+
+    // Lock body scroll when mobile menu is open to prevent glitchy behavior
+    useEffect(() => {
+        if (isMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => { document.body.style.overflow = 'unset'; };
+    }, [isMenuOpen]);
     
     const links = [
         { name: 'Biography', path: '/biography' },
@@ -54,22 +64,51 @@ export const Navbar = () => {
                 </button>
             </nav>
 
+            {/* Robust Mobile Menu Overlay */}
             {isMenuOpen && (
-                <div className="fixed inset-0 bg-white z-[60] flex flex-col p-8 sm:p-12 animate-in fade-in duration-300">
-                    <div className="flex justify-between items-center mb-16">
+                <div 
+                    className="fixed inset-0 bg-white z-[100] flex flex-col p-8 sm:p-12 animate-in fade-in zoom-in-95 duration-300 h-[100dvh] overflow-y-auto"
+                    style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
+                >
+                    <div className="flex justify-between items-center mb-16 shrink-0">
                         <span className="font-bold text-black text-[11px] tracking-widest uppercase italic border-b border-signal">Navigation Portal</span>
-                        <button onClick={() => setIsMenuOpen(false)}><X className="w-6 h-6 text-black" /></button>
+                        <button onClick={() => setIsMenuOpen(false)} className="p-2 -mr-2"><X className="w-6 h-6 text-black" /></button>
                     </div>
+                    
                     <ul className="flex flex-col gap-6">
                         {links.map((link) => (
                             <li key={link.name}>
-                                <Link to={link.path} onClick={() => setIsMenuOpen(false)} className="text-3xl sm:text-4xl font-black text-black border-b border-black/5 pb-4 flex justify-between items-center hover:text-signal transition-colors italic tracking-tighter">
+                                <Link 
+                                    to={link.path} 
+                                    onClick={() => setIsMenuOpen(false)} 
+                                    className={cn(
+                                        "text-4xl sm:text-5xl font-black border-b border-black/5 pb-4 flex justify-between items-center transition-colors italic tracking-tighter",
+                                        location.pathname === link.path ? "text-signal" : "text-black"
+                                    )}
+                                >
                                     {link.name}
-                                    <ArrowRight className="w-6 h-6 opacity-10" />
+                                    <ArrowRight className={cn("w-6 h-6 transition-opacity", location.pathname === link.path ? "opacity-100" : "opacity-10")} />
                                 </Link>
                             </li>
                         ))}
                     </ul>
+
+                    <div className="mt-auto pt-16 flex flex-col gap-8 shrink-0">
+                        <a 
+                            href={SOCIAL_LINKS.bandcamp} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="w-full py-5 bg-black text-white text-center rounded-full text-[11px] font-black tracking-widest uppercase flex items-center justify-center gap-3 active:bg-signal transition-colors"
+                        >
+                            BANDCAMP SHOP <ExternalLink className="w-3 h-3"/>
+                        </a>
+                        
+                        <div className="flex justify-center gap-10 items-center pb-8">
+                            <a href={SOCIAL_LINKS.spotify} target="_blank" rel="noopener noreferrer" className="text-black/20 hover:text-signal transition-colors"><SpotifyIcon className="w-6 h-6"/></a>
+                            <a href={SOCIAL_LINKS.discogs} target="_blank" rel="noopener noreferrer" className="text-black/20 hover:text-signal transition-colors"><DiscogsIcon className="w-6 h-6"/></a>
+                            <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="text-black/20 hover:text-signal transition-colors"><InstagramIcon className="w-6 h-6"/></a>
+                        </div>
+                    </div>
                 </div>
             )}
         </header>
