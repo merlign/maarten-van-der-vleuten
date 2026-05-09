@@ -30,57 +30,60 @@ export const BIOGRAPHY_ERAS = [
         years: "1987—1991", 
         title: "THE EARLY YEARS", 
         description: [
-            "Maarten van der Vleuten (born in Vught, 1967) started his musical career in the Dutch underground scene during the late eighties. He was quickly involved in the first wave of electronic music, with his first official recordings being released in 1987 under names like 48V Phantom Power and Vandervleuten.",
-            "He gained a reputation for high-quality sound design and contributed to the early development of European techno and house music."
+            "Maarten van der Vleuten (born in Vught, 1967) began his musical career in 1987 with the release of the cassette *The Noise Architect*. He was quickly recognized as one of the first producers in the Dutch techno scene.",
+            "After hearing acid house in the USA in 1988, he shifted his focus toward electronic beats. His early tracks were among the first of their kind to be played on national Dutch radio (VPRO) in 1989.",
+            "During these initial years, he established a reputation for high-quality sound design under names like 48V Phantom Power and Vandervleuten."
         ], 
-        releases: ["48V Phantom Power (1987)", "Vught Sessions (1989)", "Early Waves (1990)"] 
+        releases: ["The Noise Architect (1987)", "48V Phantom Power (1987)", "Vught Sessions (1989)"] 
     },
     { 
         id: "02", 
         years: "1992—1995", 
         title: "TECHNO & AMBIENT", 
         description: [
-            "During this period, Maarten gained international recognition. Under the name In-Existence, he released the ambient album Moonwater (1993) on Apollo Records, a sublabel of the famous R&S Records.",
-            "Alongside his ambient work, he became a key figure in the techno scene as Flux, releasing energetic tracks on Djax-Up-Beats and helping to shape the sound of hardware-driven electronic music.",
-            "By 1995, he had already released music under more than 10 different names, exploring many different styles of electronic music."
+            "This period brought international acclaim. Under the name In-Existence, he released *Moonwater* (1992) on Apollo Records, a sublabel of the legendary R&S Records. It is now regarded as one of the first-ever ambient techno CDs.",
+            "Alongside his ambient work, he became a central figure in the techno underground as Flux, releasing high-energy tracks on the Djax-Up-Beats label.",
+            "By the mid-nineties, he was incredibly prolific, releasing music under more than 10 different aliases and exploring every corner of the electronic spectrum."
         ], 
-        releases: ["Moonwater (1993)", "Metamorphism (1991)", "Flux Amenity (1994)"] 
+        releases: ["Moonwater (1992)", "Metamorphism (1991)", "Flux Amenity (1994)"] 
     },
     { 
         id: "03", 
         years: "1996—2007", 
         title: "NEW LABELS & PROJECTS", 
         description: [
-            "In 1996, Maarten founded Signum Recordings as a place to release his more experimental and personal music. During this decade, he used many different artist names, including Pultec, Error 144, and Dj Zero-T.",
-            "His work expanded into music for theater and sound installations, showing his versatility across different artistic fields.",
-            "In 2002, the release of Laiad showed a shift toward a mix of acoustic and electronic sounds that would characterize much of his later work."
+            "In 1996, Maarten founded Signum Recordings to ensure complete artistic freedom. This era was marked by massive project scales, such as recording the 70-person Jeroen Bosch Choir for the In-Existence album *Private Rituals* (1998).",
+            "He also collaborated with architects like Frank Havermans, creating immersive soundscapes for installations such as *De Vierde Verkenning* (2006).",
+            "His work shifted from the club to experimental landscapes, combining acoustic instruments with electronics in albums like *Laiad* (2002)."
         ], 
-        releases: ["Signum 001 (1996)", "Laiad (2002)", "Archive Artifacts (2005)"] 
+        releases: ["Private Rituals (1998)", "Laiad (2002)", "De Vierde Verkenning (2006)"] 
     },
     { 
         id: "04", 
         years: "2008—PRESENT", 
         title: "PRESENT DAY", 
         description: [
-            "Since 2008, he has released music mostly under his own name or the initials MVDV. The release of albums like High Intolerance Towards Low Energies and The Scars Remain moved his sound in a more cinematic direction.",
-            "Ongoing projects like the Systematically Declassified series document his entire history and the vast amount of music he has created over the years.",
-            "Maarten remains productive today, constantly creating new music that combines human emotion with technical precision."
+            "Since 2008, he has produced deeply conceptual work. The vinyl album *High Intolerance Towards Low Energies* (2008) was dedicated to a closed monastery in his hometown of Vught.",
+            "His experiments became more daring, including *ECT For Piano* (2009)—which combined piano with the sounds of an electroshock machine—and recordings featuring the voice of occultist Aleister Crowley (*A True & Faithful Relation*, 2010).",
+            "Through the *Systematically Declassified* series and modern albums like *The Scars Remain*, Maarten continues to explore the boundaries between technical precision and human emotion."
         ], 
-        releases: ["The Scars Remain (2010)", "Systematically Declassified (2020)", "Current Signal (2024)"] 
+        releases: ["ECT For Piano (2009)", "The Scars Remain (2010)", "Systematically Declassified (2020)"] 
     }
 ];
 
 export const FULL_ARCHIVE_REGISTRY = [
     { title: "Metamorphism", year: "1991", label: "Djax-Up-Beats", alias: "Flux" },
-    { title: "Moonwater", year: "1993", label: "Apollo", alias: "In-Existence" },
+    { title: "Moonwater", year: "1992", label: "Apollo", alias: "In-Existence" },
     { title: "The Bio-Terminal", year: "1993", label: "ESP", alias: "Dj Zero-T" },
     { title: "Amenity", year: "1994", label: "Djax-Up-Beats", alias: "Flux" },
     { title: "The Art of Frequency", year: "1996", label: "Signum", alias: "Vandervleuten" },
+    { title: "Private Rituals", year: "1998", label: "In-Existence", alias: "In-Existence" },
     { title: "Passiflora", year: "1998", label: "Signum", alias: "Vandervleuten" },
     { title: "Laiad", year: "2002", label: "Signum", alias: "In-Existence" },
     { title: "Vow Of Silence", year: "2005", label: "ToneFloat", alias: "In-Existence" },
     { title: "De Verkenningen", year: "2006", label: "Signum", alias: "In-Existence" },
     { title: "High Intolerance...", year: "2008", label: "ToneFloat", alias: "MVDV" },
+    { title: "ECT For Piano", year: "2009", label: "Signum", alias: "MVDV" },
     { title: "The Scars Remain", year: "2010", label: "ToneFloat", alias: "MVDV" },
     { title: "Are You Worthy?", year: "2012", label: "ToneFloat", alias: "MVDV" },
     { title: "Vught Distillations", year: "2015", label: "MVDV", alias: "MVDV" },
