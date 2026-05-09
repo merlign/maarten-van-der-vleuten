@@ -14,12 +14,12 @@ export const HomeView = () => (
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <header className="order-1 lg:order-1 space-y-10">
-            <p className="text-[11px] font-bold text-signal uppercase tracking-[0.8em]">Electronic Music Pioneer</p>
+            <p className="text-[11px] font-bold text-signal uppercase tracking-[0.8em]">Composer</p>
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black text-black leading-[0.85] tracking-tighter uppercase italic">
               MAARTEN <br/> <span className="text-signal lg:text-black">VAN DER</span> <br className="hidden lg:block"/> <span className="text-signal">VLEUTEN.</span>
             </h1>
             <p className="text-black/50 text-base sm:text-lg lg:text-xl leading-relaxed max-w-xl font-medium italic">
-              A pioneer of the Dutch electronic scene with a career spanning over 35 years. From early techno to cinematic soundscapes and experimental music.
+              Electronic music and sound design. Based in the Netherlands, active since 1987. From early techno to cinematic soundscapes and experimental recordings.
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
               <Link to="/biography" className="px-8 py-4 bg-black text-white rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-signal transition-all shadow-xl active:scale-95">Biography</Link>
@@ -78,10 +78,10 @@ export const HomeView = () => (
           <div className="lg:col-span-7 space-y-10">
             <p className="text-[11px] font-bold text-signal uppercase tracking-[0.6em] italic leading-none">Biography</p>
             <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black uppercase tracking-tighter italic leading-[0.95]">
-              Over 35 years <br/> of musical <br/> evolution.
+              Over 35 years <br/> of electronic <br/> music.
             </h2>
             <div className="space-y-8 text-black/60 text-lg sm:text-xl font-medium leading-relaxed max-w-2xl">
-              <p>Maarten's work covers many different styles and periods. It's a journey through the evolution of electronic sound, from the early club years to modern experimental recordings.</p>
+              <p>Maarten has been part of the electronic music scene since the late eighties. His work covers many different styles and periods, from early techno to modern experimental compositions.</p>
               <Link to="/biography" className="inline-flex items-center gap-6 text-black font-black uppercase tracking-widest text-[11px] group border-b-2 border-signal pb-2 hover:translate-x-3 transition-transform">
                 Read Biography <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
               </Link>
@@ -115,7 +115,7 @@ export const HomeView = () => (
             </h2>
             <div className="space-y-10">
               <p className="text-white/40 text-lg sm:text-xl font-medium leading-relaxed max-w-xl">
-                An independent label for experimental electronic music, founded in 1996 as a home for Maarten's most personal work.
+                An independent label for experimental music, founded in 1996 as a home for Maarten's most personal work.
               </p>
               <Link to="/signum" className="inline-flex px-10 py-5 bg-white text-black font-black uppercase tracking-widest text-[11px] rounded-full hover:bg-signal hover:text-white transition-all shadow-2xl active:scale-95">
                 Explore The Label

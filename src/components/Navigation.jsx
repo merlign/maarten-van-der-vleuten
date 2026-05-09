@@ -121,7 +121,7 @@ export const Footer = () => (
                 <div className="lg:col-span-2 space-y-10">
                     <h2 className="text-4xl font-black uppercase tracking-tighter italic">MAARTEN <br/> VAN DER VLEUTEN</h2>
                     <p className="text-black/40 text-[12px] font-mono uppercase tracking-[0.1em] leading-relaxed max-w-sm">
-                        Professional composer and recording artist. Pioneer of the Dutch electronic underground since 1987.
+                        Composer and musician. Active in the Dutch electronic underground since 1987.
                     </p>
                 </div>
                 <div className="space-y-8">
