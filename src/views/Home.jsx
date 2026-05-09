@@ -13,7 +13,7 @@ export const HomeView = () => (
     <section className="pt-24 sm:pt-32 lg:pt-40 pb-20 w-full border-b border-black/5 bg-white overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          <header className="order-2 lg:order-1 space-y-10">
+          <header className="order-1 lg:order-1 space-y-10">
             <p className="text-[11px] font-bold text-signal uppercase tracking-[0.8em]">Electronic Music Pioneer</p>
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black text-black leading-[0.85] tracking-tighter uppercase italic">
               MAARTEN <br/> <span className="text-signal lg:text-black">VAN DER</span> <br className="hidden lg:block"/> <span className="text-signal">VLEUTEN.</span>
@@ -32,7 +32,7 @@ export const HomeView = () => (
               <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="transition-all hover:text-signal hover:scale-110" title="Instagram"><InstagramIcon className="w-6 h-6"/></a>
             </div>
           </header>
-          <div className="order-1 lg:order-2">
+          <div className="order-2 lg:order-2">
             <div className="aspect-[4/5] lg:aspect-[3/4] w-full max-w-lg mx-auto bg-offwhite rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-2xl relative grayscale group">
               <img src="/maarten.jpg" alt="Maarten van der Vleuten" className="w-full h-full object-cover object-top scale-105 group-hover:scale-110 transition-transform duration-1000" />
             </div>
