@@ -5,8 +5,8 @@ import { FULL_ARCHIVE_REGISTRY, SOCIAL_LINKS } from '../data/content';
 
 export const ArchiveView = () => (
     <PageWrapper>
-        <SEO title="Archive" description="Complete chronological archive since 1987." path="/archive" />
-        <PageHeader title="ARCHIVE." subtitle="Full Process History">
+        <SEO title="Archive" description="Complete list of musical releases since 1987." path="/archive" />
+        <PageHeader title="ARCHIVE." subtitle="Release History">
             <div className="flex flex-wrap gap-8 sm:gap-10 font-bold text-xs tracking-widest text-black/40 w-full uppercase pt-6">
                 <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="italic underline underline-offset-8 decoration-signal/20 hover:text-black transition-colors">Bandcamp</a>
                 <a href={SOCIAL_LINKS.discogs} target="_blank" rel="noopener noreferrer" className="italic underline underline-offset-8 decoration-signal/20 hover:text-black transition-colors">Discogs</a>
@@ -23,7 +23,7 @@ export const ArchiveView = () => (
                             </header>
                             <div className="min-w-0">
                                 <h4 className="text-xl sm:text-2xl font-black uppercase leading-[1.2] mb-1.5 group-hover:text-white tracking-tighter italic break-words">{rel.title}</h4>
-                                <p className="text-[11px] sm:text-[12px] font-bold text-black/30 group-hover:text-white/40 uppercase tracking-[0.2em]">{rel.alias} — {rel.label}</p>
+                                <p className="text-[11px] sm:text-[12px] font-bold text-black/30 group-hover:text-white/40 uppercase tracking-[0.2em]">{rel.alias} — {rel.label} Records</p>
                             </div>
                         </div>
                         <div className="w-14 h-14 bg-offwhite text-black rounded-full flex items-center justify-center shrink-0 group-hover:bg-signal group-hover:text-white transition-all shadow-2xl">

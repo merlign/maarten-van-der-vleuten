@@ -28,43 +28,43 @@ export const BIOGRAPHY_ERAS = [
     { 
         id: "01", 
         years: "1987—1991", 
-        title: "THE SIGNAL ARRIVAL", 
+        title: "THE EARLY YEARS", 
         description: [
-            "Maarten van der Vleuten (Vught, 1967) emerged in the Dutch underground during the late eighties. He was architecturely involved in the first wave of electronics, with his first official recordings appearing under the name 48V Phantom Power and Vandervleuten in 1987.",
-            "Establishing a reputation for high-fidelity sound design, he contributed to the first wave of European techno and experimental house from his initial recording sessions."
+            "Maarten van der Vleuten (born in Vught, 1967) started his musical career in the Dutch underground scene during the late eighties. He was quickly involved in the first wave of electronic music, with his first official recordings being released in 1987 under names like 48V Phantom Power and Vandervleuten.",
+            "He gained a reputation for high-quality sound design and contributed to the early development of European techno and house music."
         ], 
         releases: ["48V Phantom Power (1987)", "Vught Sessions (1989)", "Early Waves (1990)"] 
     },
     { 
         id: "02", 
         years: "1992—1995", 
-        title: "UNDERGROUND ARCHITECTURE", 
+        title: "TECHNO & AMBIENT", 
         description: [
-            "This period marked his international recognition. Under the alias In-Existence, he released the seminal ambient work Moonwater (1993) on Apollo Records, a sublabel of the legendary R&S.",
-            "Parallel to his ambient work, he became a core figure in the techno scene as Flux, releasing high-intensity works on Djax-Up-Beats and contributing to the evolution of the hardware-driven sound.",
-            "By 1995, his discography had already expanded into over 10 different aliases, populating every corner of the electronic spectrum."
+            "During this period, Maarten gained international recognition. Under the name In-Existence, he released the ambient album Moonwater (1993) on Apollo Records, a sublabel of the famous R&S Records.",
+            "Alongside his ambient work, he became a key figure in the techno scene as Flux, releasing energetic tracks on Djax-Up-Beats and helping to shape the sound of hardware-driven electronic music.",
+            "By 1995, he had already released music under more than 10 different names, exploring many different styles of electronic music."
         ], 
         releases: ["Moonwater (1993)", "Metamorphism (1991)", "Flux Amenity (1994)"] 
     },
     { 
         id: "03", 
         years: "1996—2007", 
-        title: "POLYMORPHIC DISCOVERY", 
+        title: "NEW LABELS & PROJECTS", 
         description: [
-            "In 1996, Van der Vleuten founded Signum Recordings as a platform for his most experimental and personal artifacts. During this decade, he operated under a massive network of identities—including Pultec, Error 144, and Dj Zero-T.",
-            "His work spanned from multidisciplinary theater soundscapes to architectural installations, solidifying his role as a sound architect.",
-            "In 2002, the release of Laiad showcased a move toward more hybrid, acoustic-synthetic soundscapes that would define his later years."
+            "In 1996, Maarten founded Signum Recordings as a place to release his more experimental and personal music. During this decade, he used many different artist names, including Pultec, Error 144, and Dj Zero-T.",
+            "His work expanded into music for theater and sound installations, showing his versatility across different artistic fields.",
+            "In 2002, the release of Laiad showed a shift toward a mix of acoustic and electronic sounds that would characterize much of his later work."
         ], 
         releases: ["Signum 001 (1996)", "Laiad (2002)", "Archive Artifacts (2005)"] 
     },
     { 
         id: "04", 
         years: "2008—PRESENT", 
-        title: "IDENTITY CONSOLIDATION", 
+        title: "PRESENT DAY", 
         description: [
-            "Since 2008, he has consolidated his output primarily under his own name or the initials MVDV. The release of High Intolerance Towards Low Energies and The Scars Remain marked a move toward a more cinematic language.",
-            "Modern artifacts like the Systematically Declassified series document the complete evolutionary history of his work.",
-            "Maarten remains active through a constant ritual of sonic distillation, bridging human emotion and clinical precision."
+            "Since 2008, he has released music mostly under his own name or the initials MVDV. The release of albums like High Intolerance Towards Low Energies and The Scars Remain moved his sound in a more cinematic direction.",
+            "Ongoing projects like the Systematically Declassified series document his entire history and the vast amount of music he has created over the years.",
+            "Maarten remains productive today, constantly creating new music that combines human emotion with technical precision."
         ], 
         releases: ["The Scars Remain (2010)", "Systematically Declassified (2020)", "Current Signal (2024)"] 
     }
@@ -100,30 +100,30 @@ export const ALIAS_LIST = [
 ];
 
 export const PRESS_ASSETS = [
-    { title: "Story Set", size: "Narratives (NL/EN) & History", link: "/press/mvdv_biography.pdf" },
-    { title: "Visual Assets", size: "High-Resolution Portraits", link: "/press/portraits.zip" },
-    { title: "Identity Marks", size: "Vector Logos (SVG/PNG)", link: "/press/logos.zip" },
-    { title: "Complete Pack", size: "Press Kit Bundle (.ZIP)", link: "/press/full_kit.zip" }
+    { title: "Story Set", size: "Biography (NL/EN) & History", link: "/press/mvdv_biography.pdf" },
+    { title: "Visual Assets", size: "High-Resolution Photos", link: "/press/portraits.zip" },
+    { title: "Identity Marks", size: "Logos (SVG/PNG)", link: "/press/logos.zip" },
+    { title: "Complete Pack", size: "Full Press Kit (.ZIP)", link: "/press/full_kit.zip" }
 ];
 
 export const SIGNUM_RECORDINGS_CONTENT = {
-    origin: "1996 / Vaught, NL",
+    origin: "1996 / Vught, NL",
     philosophy: {
-        title: "Frequency Architecture",
-        text: "Signum Recordings was founded by Maarten van der Vleuten in 1996. It serves as a primary vessel for frequency exploration that bypasses clinical distribution and commercial compromise. The label operates with a strict focus on sound as an architectural artifact—designed to be monumental, clinical, and emotionally resonant."
+        title: "Music Philosophy",
+        text: "Signum Recordings was founded by Maarten van der Vleuten in 1996. It serves as an independent label for experimental electronic music that operates outside of mainstream commercial trends. The label focuses on sound quality and artistic integrity, releasing music that is both thoughtful and impactful."
     },
     sections: [
         {
-            title: "Beyond Category",
-            text: "From the very first release, Signum rejected the limitations of the electronic music industry. The output has ranged from the industrial intensities of 'The Art of Frequency' to the hybrid acoustic-synthetic soundscapes found in later archival series. Each artifact released on Signum is a chapter in a vertical timeline of sonic discovery."
+            title: "Exploring New Sounds",
+            text: "From its very first release, Signum has focused on electronic music that doesn't fit into standard categories. The label has released everything from industrial techno to experimental acoustic sounds. Every Signum release represents a new step in Maarten's musical evolution."
         },
         {
-            title: "The Archival Ritual",
-            text: "Operating out of Vught, the label has become a home for the 'Systematically Declassified' series—a massive project aimed at documenting Van der Vleuten's vast evolutionary archive. This process involves the meticulous distillation of signals, ensuring that every frequency released carries the weight of its historical origin."
+            title: "The Archive",
+            text: "Based in Vught, the label is also home to the 'Systematically Declassified' series—a project dedicated to releasing Maarten's vast archive of music. This process involves carefully selecting and mastering older recordings to ensure they meet modern standards while keeping their original character."
         },
         {
-            title: "Physical Artifacts",
-            text: "Signum has a long history of special, limited editions. Whether it was rare CD-ROMs in the nineties or modern high-fidelity digital artifacts, the focus remains on the tactile experience of sound. The label continues to iterate on how these signals are transmitted to the listener—direct, unfiltered, and uncompromising."
+            title: "Releases",
+            text: "Signum has a history of special, limited edition releases. Whether it was rare CDs in the nineties or modern digital albums, the focus is always on providing a high-quality listening experience. The label continues to find new ways to share music directly with the audience without compromise."
         }
     ],
     keyReleases: [

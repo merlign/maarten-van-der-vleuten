@@ -14,16 +14,16 @@ export const HomeView = () => (
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <header className="order-2 lg:order-1 space-y-10">
-            <p className="text-[11px] font-bold text-signal uppercase tracking-[0.8em]">COMPOSER / PIONEER</p>
+            <p className="text-[11px] font-bold text-signal uppercase tracking-[0.8em]">Electronic Music Pioneer</p>
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black text-black leading-[0.85] tracking-tighter uppercase italic">
               MAARTEN <br/> <span className="text-signal lg:text-black">VAN DER</span> <br className="hidden lg:block"/> <span className="text-signal">VLEUTEN.</span>
             </h1>
             <p className="text-black/50 text-base sm:text-lg lg:text-xl leading-relaxed max-w-xl font-medium italic">
-              A Dutch electronic pioneer for over 35 years. From industrial techno under numerous aliases to refined cinematic scoring and experimental sound design.
+              A pioneer of the Dutch electronic scene with a career spanning over 35 years. From early techno to cinematic soundscapes and experimental music.
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
-              <Link to="/biography" className="px-8 py-4 bg-black text-white rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-signal transition-all shadow-xl active:scale-95">Evolution History</Link>
-              <Link to="/archive" className="px-8 py-4 border-2 border-black text-black rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-black hover:text-white transition-all active:scale-95">Archive Registry</Link>
+              <Link to="/biography" className="px-8 py-4 bg-black text-white rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-signal transition-all shadow-xl active:scale-95">Biography</Link>
+              <Link to="/archive" className="px-8 py-4 border-2 border-black text-black rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-black hover:text-white transition-all active:scale-95">Archive</Link>
             </div>
             <div className="flex gap-8 pt-4 items-center">
               <a href={SOCIAL_LINKS.spotify} target="_blank" rel="noopener noreferrer" className="transition-all hover:text-signal hover:scale-110" title="Spotify"><SpotifyIcon className="w-6 h-6"/></a>
@@ -46,11 +46,11 @@ export const HomeView = () => (
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
         <header className="flex flex-col sm:flex-row justify-between items-end gap-10 mb-20 text-left w-full">
           <div className="space-y-6">
-            <p className="text-[11px] font-bold text-signal uppercase tracking-[0.6em] italic leading-none">Registry Spotlight</p>
+            <p className="text-[11px] font-bold text-signal uppercase tracking-[0.6em] italic leading-none">New Releases</p>
             <h2 className="text-4xl sm:text-5xl font-black uppercase tracking-tighter italic">LATEST <br/> RELEASES.</h2>
           </div>
           <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="inline-flex gap-4 items-center text-[11px] font-black uppercase tracking-widest border-b-2 border-signal pb-2 hover:translate-x-2 transition-all group">
-            Browse Full Shop <ArrowRight className="w-4 h-4" />
+            Visit Shop <ArrowRight className="w-4 h-4" />
           </a>
         </header>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -76,14 +76,14 @@ export const HomeView = () => (
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
           <div className="lg:col-span-7 space-y-10">
-            <p className="text-[11px] font-bold text-signal uppercase tracking-[0.6em] italic leading-none">History Ledger</p>
+            <p className="text-[11px] font-bold text-signal uppercase tracking-[0.6em] italic leading-none">Biography</p>
             <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black uppercase tracking-tighter italic leading-[0.95]">
-              A vertical <br/> timeline of <br/> discovery.
+              Over 35 years <br/> of musical <br/> evolution.
             </h2>
             <div className="space-y-8 text-black/60 text-lg sm:text-xl font-medium leading-relaxed max-w-2xl">
-              <p>Maarten's work transcends simple electronic genres. It's a vertical timeline of discovery—a lifelong ritual of signal distillation and atmospheric architecture spanning more than three decades.</p>
+              <p>Maarten's work covers many different styles and periods. It's a journey through the evolution of electronic sound, from the early club years to modern experimental recordings.</p>
               <Link to="/biography" className="inline-flex items-center gap-6 text-black font-black uppercase tracking-widest text-[11px] group border-b-2 border-signal pb-2 hover:translate-x-3 transition-transform">
-                Read full history <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                Read Biography <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
               </Link>
             </div>
           </div>
@@ -103,19 +103,19 @@ export const HomeView = () => (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
           <div className="lg:col-span-5 order-2 lg:order-1">
             <div className="aspect-square bg-white/5 border border-white/10 rounded-[3rem] flex flex-col items-center justify-center p-12 text-center group hover:bg-white/10 transition-colors shadow-2xl backdrop-blur-2xl">
-               <span className="text-[10px] font-black text-signal uppercase tracking-[0.4em] mb-4">Vught Registry</span>
-               <p className="text-sm font-black uppercase italic text-white/20 mb-10">[ Reserved for Signum Logo ]</p>
+               <span className="text-[10px] font-black text-signal uppercase tracking-[0.4em] mb-4">Vught, NL</span>
+               <p className="text-sm font-black uppercase italic text-white/20 mb-10">[ Signum Recordings ]</p>
                <div className="w-20 h-px bg-white/20" />
             </div>
           </div>
           <div className="lg:col-span-7 order-1 lg:order-2 space-y-12">
-            <p className="text-[11px] font-bold text-signal uppercase tracking-[0.6em] italic leading-none">Recordings Node</p>
+            <p className="text-[11px] font-bold text-signal uppercase tracking-[0.6em] italic leading-none">About the Label</p>
             <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black uppercase tracking-tighter italic leading-[0.95]">
               SIGNUM <br/> RECORDINGS.
             </h2>
             <div className="space-y-10">
               <p className="text-white/40 text-lg sm:text-xl font-medium leading-relaxed max-w-xl">
-                Founded in 1996 as an independent vessel for frequency exploration that bypasses clinical distribution in favor of direct signal transmission.
+                An independent label for experimental electronic music, founded in 1996 as a home for Maarten's most personal work.
               </p>
               <Link to="/signum" className="inline-flex px-10 py-5 bg-white text-black font-black uppercase tracking-widest text-[11px] rounded-full hover:bg-signal hover:text-white transition-all shadow-2xl active:scale-95">
                 Explore The Label

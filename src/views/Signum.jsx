@@ -1,11 +1,11 @@
 import React from 'react';
-import { Disc, ExternalLink, ArrowRight } from 'lucide-react';
+import { Disc, ArrowRight } from 'lucide-react';
 import { SEO, PageHeader, PageWrapper } from '../components/Layout';
 import { SIGNUM_RECORDINGS_CONTENT, SOCIAL_LINKS } from '../data/content';
 
 export const SignumView = () => (
     <PageWrapper>
-        <SEO title="Signum Recordings" description="Independent vessel for frequency artifacts based in Vught." path="/signum" />
+        <SEO title="Signum Recordings" description="Independent record label for experimental music based in Vught." path="/signum" />
         <PageHeader 
             title={<>SIGNUM <br/> RECORDINGS.</>} 
             subtitle={`EST. ${SIGNUM_RECORDINGS_CONTENT.origin}`}
@@ -15,8 +15,8 @@ export const SignumView = () => (
                     <Disc className="w-10 h-10 text-black/10 group-hover:text-signal/20 transition-colors animate-spin-slow" />
                 </div>
                 <div className="space-y-1">
-                    <p className="text-[10px] font-black text-black/20 uppercase tracking-[0.4em] italic">Label Node</p>
-                    <p className="text-sm font-black uppercase italic text-black/40">Vught Registry</p>
+                    <p className="text-[10px] font-black text-black/20 uppercase tracking-[0.4em] italic">Vught, NL</p>
+                    <p className="text-sm font-black uppercase italic text-black/40">Record Label Registry</p>
                 </div>
             </div>
         </PageHeader>
@@ -25,7 +25,7 @@ export const SignumView = () => (
             {/* The Philosophy */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
                 <div className="lg:col-span-8 space-y-12">
-                    <p className="text-[12px] font-black text-signal uppercase tracking-[0.6em] italic leading-none">The Philosophy</p>
+                    <p className="text-[12px] font-black text-signal uppercase tracking-[0.6em] italic leading-none">About the Label</p>
                     <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black italic uppercase tracking-tighter leading-[1.05] text-black">
                         {SIGNUM_RECORDINGS_CONTENT.philosophy.title}
                     </h2>
@@ -55,8 +55,8 @@ export const SignumView = () => (
             <div className="pt-20 space-y-20">
                 <div className="flex flex-col sm:flex-row justify-between items-end gap-10">
                     <div className="space-y-6">
-                        <p className="text-[12px] font-black text-signal uppercase tracking-[0.6em] italic leading-none">Essential Signals</p>
-                        <h2 className="text-3xl sm:text-5xl font-black italic uppercase tracking-tighter leading-[1.05] text-black">KEY RELEASES.</h2>
+                        <p className="text-[12px] font-black text-signal uppercase tracking-[0.6em] italic leading-none">Key Releases</p>
+                        <h2 className="text-3xl sm:text-5xl font-black italic uppercase tracking-tighter leading-[1.05] text-black">DISCOGRAPHY.</h2>
                     </div>
                     <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="inline-flex gap-4 items-center text-[11px] font-black uppercase tracking-widest border-b-2 border-signal pb-2 hover:translate-x-2 transition-all group">
                         Access Shop <ArrowRight className="w-4 h-4" />
@@ -76,10 +76,10 @@ export const SignumView = () => (
 
             {/* CTA */}
             <div className="bg-black text-white p-10 sm:p-20 rounded-[3rem] text-center space-y-10 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.3)]">
-                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black italic uppercase tracking-tighter leading-none">Direct signal transmission.</h3>
-                <p className="text-white/40 text-lg sm:text-xl font-medium max-w-2xl mx-auto">Skip the middleman. Access the complete archival registry directly through Bandcamp.</p>
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black italic uppercase tracking-tighter leading-none">Listen to the music.</h3>
+                <p className="text-white/40 text-lg sm:text-xl font-medium max-w-2xl mx-auto">Explore all of our music releases and special editions through our official Bandcamp page.</p>
                 <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="inline-flex px-12 py-6 bg-signal text-white font-black uppercase tracking-widest text-[11px] rounded-full hover:bg-white hover:text-black transition-all shadow-xl active:scale-95">
-                    LABEL REGISTRY
+                    GOTO BANDCAMP
                 </a>
             </div>
         </section>

@@ -5,11 +5,11 @@ import { BIOGRAPHY_ERAS, ALIAS_LIST } from '../data/content';
 
 export const BiographyView = () => (
   <PageWrapper>
-    <SEO title="History & Evolution" description="Vertical editorial ledger documenting 35 years of electronic evolution." path="/biography" />
+    <SEO title="Biography" description="Historical overview documenting 35 years of electronic music evolution." path="/biography" />
     <PageHeader 
-        title={<>EVOLUTION <br/> HISTORY.</>} 
-        subtitle="Full Historical Ledger"
-        meta={<>Base: Vught, NL <br/> Origin: 1987 — 2024</>}
+        title={<>BIOGRAPHY.</>} 
+        subtitle="Historical Overview"
+        meta={<>Based in: Vught, NL <br/> Active Since: 1987</>}
     />
     <section className="bg-white w-full">
         {BIOGRAPHY_ERAS.map((era, i) => (
@@ -21,11 +21,11 @@ export const BiographyView = () => (
                             <div className="flex-1 h-px bg-signal/20" />
                         </header>
                         <div className="space-y-3">
-                            <p className="text-[11px] font-black text-black/20 uppercase tracking-[0.4em]">Chronicle Node</p>
-                            <p className="text-xl font-black uppercase tracking-tighter italic leading-none text-black">Era #{era.id}</p>
+                            <p className="text-[11px] font-black text-black/20 uppercase tracking-[0.4em]">Era</p>
+                            <p className="text-xl font-black uppercase tracking-tighter italic leading-none text-black">Section 0{i+1}</p>
                         </div>
                         <div className="hidden md:block pt-8 space-y-8">
-                            <p className="text-[11px] font-black text-black/20 uppercase tracking-[0.4em]">Key Artifacts</p>
+                            <p className="text-[11px] font-black text-black/20 uppercase tracking-[0.4em]">Notable Releases</p>
                             <ul className="space-y-4">
                                 {era.releases.map((rel, j) => (
                                     <li key={j} className="text-xs font-bold text-black uppercase tracking-widest flex items-center gap-3">
@@ -49,16 +49,16 @@ export const BiographyView = () => (
     <section className="py-24 sm:py-32 max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
         <div className="space-y-20 sm:space-y-24">
             <div className="space-y-8 max-w-4xl">
-                <span className="text-[12px] font-black text-signal uppercase tracking-[0.4em] italic leading-none block">Identity Registry</span>
-                <h2 className="text-5xl sm:text-6xl font-black uppercase tracking-tighter leading-tight italic">THE ALIASES.</h2>
+                <span className="text-[12px] font-black text-signal uppercase tracking-[0.4em] italic leading-none block">Alias Registry</span>
+                <h2 className="text-5xl sm:text-6xl font-black uppercase tracking-tighter leading-tight italic">THE NAMES.</h2>
                 <p className="text-black/50 text-lg font-medium leading-relaxed italic max-w-xl">
-                    Documenting 24 unique identities across 35 years of frequency artifacts.
+                    Maarten has released music under more than 20 different artist names over the years.
                 </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-12 lg:gap-y-16">
                 {ALIAS_LIST.map((alias, i) => (
                 <div key={i} className="group cursor-default border-t border-black/5 pt-6">
-                    <span className="block text-[10px] font-black text-black/20 group-hover:text-signal transition-colors mb-2">NODE #{i+1}</span>
+                    <span className="block text-[10px] font-black text-black/20 group-hover:text-signal transition-colors mb-2">Alias #{i+1}</span>
                     <span className="text-base lg:text-lg font-black uppercase tracking-tighter text-black/30 group-hover:text-black transition-colors leading-[1.1]">{alias}</span>
                 </div>
                 ))}
