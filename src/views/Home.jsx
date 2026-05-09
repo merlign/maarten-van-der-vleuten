@@ -44,12 +44,12 @@ export const HomeView = () => (
     {/* LATEST RELEASES */}
     <section className="py-24 sm:py-32 bg-offwhite border-b border-black/5">
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
-        <header className="flex flex-col sm:flex-row justify-between items-end gap-10 mb-20 text-left w-full">
-          <div className="space-y-6">
+        <header className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-10 mb-20 w-full">
+          <div className="space-y-6 text-left">
             <p className="text-[11px] font-bold text-signal uppercase tracking-[0.6em] italic leading-none">New Releases</p>
-            <h2 className="text-4xl sm:text-5xl font-black uppercase tracking-tighter italic">LATEST <br/> RELEASES.</h2>
+            <h2 className="text-4xl sm:text-5xl font-black uppercase tracking-tighter italic leading-[0.9]">LATEST <br className="hidden sm:block"/> RELEASES.</h2>
           </div>
-          <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="inline-flex gap-4 items-center text-[11px] font-black uppercase tracking-widest border-b-2 border-signal pb-2 hover:translate-x-2 transition-all group">
+          <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="inline-flex gap-4 items-center text-[11px] font-black uppercase tracking-widest border-b-2 border-signal pb-2 hover:translate-x-2 transition-all group shrink-0">
             Visit Shop <ArrowRight className="w-4 h-4" />
           </a>
         </header>
