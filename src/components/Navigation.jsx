@@ -70,9 +70,8 @@ export const Navbar = () => {
                     className="fixed inset-0 bg-white z-[100] flex flex-col p-8 sm:p-12 animate-in fade-in zoom-in-95 duration-300 h-[100dvh] overflow-y-auto"
                     style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
                 >
-                    <div className="flex justify-between items-center mb-16 shrink-0">
-                        <span className="font-bold text-black text-[11px] tracking-widest uppercase italic border-b border-signal">Navigation Portal</span>
-                        <button onClick={() => setIsMenuOpen(false)} className="p-2 -mr-2"><X className="w-6 h-6 text-black" /></button>
+                    <div className="flex justify-end items-center mb-16 shrink-0">
+                        <button onClick={() => setIsMenuOpen(false)} className="p-2 -mr-2"><X className="w-8 h-8 text-black" /></button>
                     </div>
                     
                     <ul className="flex flex-col gap-6">
