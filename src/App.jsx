@@ -237,13 +237,13 @@ const HomeView = () => {
         </div>
       </section>
 
-      {/* SELECTED ARTIFACTS / SHOP SECTION */}
+      {/* LATEST RELEASES / SHOP SECTION */}
       <section className="py-24 sm:py-32 bg-offwhite border-b border-black/5">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
            <div className="flex flex-col sm:flex-row justify-between items-end gap-10 mb-20">
               <div className="space-y-6">
-                 <p className="text-[11px] font-bold text-signal uppercase tracking-[0.6em] italic leading-none">Distilled Works</p>
-                 <h2 className="text-4xl sm:text-5xl font-black uppercase tracking-tighter italic">SELECTED <br/> ARTIFACTS.</h2>
+                 <p className="text-[11px] font-bold text-signal uppercase tracking-[0.6em] italic leading-none">Registry Spotlight</p>
+                 <h2 className="text-4xl sm:text-5xl font-black uppercase tracking-tighter italic">LATEST <br/> RELEASES.</h2>
               </div>
               <a href="https://maartenvandervleuten.bandcamp.com/" target="_blank" className="inline-flex gap-4 items-center text-[11px] font-black uppercase tracking-widest border-b-2 border-signal pb-2 hover:translate-x-2 transition-all group">
                 Browse Full Shop <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform"/>
@@ -252,16 +252,20 @@ const HomeView = () => {
 
            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
               {[
-                { title: "Distilled Works", year: "2024", label: "Signum" },
-                { title: "Systematic Registry 2", year: "2023", label: "Signum" },
-                { title: "The Scars Remain", year: "2010", label: "ToneFloat" }
+                { title: "Distilled Works", year: "2024", label: "Signum", imageUrl: null },
+                { title: "Systematic Registry 2", year: "2023", label: "Signum", imageUrl: null },
+                { title: "The Scars Remain", year: "2010", label: "ToneFloat", imageUrl: null }
               ].map((item, i) => (
                 <div key={i} className="bg-white p-10 rounded-[2.5rem] border border-black/5 shadow-xl hover:shadow-2xl transition-all group">
                    <div className="aspect-square bg-offwhite rounded-2xl mb-8 flex items-center justify-center relative overflow-hidden">
-                      <Disc className="w-16 h-16 text-black/5 group-hover:scale-110 transition-transform group-hover:rotate-12"/>
+                      {item.imageUrl ? (
+                        <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      ) : (
+                        <Disc className="w-16 h-16 text-black/5 group-hover:scale-110 transition-transform group-hover:rotate-12"/>
+                      )}
                       <div className="absolute top-6 right-6 px-3 py-1 bg-black text-white text-[10px] font-black rounded-full italic">{item.year}</div>
                    </div>
-                   <h3 className="text-xl font-black uppercase tracking-tighter mb-2 italic">{item.title}</h3>
+                   <h3 className="text-xl font-black uppercase tracking-tighter mb-2 italic leading-tight">{item.title}</h3>
                    <p className="text-[11px] font-bold text-black/30 uppercase tracking-[0.2em] mb-8">{item.label} Recordings</p>
                    <a href="#" className="w-full py-4 bg-black text-white rounded-full text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-signal transition-colors shadow-lg">
                       Buy on Bandcamp <ExternalLink className="w-3 h-3"/>
@@ -464,7 +468,7 @@ const BiographyView = () => {
   );
 };
 
-// ARCHIVE VIEW - FIXED TEXT CLIPPING
+// ARCHIVE VIEW
 const ArchiveView = () => {
   const releases = [
     { title: "Metamorphism", year: "1991", label: "Djax-Up-Beats", alias: "Flux" },
@@ -509,7 +513,6 @@ const ArchiveView = () => {
                       <div className="w-1 h-8 bg-black/5 group-hover:bg-white/10 mt-2 rounded-full" />
                    </div>
                    <div className="min-w-0">
-                      {/* Removed truncate to allow wrapping for long titles */}
                       <h4 className="text-xl sm:text-2xl font-black uppercase leading-[1.2] mb-2 group-hover:text-white tracking-tighter italic break-words">{rel.title}</h4>
                       <p className="text-[11px] sm:text-[12px] font-bold text-black/30 group-hover:text-white/40 uppercase tracking-[0.2em]">{rel.alias} — {rel.label}</p>
                    </div>
@@ -525,7 +528,7 @@ const ArchiveView = () => {
   );
 };
 
-// SIGNUM VIEW - LOGO SPACE
+// SIGNUM VIEW
 const SignumView = () => (
   <main className="pt-48 lg:pt-56 pb-32 bg-white w-full overflow-x-hidden">
     <SEO title="Signum Recordings" description="The independent label for frequency exploration based in Vught, Netherlands since 1996." />
@@ -536,7 +539,6 @@ const SignumView = () => (
               <p className="text-xs sm:text-sm font-black text-signal uppercase tracking-[0.4em] w-full border-b-2 border-signal/10 pb-8 inline-block italic">ESTABLISHED 1996 / VUGHT, NL</p>
            </div>
            
-           {/* LOGO PORTAL SPACE */}
            <div className="lg:pt-4">
               <div className="aspect-square w-full max-w-[280px] sm:max-w-[400px] bg-offwhite border border-black/5 rounded-full flex flex-col items-center justify-center relative overflow-hidden group">
                  <Disc className="w-20 h-20 text-black/5 absolute animate-spin-slow group-hover:text-signal/10 transition-colors" />
@@ -602,7 +604,7 @@ const PressView = () => (
    </main>
 );
 
-// CONTACT VIEW - REFINED EMAIL & CHANNELS
+// CONTACT VIEW
 const ContactView = () => (
   <main className="pt-48 lg:pt-56 pb-32 bg-white w-full overflow-x-hidden">
     <SEO title="Contact" description="Direct communication portal for Maarten van der Vleuten." />
