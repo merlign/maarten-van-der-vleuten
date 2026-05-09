@@ -8,7 +8,8 @@ import {
   ShoppingCart, Mail, Globe, Play, ChevronRight,
   Archive, FileText, ArrowRight, Zap, Download,
   Camera, Newspaper, Calendar, ArrowUpRight,
-  ArrowLeft, ArrowRight as ArrowRightIcon
+  ArrowLeft, ArrowRight as ArrowRightIcon,
+  PlayCircle, Layers, Database
 } from 'lucide-react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -163,9 +164,9 @@ const Footer = () => {
           <div className="space-y-8">
              <h4 className="text-[11px] font-bold uppercase tracking-[0.4em] text-signal">Channels</h4>
              <ul className="space-y-4 text-xs sm:text-sm font-bold text-black/40 uppercase tracking-widest">
-                <li><a href="#" className="hover:text-black transition-colors">Instagram</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Bandcamp</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Discogs</a></li>
+                <li><a href="https://open.spotify.com/" target="_blank" className="hover:text-black transition-colors">Spotify</a></li>
+                <li><a href="https://maartenvandervleuten.bandcamp.com/" target="_blank" className="hover:text-black transition-colors">Bandcamp</a></li>
+                <li><a href="https://www.discogs.com/" target="_blank" className="hover:text-black transition-colors">Discogs</a></li>
              </ul>
           </div>
         </div>
@@ -193,7 +194,7 @@ const HomeView = () => {
       {/* Hero Section */}
       <section className="relative py-20 sm:py-24 lg:py-40 w-full border-b border-black/5 bg-white">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16 lg:gap-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
             
             {/* Left Content Column */}
             <div className="order-2 lg:order-1 relative z-10 w-full space-y-10">
@@ -212,6 +213,13 @@ const HomeView = () => {
                     Archive
                   </Link>
                </div>
+               
+               {/* Quick Social Hub */}
+               <div className="flex gap-8 pt-4 items-center">
+                  <a href="https://open.spotify.com/" target="_blank" className="p-3 transition-colors hover:text-signal" title="Listen on Spotify"><Music className="w-5 h-5"/></a>
+                  <a href="https://maartenvandervleuten.bandcamp.com/" target="_blank" className="p-3 transition-colors hover:text-signal" title="Shop on Bandcamp"><ShoppingCart className="w-5 h-5"/></a>
+                  <a href="https://www.discogs.com/" target="_blank" className="p-3 transition-colors hover:text-signal" title="Explore on Discogs"><Database className="w-5 h-5"/></a>
+               </div>
             </div>
 
             {/* Right Image Column */}
@@ -223,10 +231,44 @@ const HomeView = () => {
                     className="w-full h-full object-cover object-top scale-105 group-hover:scale-110 transition-transform duration-1000"
                     onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&auto=format"; }}
                   />
-                  <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent opacity-40" />
                </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* SELECTED ARTIFACTS / SHOP SECTION */}
+      <section className="py-24 sm:py-32 bg-offwhite border-b border-black/5">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
+           <div className="flex flex-col sm:flex-row justify-between items-end gap-10 mb-20">
+              <div className="space-y-6">
+                 <p className="text-[11px] font-bold text-signal uppercase tracking-[0.6em] italic leading-none">Distilled Works</p>
+                 <h2 className="text-4xl sm:text-5xl font-black uppercase tracking-tighter italic">SELECTED <br/> ARTIFACTS.</h2>
+              </div>
+              <a href="https://maartenvandervleuten.bandcamp.com/" target="_blank" className="inline-flex gap-4 items-center text-[11px] font-black uppercase tracking-widest border-b-2 border-signal pb-2 hover:translate-x-2 transition-all group">
+                Browse Full Shop <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform"/>
+              </a>
+           </div>
+
+           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+              {[
+                { title: "Distilled Works", year: "2024", label: "Signum" },
+                { title: "Systematic Registry 2", year: "2023", label: "Signum" },
+                { title: "The Scars Remain", year: "2010", label: "ToneFloat" }
+              ].map((item, i) => (
+                <div key={i} className="bg-white p-10 rounded-[2.5rem] border border-black/5 shadow-xl hover:shadow-2xl transition-all group">
+                   <div className="aspect-square bg-offwhite rounded-2xl mb-8 flex items-center justify-center relative overflow-hidden">
+                      <Disc className="w-16 h-16 text-black/5 group-hover:scale-110 transition-transform group-hover:rotate-12"/>
+                      <div className="absolute top-6 right-6 px-3 py-1 bg-black text-white text-[10px] font-black rounded-full italic">{item.year}</div>
+                   </div>
+                   <h3 className="text-xl font-black uppercase tracking-tighter mb-2 italic">{item.title}</h3>
+                   <p className="text-[11px] font-bold text-black/30 uppercase tracking-[0.2em] mb-8">{item.label} Recordings</p>
+                   <a href="#" className="w-full py-4 bg-black text-white rounded-full text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-signal transition-colors shadow-lg">
+                      Buy on Bandcamp <ExternalLink className="w-3 h-3"/>
+                   </a>
+                </div>
+              ))}
+           </div>
         </div>
       </section>
 
@@ -266,7 +308,7 @@ const HomeView = () => {
   );
 };
 
-// BIOGRAPHY VIEW - REFINED SCALE & ELEGANCE
+// BIOGRAPHY VIEW
 const BiographyView = () => {
   const eras = [
     {
@@ -418,29 +460,11 @@ const BiographyView = () => {
             </div>
          </div>
       </section>
-
-      {/* Final CTAs */}
-      <section className="bg-black py-24 sm:py-32 w-full shadow-inner overflow-hidden relative">
-         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-               <div className="space-y-10">
-                  <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tighter leading-tight italic">
-                    Access the <br/> complete <br className="hidden sm:block"/> <span className="text-signal text-4xl sm:text-6xl">media kit.</span>
-                  </h3>
-                  <p className="text-white/40 text-[12px] font-black uppercase tracking-[0.2em] italic max-w-sm">Official narratives and visual artifacts.</p>
-                  <Link to="/press" className="inline-flex px-10 py-5 bg-signal text-white rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-white hover:text-black transition-all shadow-2xl">
-                    Download Toolkit
-                  </Link>
-               </div>
-            </div>
-         </div>
-         <div className="absolute top-0 right-0 w-[40vw] h-full bg-gradient-to-l from-white/5 to-transparent pointer-events-none" />
-      </section>
     </main>
   );
 };
 
-// ARCHIVE VIEW - REFINED SCALE
+// ARCHIVE VIEW - FIXED TEXT CLIPPING
 const ArchiveView = () => {
   const releases = [
     { title: "Metamorphism", year: "1991", label: "Djax-Up-Beats", alias: "Flux" },
@@ -471,22 +495,23 @@ const ArchiveView = () => {
            <p className="text-[12px] font-black text-signal uppercase tracking-[0.4em] italic">Full History</p>
            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-none w-full italic">ARCHIVE.</h1>
            <div className="flex flex-wrap gap-8 sm:gap-10 font-bold text-xs tracking-widest text-black/40 w-full uppercase pt-6">
-              <span className="italic underline underline-offset-8 decoration-signal/20 cursor-pointer hover:text-black transition-colors">Bandcamp</span>
-              <span className="italic underline underline-offset-8 decoration-signal/20 cursor-pointer hover:text-black transition-colors">Discogs</span>
+              <a href="https://maartenvandervleuten.bandcamp.com/" target="_blank" className="italic underline underline-offset-8 decoration-signal/20 hover:text-black transition-colors">Bandcamp</a>
+              <a href="https://www.discogs.com/" target="_blank" className="italic underline underline-offset-8 decoration-signal/20 hover:text-black transition-colors">Discogs</a>
            </div>
         </div>
 
-        <div className="space-y-5 max-w-5xl w-full">
+        <div className="grid grid-cols-1 gap-5 max-w-5xl w-full">
            {releases.sort((a,b) => b.year - a.year).map((rel, i) => (
-             <div key={i} className="bg-white p-7 sm:p-10 rounded-[2rem] lg:rounded-[2.5rem] flex flex-col sm:flex-row items-center justify-between group hover:bg-black hover:text-white transition-all shadow-lg w-full border border-black/5 gap-6 sm:gap-4">
+             <div key={i} className="bg-white p-7 sm:p-10 rounded-[2rem] lg:rounded-[2.5rem] flex flex-col sm:flex-row items-center justify-between group hover:bg-black hover:text-white transition-all shadow-lg w-full border border-black/5 gap-6 sm:gap-10">
                 <div className="flex items-center gap-8 sm:gap-12 w-full sm:min-w-0 flex-1">
                    <div className="shrink-0 flex flex-col items-center">
                       <span className="text-[13px] sm:text-[14px] font-black text-signal font-mono tracking-widest group-hover:text-white">{rel.year}</span>
                       <div className="w-1 h-8 bg-black/5 group-hover:bg-white/10 mt-2 rounded-full" />
                    </div>
-                   <div className="min-w-0 pr-6">
-                      <h4 className="text-xl sm:text-2xl font-black uppercase leading-[1.1] mb-1.5 group-hover:text-white truncate tracking-tighter italic">{rel.title}</h4>
-                      <p className="text-[11px] sm:text-[12px] font-bold text-black/30 group-hover:text-white/40 uppercase tracking-[0.2em] truncate">{rel.alias} — {rel.label}</p>
+                   <div className="min-w-0">
+                      {/* Removed truncate to allow wrapping for long titles */}
+                      <h4 className="text-xl sm:text-2xl font-black uppercase leading-[1.2] mb-2 group-hover:text-white tracking-tighter italic break-words">{rel.title}</h4>
+                      <p className="text-[11px] sm:text-[12px] font-bold text-black/30 group-hover:text-white/40 uppercase tracking-[0.2em]">{rel.alias} — {rel.label}</p>
                    </div>
                 </div>
                 <div className="w-14 h-14 sm:w-16 sm:h-16 bg-offwhite text-black rounded-full flex items-center justify-center shrink-0 group-hover:bg-signal group-hover:text-white transition-all shadow-2xl">
@@ -500,14 +525,28 @@ const ArchiveView = () => {
   );
 };
 
-// SIGNUM VIEW - REFINED SCALE
+// SIGNUM VIEW - LOGO SPACE
 const SignumView = () => (
   <main className="pt-48 lg:pt-56 pb-32 bg-white w-full overflow-x-hidden">
     <SEO title="Signum Recordings" description="The independent label for frequency exploration based in Vught, Netherlands since 1996." />
-    <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-20 sm:space-y-24">
-       <div className="space-y-8 w-full">
-          <h1 className="text-5xl sm:text-6xl lg:text-8xl font-black uppercase tracking-tighter leading-none text-black italic">SIGNUM <br/> RECORDINGS.</h1>
-          <p className="text-xs sm:text-sm font-black text-signal uppercase tracking-[0.4em] w-full border-b-2 border-signal/10 pb-8 inline-block italic">ESTABLISHED 1996 / VUGHT, NL</p>
+    <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-20 sm:space-y-32">
+       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+           <div className="space-y-8">
+              <h1 className="text-5xl sm:text-6xl lg:text-8xl font-black uppercase tracking-tighter leading-none text-black italic">SIGNUM <br/> RECORDINGS.</h1>
+              <p className="text-xs sm:text-sm font-black text-signal uppercase tracking-[0.4em] w-full border-b-2 border-signal/10 pb-8 inline-block italic">ESTABLISHED 1996 / VUGHT, NL</p>
+           </div>
+           
+           {/* LOGO PORTAL SPACE */}
+           <div className="lg:pt-4">
+              <div className="aspect-square w-full max-w-[280px] sm:max-w-[400px] bg-offwhite border border-black/5 rounded-full flex flex-col items-center justify-center relative overflow-hidden group">
+                 <Disc className="w-20 h-20 text-black/5 absolute animate-spin-slow group-hover:text-signal/10 transition-colors" />
+                 <div className="text-center relative z-10 px-10">
+                    <p className="text-[10px] font-black text-black/20 uppercase tracking-[0.4em] mb-4 italic">Signum Identifier</p>
+                    <p className="text-sm font-black uppercase italic text-black/10">[ Reserved for Label Logo ]</p>
+                 </div>
+                 <div className="absolute inset-0 bg-gradient-to-tr from-signal/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              </div>
+           </div>
        </div>
        
        <div className="bg-offwhite p-10 sm:p-16 lg:p-24 rounded-[2.5rem] lg:rounded-[4rem] border border-black/5 space-y-16 shadow-2xl">
@@ -519,7 +558,7 @@ const SignumView = () => (
                Founded in 1996 as a primary label for non-mainstream sound, Signum Recordings bypasses clinical distribution in favor of direct-to-listener signal transmission.
             </p>
           </div>
-          <a href="https://maartenvandervleuten.bandcamp.com/" target="_blank" className="inline-flex px-10 py-5 bg-black text-white font-black uppercase tracking-widest text-[11px] rounded-full hover:bg-signal transition-all shadow-2xl">
+          <a href="https://maartenvandervleuten.bandcamp.com/" target="_blank" className="inline-flex px-10 py-5 bg-black text-white font-black uppercase tracking-widest text-[11px] rounded-full hover:bg-signal transition-all shadow-xl">
              ACCESS LABEL SHOP
           </a>
        </div>
@@ -527,55 +566,80 @@ const SignumView = () => (
   </main>
 );
 
-// PRESS VIEW - REFINED SCALE
+// PRESS VIEW
 const PressView = () => (
    <main className="pt-48 lg:pt-56 pb-32 bg-white w-full overflow-x-hidden">
       <SEO title="Press Kit" description="Official media assets and narratives for Maarten van der Vleuten." />
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-20 sm:space-y-24">
-         <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-none italic">PRESS KIT.</h1>
+         <div className="flex flex-col sm:flex-row justify-between items-end gap-10">
+            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-none italic">PRESS KIT.</h1>
+            <Link to="/archive" className="flex items-center gap-4 text-[11px] font-black uppercase tracking-widest border-b border-black pb-1 hover:text-signal hover:border-signal transition-all">
+               View Full Archive <ArrowRight className="w-3 h-3"/>
+            </Link>
+         </div>
+         <p className="max-w-2xl text-black/50 text-lg font-medium leading-relaxed italic border-l-4 border-signal pl-8">
+            To update toolkit material: Upload new artifacts (PDF, High-Res JPG, ZIP) to the <strong>/public/press/</strong> directory and link them in the Registry below.
+         </p>
          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10 max-w-5xl">
             {[
-               { title: "Story Set", size: "Narratives (NL/EN) & History" },
-               { title: "Visual Assets", size: "High-Resolution Portraits" },
-               { title: "Identity Marks", size: "Vector Wordmarks [SVG/PNG]" },
-               { title: "Complete Pack", size: "Archive Bundle [.ZIP]" }
+               { title: "Story Set", size: "Narratives (NL/EN) & History", link: "/press/mvdv_biography.pdf" },
+               { title: "Visual Assets", size: "High-Resolution Portraits", link: "/press/photogallery.zip" },
+               { title: "Identity Marks", size: "Vector Wordmarks [SVG/PNG]", link: "/press/mv_dv_logos.zip" },
+               { title: "Complete Pack", size: "Archive Bundle [.ZIP]", link: "/press/mvdv_full_presskit.zip" }
             ].map((item, i) => (
-              <div key={i} className="p-10 lg:p-12 bg-offwhite rounded-[2.5rem] flex flex-col items-start justify-between group hover:bg-black hover:text-white transition-all border border-black/5 shadow-2xl">
+              <a key={i} href={item.link} className="p-10 lg:p-12 bg-offwhite rounded-[2.5rem] flex flex-col items-start justify-between group hover:bg-black hover:text-white transition-all border border-black/5 shadow-2xl">
                  <div className="w-full space-y-4 mb-10">
                     <h3 className="text-3xl font-black uppercase leading-none tracking-tighter italic">{item.title}</h3>
                     <p className="text-xs font-bold text-black/40 group-hover:text-white/40 uppercase tracking-[0.2em] leading-relaxed">{item.size}</p>
                  </div>
-                 <button className="w-14 h-14 bg-white text-black rounded-full flex items-center justify-center shrink-0 group-hover:bg-signal group-hover:text-white transition-all shadow-2xl">
+                 <div className="w-14 h-14 bg-white text-black rounded-full flex items-center justify-center shrink-0 group-hover:bg-signal group-hover:text-white transition-all shadow-2xl">
                     <Download className="w-6 h-6" />
-                 </button>
-              </div>
+                 </div>
+              </a>
             ))}
          </div>
       </div>
    </main>
 );
 
-// CONTACT VIEW - REFINED SCALE
+// CONTACT VIEW - REFINED EMAIL & CHANNELS
 const ContactView = () => (
   <main className="pt-48 lg:pt-56 pb-32 bg-white w-full overflow-x-hidden">
     <SEO title="Contact" description="Direct communication portal for Maarten van der Vleuten." />
-    <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-20 sm:space-y-28 overflow-hidden">
+    <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 space-y-20 sm:space-y-24 overflow-hidden">
        <h1 className="text-5xl sm:text-7xl md:text-8xl font-black uppercase tracking-tighter leading-none italic">CONTACT.</h1>
-       <div className="space-y-24 sm:space-y-32 w-full">
+       <div className="space-y-24 sm:space-y-28 w-full">
           <div className="space-y-10 w-full">
-             <p className="text-[12px] font-black text-signal uppercase tracking-[0.6em] italic">Direct Transmission</p>
-             <a href="mailto:contact@maartenvandervleuten.eu" className="text-2xl sm:text-4xl lg:text-7xl font-black tracking-tighter hover:text-signal transition-colors break-words leading-none uppercase max-w-full inline-block decoration-signal/10 decoration-[12px] underline underline-offset-[16px] italic lg:underline-offset-[20px]">
+             <p className="text-[12px] font-black text-signal uppercase tracking-[0.6em] italic leading-none">Direct Connection</p>
+             <a href="mailto:contact@maartenvandervleuten.eu" className="text-xl sm:text-3xl lg:text-5xl font-black tracking-tighter hover:text-signal transition-colors break-all leading-[1.1] uppercase max-w-full inline-block decoration-signal/20 decoration-[6px] underline underline-offset-[12px] italic lg:underline-offset-[16px] lg:decoration-[10px]">
                 contact@maartenvandervleuten.eu
              </a>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 pt-16 border-t border-black/5">
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 pt-16 border-t border-black/5">
              <div>
-                <p className="text-xs font-black uppercase text-black/20 tracking-widest mb-4 italic">Social Channels</p>
-                <div className="flex flex-col gap-3 text-lg font-black uppercase italic">
-                    <a href="#" className="hover:text-signal transition-colors">Instagram</a>
-                    <a href="#" className="hover:text-signal transition-colors">Bandcamp</a>
-                    <a href="#" className="hover:text-signal transition-colors">Discogs</a>
-                </div>
+                <p className="text-[11px] font-black uppercase text-black/20 tracking-[0.4em] mb-6 italic leading-none">Distilled Listen</p>
+                <a href="https://open.spotify.com/" target="_blank" className="flex items-center gap-4 text-lg font-black uppercase italic hover:text-signal transition-colors">
+                    <Music className="w-5 h-5"/> Spotify
+                </a>
+             </div>
+             <div>
+                <p className="text-[11px] font-black uppercase text-black/20 tracking-[0.4em] mb-6 italic leading-none">Label Registry</p>
+                <a href="https://www.discogs.com/" target="_blank" className="flex items-center gap-4 text-lg font-black uppercase italic hover:text-signal transition-colors">
+                    <Database className="w-5 h-5"/> Discogs
+                </a>
+             </div>
+             <div>
+                <p className="text-[11px] font-black uppercase text-black/20 tracking-[0.4em] mb-6 italic leading-none">Studio Shop</p>
+                <a href="https://maartenvandervleuten.bandcamp.com/" target="_blank" className="flex items-center gap-4 text-lg font-black uppercase italic hover:text-signal transition-colors">
+                    <ShoppingCart className="w-5 h-5"/> Bandcamp
+                </a>
+             </div>
+             <div>
+                <p className="text-[11px] font-black uppercase text-black/20 tracking-[0.4em] mb-6 italic leading-none">Visual Portal</p>
+                <a href="#" target="_blank" className="flex items-center gap-4 text-lg font-black uppercase italic hover:text-signal transition-colors">
+                    <Camera className="w-5 h-5"/> Instagram
+                </a>
              </div>
           </div>
        </div>
