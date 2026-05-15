@@ -14,7 +14,7 @@ export const SOCIAL_LINKS = {
     spotify: "https://open.spotify.com/",
     bandcamp: "https://maartenvandervleuten.bandcamp.com/",
     discogs: "https://www.discogs.com/artist/28749-Maarten-van-der-Vleuten",
-    instagram: "#",
+    instagram: "https://www.instagram.com/maartenvdvleuten/",
     legacy: "http://www.maartenvandervleuten.com/main.htm"
 };
 
