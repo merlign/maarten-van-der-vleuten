@@ -33,8 +33,8 @@ export const HomeView = () => (
             </div>
           </header>
           <div className="order-2 lg:order-2">
-            <div className="aspect-[4/5] lg:aspect-[3/4] w-full max-w-lg mx-auto bg-offwhite rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-2xl relative grayscale group">
-              <img src="/maarten.jpg" alt="Maarten van der Vleuten" className="w-full h-full object-cover object-top scale-105 group-hover:scale-110 transition-transform duration-1000" />
+            <div className="aspect-[4/5] lg:aspect-[3/4] w-full max-w-lg mx-auto bg-offwhite rounded-[2.5rem] lg:rounded-[4rem] overflow-hidden shadow-xl relative group">
+              <img src="/maarten.jpg" alt="Maarten van der Vleuten" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
             </div>
           </div>
         </div>
