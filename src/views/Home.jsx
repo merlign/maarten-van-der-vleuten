@@ -22,8 +22,8 @@ export const HomeView = () => (
               Electronic music and sound design. Based in the Netherlands, active since 1987. From early techno to cinematic soundscapes and experimental recordings.
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
-              <Link to="/biography" className="px-8 py-4 bg-black text-white rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-signal transition-all shadow-xl active:scale-95">Biography</Link>
-              <Link to="/archive" className="px-8 py-4 border-2 border-black text-black rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-black hover:text-white transition-all active:scale-95">Archive</Link>
+              <Link to="/archive" className="px-8 py-4 bg-black text-white rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-signal transition-all shadow-xl active:scale-95">Archive</Link>
+              <Link to="/contact" className="px-8 py-4 border-2 border-black text-black rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-black hover:text-white transition-all active:scale-95">Contact</Link>
             </div>
             <div className="flex gap-8 pt-4 items-center">
               <a href={SOCIAL_LINKS.spotify} target="_blank" rel="noopener noreferrer" className="transition-all hover:text-signal hover:scale-110" title="Spotify"><SpotifyIcon className="w-6 h-6"/></a>
@@ -71,31 +71,6 @@ export const HomeView = () => (
       </div>
     </section>
 
-    {/* BIOGRAPHY TEASER */}
-    <section className="py-24 sm:py-32 bg-white border-b border-black/5 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
-          <div className="lg:col-span-7 space-y-10">
-            <p className="text-[11px] font-bold text-signal uppercase tracking-[0.6em] italic leading-none">Biography</p>
-            <h2 className="text-4xl sm:text-5xl lg:text-7xl uppercase tracking-tighter leading-[0.95]">
-              Over 35 years <br/> of electronic <br/> music.
-            </h2>
-            <div className="space-y-8 text-black/60 text-lg sm:text-xl font-medium leading-relaxed max-w-2xl">
-              <p>Maarten has been part of the electronic music scene since the late eighties. His work covers many different styles and periods, from early techno to modern experimental compositions.</p>
-              <Link to="/biography" className="inline-flex items-center gap-6 text-black font-black uppercase tracking-widest text-[11px] group border-b-2 border-signal pb-2 hover:translate-x-3 transition-transform">
-                Read Biography <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
-              </Link>
-            </div>
-          </div>
-          <div className="lg:col-span-5 relative">
-            <div className="aspect-square bg-offwhite rounded-[3rem] flex items-center justify-center group cursor-pointer overflow-hidden border border-black/5 shadow-2xl">
-              <span className="text-[15vw] font-black text-black/5 italic group-hover:scale-125 transition-transform duration-1000">1987</span>
-              <Disc className="absolute w-20 h-20 text-signal/20 animate-spin-slow" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     {/* SIGNUM TEASER */}
     <section className="py-24 sm:py-32 bg-black text-white relative overflow-hidden">
