@@ -36,7 +36,7 @@ export const BiographyView = () => (
                         </div>
                     </div>
                     <div className="md:col-span-8 space-y-10 lg:space-y-12">
-                        <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black uppercase tracking-tighter leading-[1.1] italic">{era.title}</h2>
+                        <h2 className="text-4xl sm:text-5xl lg:text-7xl uppercase tracking-tighter leading-[1.1]">{era.title}</h2>
                         <div className="space-y-8 text-black/70 text-lg sm:text-xl lg:text-2xl leading-relaxed font-medium max-w-2xl lg:max-w-3xl">
                             {era.description.map((p, j) => <p key={j} dangerouslySetInnerHTML={{ __html: p }} className="leading-[1.7]" />)}
                         </div>
@@ -50,7 +50,7 @@ export const BiographyView = () => (
         <div className="space-y-20 sm:space-y-24">
             <div className="space-y-8 max-w-4xl">
                 <span className="text-[12px] font-black text-signal uppercase tracking-[0.4em] italic leading-none block">Alias Registry</span>
-                <h2 className="text-5xl sm:text-6xl font-black uppercase tracking-tighter leading-tight italic">THE NAMES.</h2>
+                <h2 className="text-5xl sm:text-6xl uppercase tracking-tighter leading-tight">THE NAMES.</h2>
                 <p className="text-black/50 text-lg font-medium leading-relaxed italic max-w-xl">
                     Maarten has released music under more than 20 different artist names over the years.
                 </p>

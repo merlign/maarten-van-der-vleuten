@@ -15,7 +15,7 @@ export default {
       fontFamily: {
         sans: ['"Space Grotesk"', 'sans-serif'],
         display: ['"Poiret One"', 'cursive'],
-        serif: ['"Poiret One"', 'cursive'],
+        serif: ['"DM Serif Display"', 'serif'],
         mono: ['"Space Mono"', 'monospace'],
       },
       animation: {

@@ -15,7 +15,7 @@ export const HomeView = () => (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <header className="order-1 lg:order-1 space-y-10">
             <p className="text-[11px] font-bold text-signal uppercase tracking-[0.8em]">Composer</p>
-            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black text-black leading-[0.85] tracking-tighter uppercase italic">
+            <h1 className="text-5xl sm:text-7xl lg:text-8xl text-black leading-[0.85] tracking-tighter uppercase">
               MAARTEN <br/> <span className="text-signal lg:text-black">VAN DER</span> <br className="hidden lg:block"/> <span className="text-signal">VLEUTEN.</span>
             </h1>
             <p className="text-black/50 text-base sm:text-lg lg:text-xl leading-relaxed max-w-xl font-medium italic">
@@ -47,7 +47,7 @@ export const HomeView = () => (
         <header className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-10 mb-20 w-full">
           <div className="space-y-6 text-left">
             <p className="text-[11px] font-bold text-signal uppercase tracking-[0.6em] italic leading-none">New Releases</p>
-            <h2 className="text-4xl sm:text-5xl font-black uppercase tracking-tighter italic leading-[0.9]">LATEST <br className="hidden sm:block"/> RELEASES.</h2>
+            <h2 className="text-4xl sm:text-5xl uppercase tracking-tighter leading-[0.9]">LATEST <br className="hidden sm:block"/> RELEASES.</h2>
           </div>
           <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="inline-flex gap-4 items-center text-[11px] font-black uppercase tracking-widest border-b-2 border-signal pb-2 hover:translate-x-2 transition-all group shrink-0">
             Visit Shop <ArrowRight className="w-4 h-4" />
@@ -60,7 +60,7 @@ export const HomeView = () => (
                   <Disc className="w-16 h-16 text-black/5 group-hover:scale-110 transition-transform group-hover:rotate-12" />
                   <div className="absolute top-6 right-6 px-3 py-1 bg-black text-white text-[10px] font-black rounded-full italic">{item.year}</div>
                </div>
-               <h3 className="text-xl font-black uppercase tracking-tighter mb-2 italic leading-tight">{item.title}</h3>
+               <h3 className="text-xl uppercase tracking-tighter mb-2 leading-tight">{item.title}</h3>
                <p className="text-[11px] font-bold text-black/30 uppercase tracking-[0.2em] mb-8">{item.label} Recordings</p>
                <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="w-full py-4 bg-black text-white rounded-full text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-signal transition-colors shadow-lg active:scale-95">
                   Buy on Bandcamp <ExternalLink className="w-3 h-3" />
@@ -77,7 +77,7 @@ export const HomeView = () => (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
           <div className="lg:col-span-7 space-y-10">
             <p className="text-[11px] font-bold text-signal uppercase tracking-[0.6em] italic leading-none">Biography</p>
-            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black uppercase tracking-tighter italic leading-[0.95]">
+            <h2 className="text-4xl sm:text-5xl lg:text-7xl uppercase tracking-tighter leading-[0.95]">
               Over 35 years <br/> of electronic <br/> music.
             </h2>
             <div className="space-y-8 text-black/60 text-lg sm:text-xl font-medium leading-relaxed max-w-2xl">
@@ -110,7 +110,7 @@ export const HomeView = () => (
           </div>
           <div className="lg:col-span-7 order-1 lg:order-2 space-y-12">
             <p className="text-[11px] font-bold text-signal uppercase tracking-[0.6em] italic leading-none">About the Label</p>
-            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black uppercase tracking-tighter italic leading-[0.95]">
+            <h2 className="text-4xl sm:text-5xl lg:text-7xl uppercase tracking-tighter leading-[0.95]">
               SIGNUM <br/> RECORDINGS.
             </h2>
             <div className="space-y-10">

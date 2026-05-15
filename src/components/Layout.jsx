@@ -31,7 +31,7 @@ export const PageHeader = ({ title, subtitle, meta, children }) => (
             {subtitle}
           </span>
         )}
-        <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.85] italic">
+        <h1 className="text-5xl sm:text-7xl lg:text-8xl uppercase tracking-tighter leading-[0.85]">
           {title}
         </h1>
       </div>
