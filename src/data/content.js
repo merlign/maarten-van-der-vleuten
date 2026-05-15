@@ -19,7 +19,7 @@ export const SOCIAL_LINKS = {
 };
 
 export const LATEST_RELEASES = [
-    { title: "Fire them liars", year: "2024", label: "Signum", cat: "SIGN263", imageUrl: null, status: "COMING UP..." },
+    { title: "Fire them liars", year: "2024", label: "Signum", cat: "SIGN263", imageUrl: "/ftl.jpg", status: "COMING UP..." },
     { 
         title: "A Forest / Love Will Tear Us Apart", 
         year: "2026", 

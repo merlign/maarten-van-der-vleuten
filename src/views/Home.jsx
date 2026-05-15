@@ -55,8 +55,8 @@ export const HomeView = () => (
         </header>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {LATEST_RELEASES.map((item, i) => (
-            <article key={i} className="bg-white p-10 rounded-[2.5rem] border border-black/5 shadow-xl hover:shadow-2xl transition-all group relative overflow-hidden">
-               <div className="aspect-square bg-offwhite rounded-2xl mb-8 flex items-center justify-center relative overflow-hidden">
+            <article key={i} className="bg-white p-10 rounded-[2.5rem] border border-black/5 shadow-xl hover:shadow-2xl transition-all group relative overflow-hidden flex flex-col h-full">
+               <div className="aspect-square bg-offwhite rounded-2xl mb-8 flex items-center justify-center relative overflow-hidden shrink-0">
                   {item.imageUrl ? (
                     <img 
                       src={item.imageUrl} 
@@ -73,14 +73,22 @@ export const HomeView = () => (
                     </div>
                   )}
                </div>
-                <h3 className="text-xl uppercase tracking-tighter mb-2 leading-tight text-signal">{item.title}</h3>
-                <div className="mb-8 space-y-1">
-                  <p className="text-[11px] font-bold text-black/30 uppercase tracking-[0.2em]">{item.label} Recordings</p>
-                  {item.cat && <p className="text-[11px] font-bold text-black/30 uppercase tracking-[0.2em]">{item.cat}</p>}
-                </div>
-               <a href={item.link || SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className={cn("w-full py-4 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-3 transition-colors shadow-lg active:scale-95", item.status ? "bg-black/5 text-black/40 cursor-default" : "bg-black text-white hover:bg-signal")}>
-                  {item.status ? "Soon on Bandcamp" : "Buy on Bandcamp"} <ExternalLink className="w-3 h-3" />
-               </a>
+               
+               <div className="flex-grow flex flex-col">
+                  <h3 className="text-xl uppercase tracking-tighter mb-2 leading-tight text-signal min-h-[3rem] flex items-center">
+                    {item.title}
+                  </h3>
+                  <div className="mb-10 space-y-1">
+                    <p className="text-[11px] font-bold text-black/30 uppercase tracking-[0.2em]">{item.label} Recordings</p>
+                    {item.cat && <p className="text-[11px] font-bold text-black/30 uppercase tracking-[0.2em]">{item.cat}</p>}
+                  </div>
+                  
+                  <div className="mt-auto">
+                    <a href={item.link || SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className={cn("w-full py-4 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-3 transition-colors shadow-lg active:scale-95", item.status ? "bg-black/5 text-black/40 cursor-default" : "bg-black text-white hover:bg-signal")}>
+                        {item.status ? "Soon on Bandcamp" : "Buy on Bandcamp"} <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+               </div>
             </article>
           ))}
         </div>
