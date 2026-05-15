@@ -73,11 +73,11 @@ export const HomeView = () => (
                     </div>
                   )}
                </div>
-               <h3 className="text-xl uppercase tracking-tighter mb-2 leading-tight">{item.title}</h3>
-               <div className="mb-8 space-y-1">
-                 <p className="text-[11px] font-bold text-black/30 uppercase tracking-[0.2em]">{item.label} Recordings</p>
-                 {item.cat && <p className="text-[10px] font-black text-signal uppercase tracking-[0.1em]">{item.cat}</p>}
-               </div>
+                <h3 className="text-xl uppercase tracking-tighter mb-2 leading-tight text-signal">{item.title}</h3>
+                <div className="mb-8 space-y-1">
+                  <p className="text-[11px] font-bold text-black/30 uppercase tracking-[0.2em]">{item.label} Recordings</p>
+                  {item.cat && <p className="text-[11px] font-bold text-black/30 uppercase tracking-[0.2em]">{item.cat}</p>}
+                </div>
                <a href={item.link || SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className={cn("w-full py-4 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-3 transition-colors shadow-lg active:scale-95", item.status ? "bg-black/5 text-black/40 cursor-default" : "bg-black text-white hover:bg-signal")}>
                   {item.status ? "Soon on Bandcamp" : "Buy on Bandcamp"} <ExternalLink className="w-3 h-3" />
                </a>
