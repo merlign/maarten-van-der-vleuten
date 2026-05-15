@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ShoppingCart, Disc, ArrowRight, ExternalLink } from 'lucide-react';
 import { SEO, PageWrapper } from '../components/Layout';
 import { LATEST_RELEASES, SOCIAL_LINKS } from '../data/content';
+import { cn } from '../lib/utils';
 import { SpotifyIcon, DiscogsIcon, InstagramIcon } from '../components/BrandIcons';
 
 export const HomeView = () => (
