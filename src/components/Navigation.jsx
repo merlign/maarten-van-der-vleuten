@@ -42,16 +42,16 @@ export const Navbar = () => {
                     MAARTEN VAN DER VLEUTEN
                 </Link>
 
-                <ul className="hidden lg:flex items-center gap-8 font-display">
+                <ul className="hidden lg:flex items-center gap-8">
                     {links.map((link) => (
                         <li key={link.name}>
-                            <Link to={link.path} className={cn("text-[13px] font-bold uppercase tracking-[0.2em] transition-all hover:text-signal", location.pathname === link.path ? "text-signal" : "text-black/60")}>
+                            <Link to={link.path} className={cn("text-[11px] font-black uppercase tracking-tighter transition-all hover:text-signal", location.pathname === link.path ? "text-signal" : "text-black/60")}>
                                 {link.name}
                             </Link>
                         </li>
                     ))}
                     <li>
-                        <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="px-7 py-3 rounded-full text-[11px] font-bold tracking-widest bg-black text-white hover:bg-signal transition-all shadow-lg active:scale-95">SHOP</a>
+                        <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="px-7 py-3 rounded-full text-[11px] font-black tracking-widest bg-black text-white hover:bg-signal transition-all shadow-lg active:scale-95 leading-none">SHOP</a>
                     </li>
                 </ul>
 
@@ -70,14 +70,14 @@ export const Navbar = () => {
                         <button onClick={() => setIsMenuOpen(false)} className="p-2 -mr-2"><X className="w-8 h-8 text-black" /></button>
                     </div>
                     
-                    <ul className="flex flex-col gap-6 font-display">
+                    <ul className="flex flex-col gap-6">
                         {links.map((link) => (
                             <li key={link.name}>
                                 <Link 
                                     to={link.path} 
                                     onClick={() => setIsMenuOpen(false)} 
                                     className={cn(
-                                        "text-4xl sm:text-5xl font-bold border-b border-black/5 pb-4 flex justify-between items-center transition-colors italic tracking-tighter",
+                                        "text-4xl sm:text-5xl font-black border-b border-black/5 pb-4 flex justify-between items-center transition-colors italic tracking-tighter",
                                         location.pathname === link.path ? "text-signal" : "text-black"
                                     )}
                                 >
@@ -88,12 +88,12 @@ export const Navbar = () => {
                         ))}
                     </ul>
 
-                    <div className="mt-auto pt-16 flex flex-col gap-8 shrink-0 font-display">
+                    <div className="mt-auto pt-16 flex flex-col gap-8 shrink-0">
                         <a 
                             href={SOCIAL_LINKS.bandcamp} 
                             target="_blank" 
                             rel="noopener noreferrer" 
-                            className="w-full py-5 bg-black text-white text-center rounded-full text-[11px] font-bold tracking-widest uppercase flex items-center justify-center gap-3 active:bg-signal transition-colors"
+                            className="w-full py-5 bg-black text-white text-center rounded-full text-[11px] font-black tracking-widest uppercase flex items-center justify-center gap-3 active:bg-signal transition-colors"
                         >
                             BANDCAMP SHOP <ExternalLink className="w-3 h-3"/>
                         </a>
