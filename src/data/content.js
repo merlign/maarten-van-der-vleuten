@@ -13,7 +13,7 @@ export const SITE_METADATA = {
 export const SOCIAL_LINKS = {
     spotify: "https://open.spotify.com/",
     bandcamp: "https://maartenvandervleuten.bandcamp.com/",
-    discogs: "https://www.discogs.com/artist/11-Maarten-van-der-Vleuten",
+    discogs: "https://www.discogs.com/artist/28749-Maarten-van-der-Vleuten",
     instagram: "#",
     legacy: "http://www.maartenvandervleuten.com/main.htm"
 };
