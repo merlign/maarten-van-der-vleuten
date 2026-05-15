@@ -38,7 +38,7 @@ export const Navbar = () => {
         <header className="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-black/5">
             <LegacyBanner />
             <nav className="py-6 max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 flex items-center justify-between">
-                <Link to="/" className="text-xl sm:text-2xl font-medium tracking-widest text-black uppercase focus-visible:outline-signal font-display">
+                <Link to="/" className="text-[14px] sm:text-2xl font-medium tracking-widest text-black uppercase focus-visible:outline-signal font-display">
                     MAARTEN VAN DER VLEUTEN
                 </Link>
 
