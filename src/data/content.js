@@ -19,18 +19,20 @@ export const SOCIAL_LINKS = {
 };
 
 export const LATEST_RELEASES = [
-    { title: "Distilled Works", year: "2024", label: "Signum", imageUrl: null, status: "COMING UP..." },
+    { title: "Distilled Works", year: "2024", label: "Signum", cat: "SIG040", imageUrl: null, status: "COMING UP..." },
     { 
         title: "A Forest / Love Will Tear Us Apart", 
-        year: "2024", 
+        year: "2026", 
         label: "Signum", 
+        cat: "SIG042",
         imageUrl: "/aforest.jpg", 
         link: "https://maartenvandervleuten.bandcamp.com/album/a-forest-love-will-tear-us-apart" 
     },
     { 
-        title: "Yungya E.P. 2026", 
-        year: "2023", 
+        title: "Yungya E.P.", 
+        year: "2026", 
         label: "Signum", 
+        cat: "SIG043",
         imageUrl: "/yungya.jpg", 
         link: "https://maartenvandervleuten.bandcamp.com/album/yungya-e-p-2026" 
     }
