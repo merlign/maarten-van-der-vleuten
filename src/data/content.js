@@ -11,7 +11,7 @@ export const SITE_METADATA = {
 };
 
 export const SOCIAL_LINKS = {
-    spotify: "https://open.spotify.com/",
+    spotify: "https://open.spotify.com/artist/5HwNj7Dz7pgor5Ej6JswdB?si=baqa0UXJRx60kfjLlHNAuQ",
     bandcamp: "https://maartenvandervleuten.bandcamp.com/",
     discogs: "https://www.discogs.com/artist/28749-Maarten-van-der-Vleuten",
     instagram: "https://www.instagram.com/maartenvdvleuten/",
