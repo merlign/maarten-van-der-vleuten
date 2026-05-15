@@ -30,9 +30,7 @@ export const Navbar = () => {
         return () => { document.body.style.overflow = 'unset'; };
     }, [isMenuOpen]);
     
-    const links = [
-        { name: 'Contact', path: '/contact' },
-    ];
+    const links = [];
 
     return (
         <header className="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-black/5">
@@ -120,13 +118,7 @@ export const Footer = () => (
                         Composer and musician. Active in the Dutch electronic underground since 1987.
                     </p>
                 </div>
-                <div className="space-y-8">
-                    <h3 className="text-[11px] font-bold uppercase tracking-[0.4em] text-signal">Navigation</h3>
-                    <ul className="space-y-4 text-xs font-bold text-black/40 uppercase tracking-widest">
-                        <li><Link to="/contact" className="hover:text-black transition-colors">Contact</Link></li>
-                    </ul>
-                </div>
-                <div className="space-y-8">
+                <div className="lg:col-span-2 space-y-8">
                     <h3 className="text-[11px] font-bold uppercase tracking-[0.4em] text-signal">Connect</h3>
                     <div className="flex gap-6 items-center">
                         <a href={SOCIAL_LINKS.spotify} target="_blank" rel="noopener noreferrer" className="text-black/40 hover:text-signal transition-colors"><SpotifyIcon className="w-5 h-5"/></a>
