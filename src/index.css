@@ -14,6 +14,10 @@
     @apply bg-offwhite text-black font-sans selection:bg-signal selection:text-white;
     overflow-x: hidden;
   }
+  
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
 }
 
 /* Global Noise Overlay */
