@@ -9,7 +9,7 @@ import { SpotifyIcon, DiscogsIcon, InstagramIcon } from '../components/BrandIcon
 export const HomeView = () => (
   <PageWrapper>
     <SEO title="Official Site" description="Official website of Maarten van der Vleuten." path="/" />
-    
+
     {/* HERO SECTION */}
     <section className="pt-24 sm:pt-32 lg:pt-40 pb-20 w-full border-b border-black/5 bg-white overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
@@ -17,19 +17,19 @@ export const HomeView = () => (
           <header className="order-1 lg:order-1 space-y-10">
             <p className="text-[11px] font-bold text-signal uppercase tracking-[0.8em]">Composer & Producer</p>
             <h1 className="text-5xl sm:text-7xl lg:text-8xl text-black leading-[0.85] tracking-tighter uppercase">
-              MAARTEN <br/> <span className="text-signal lg:text-black">VAN DER</span> <br className="hidden lg:block"/> <span className="text-signal">VLEUTEN.</span>
+              MAARTEN <br /> <span className="text-signal lg:text-black">VAN DER</span> <br className="hidden lg:block" /> <span className="text-signal">VLEUTEN</span>
             </h1>
             <p className="text-black/50 text-base sm:text-lg lg:text-xl leading-relaxed max-w-xl font-medium italic">
-              Electronic music composer and producer. This site is constantly evolving—more content coming soon. Based in the Netherlands, active since 1987.
+              Electronic music composer and producer. This site is constantly evolving, more content coming soon. Based in the Netherlands, active since 1987.
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
               <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="px-10 py-5 bg-black text-white rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-signal transition-all shadow-xl active:scale-95 leading-none">Visit Bandcamp Shop</a>
             </div>
             <div className="flex gap-8 pt-4 items-center">
-              <a href={SOCIAL_LINKS.spotify} target="_blank" rel="noopener noreferrer" className="transition-all hover:text-signal hover:scale-110" title="Spotify"><SpotifyIcon className="w-6 h-6"/></a>
-              <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="transition-all hover:text-signal hover:scale-110" title="Bandcamp"><ShoppingCart className="w-6 h-6"/></a>
-              <a href={SOCIAL_LINKS.discogs} target="_blank" rel="noopener noreferrer" className="transition-all hover:text-signal hover:scale-110" title="Discogs"><DiscogsIcon className="w-6 h-6"/></a>
-              <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="transition-all hover:text-signal hover:scale-110" title="Instagram"><InstagramIcon className="w-6 h-6"/></a>
+              <a href={SOCIAL_LINKS.spotify} target="_blank" rel="noopener noreferrer" className="transition-all hover:text-signal hover:scale-110" title="Spotify"><SpotifyIcon className="w-6 h-6" /></a>
+              <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="transition-all hover:text-signal hover:scale-110" title="Bandcamp"><ShoppingCart className="w-6 h-6" /></a>
+              <a href={SOCIAL_LINKS.discogs} target="_blank" rel="noopener noreferrer" className="transition-all hover:text-signal hover:scale-110" title="Discogs"><DiscogsIcon className="w-6 h-6" /></a>
+              <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="transition-all hover:text-signal hover:scale-110" title="Instagram"><InstagramIcon className="w-6 h-6" /></a>
             </div>
           </header>
           <div className="order-2 lg:order-2">
@@ -47,7 +47,7 @@ export const HomeView = () => (
         <header className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-10 mb-20 w-full">
           <div className="space-y-6 text-left">
             <p className="text-[11px] font-bold text-signal uppercase tracking-[0.6em] italic leading-none">New Releases</p>
-            <h2 className="text-4xl sm:text-5xl uppercase tracking-tighter leading-[0.9]">LATEST <br className="hidden sm:block"/> RELEASES.</h2>
+            <h2 className="text-4xl sm:text-5xl uppercase tracking-tighter leading-[0.9]">CHECK OUT ALL THE <br className="hidden sm:block" />LATEST RELEASES</h2>
           </div>
           <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="inline-flex gap-4 items-center text-[11px] font-black uppercase tracking-widest border-b-2 border-signal pb-2 hover:translate-x-2 transition-all group shrink-0">
             Visit Shop <ArrowRight className="w-4 h-4" />
@@ -56,39 +56,39 @@ export const HomeView = () => (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {LATEST_RELEASES.map((item, i) => (
             <article key={i} className="bg-white p-10 rounded-[2.5rem] border border-black/5 shadow-xl hover:shadow-2xl transition-all group relative overflow-hidden flex flex-col h-full">
-               <div className="aspect-square bg-offwhite rounded-2xl mb-8 flex items-center justify-center relative overflow-hidden shrink-0">
-                  {item.imageUrl ? (
-                    <img 
-                      src={item.imageUrl} 
-                      alt={item.title} 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
-                    />
-                  ) : (
-                    <Disc className={cn("w-16 h-16 text-black/5 group-hover:scale-110 transition-transform group-hover:rotate-12", item.status && "opacity-10")} />
-                  )}
-                  <div className="absolute top-6 right-6 px-3 py-1 bg-black text-white text-[10px] font-black rounded-full italic">{item.year}</div>
-                  {item.status && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-[10px] font-black text-signal uppercase tracking-[0.4em] bg-white/90 px-4 py-2 rounded-full shadow-sm">{item.status}</span>
-                    </div>
-                  )}
-               </div>
-               
-               <div className="flex-grow flex flex-col">
-                  <h3 className="text-xl uppercase tracking-tighter mb-2 leading-tight text-signal min-h-[3rem] flex items-center">
-                    {item.title}
-                  </h3>
-                  <div className="mb-10 space-y-1">
-                    <p className="text-[11px] font-bold text-black/30 uppercase tracking-[0.2em]">{item.label} Recordings</p>
-                    {item.cat && <p className="text-[11px] font-bold text-black/30 uppercase tracking-[0.2em]">{item.cat}</p>}
+              <div className="aspect-square bg-offwhite rounded-2xl mb-8 flex items-center justify-center relative overflow-hidden shrink-0">
+                {item.imageUrl ? (
+                  <img
+                    src={item.imageUrl}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                ) : (
+                  <Disc className={cn("w-16 h-16 text-black/5 group-hover:scale-110 transition-transform group-hover:rotate-12", item.status && "opacity-10")} />
+                )}
+                <div className="absolute top-6 right-6 px-3 py-1 bg-black text-white text-[10px] font-black rounded-full italic">{item.year}</div>
+                {item.status && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-[10px] font-black text-signal uppercase tracking-[0.4em] bg-white/90 px-4 py-2 rounded-full shadow-sm">{item.status}</span>
                   </div>
-                  
-                  <div className="mt-auto">
-                    <a href={item.link || SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className={cn("w-full py-4 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-3 transition-colors shadow-lg active:scale-95", item.status ? "bg-black/5 text-black/40 cursor-default" : "bg-black text-white hover:bg-signal")}>
-                        {item.status ? "Soon on Bandcamp" : "Buy on Bandcamp"} <ExternalLink className="w-3 h-3" />
-                    </a>
-                  </div>
-               </div>
+                )}
+              </div>
+
+              <div className="flex-grow flex flex-col">
+                <h3 className="text-xl uppercase tracking-tighter mb-2 leading-tight text-signal min-h-[3rem] flex items-center">
+                  {item.title}
+                </h3>
+                <div className="mb-10 space-y-1">
+                  <p className="text-[11px] font-bold text-black/30 uppercase tracking-[0.2em]">{item.label} Recordings</p>
+                  {item.cat && <p className="text-[11px] font-bold text-black/30 uppercase tracking-[0.2em]">{item.cat}</p>}
+                </div>
+
+                <div className="mt-auto">
+                  <a href={item.link || SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className={cn("w-full py-4 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-3 transition-colors shadow-lg active:scale-95", item.status ? "bg-black/5 text-black/40 cursor-default" : "bg-black text-white hover:bg-signal")}>
+                    {item.status ? "Soon on Bandcamp" : "Buy on Bandcamp"} <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+              </div>
             </article>
           ))}
         </div>
@@ -101,15 +101,15 @@ export const HomeView = () => (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
           <div className="lg:col-span-5 order-2 lg:order-1">
             <div className="aspect-square bg-white/5 border border-white/10 rounded-[3rem] flex flex-col items-center justify-center p-12 text-center shadow-2xl backdrop-blur-2xl">
-               <span className="text-[10px] font-black text-signal uppercase tracking-[0.4em] mb-4">Vught, NL</span>
-               <p className="text-sm font-black uppercase italic text-white/20 mb-10">[ Signum Recordings ]</p>
-               <div className="w-20 h-px bg-white/20" />
+              <span className="text-[10px] font-black text-signal uppercase tracking-[0.4em] mb-4">Vught, NL</span>
+              <p className="text-sm font-black uppercase italic text-white/20 mb-10">[ Signum Recordings ]</p>
+              <div className="w-20 h-px bg-white/20" />
             </div>
           </div>
           <div className="lg:col-span-7 order-1 lg:order-2 space-y-10">
             <p className="text-[11px] font-bold text-signal uppercase tracking-[0.6em] italic leading-none">About the Label</p>
             <h2 className="text-4xl sm:text-5xl lg:text-7xl uppercase tracking-tighter leading-[0.95]">
-              SIGNUM <br/> RECORDINGS.
+              SIGNUM <br /> RECORDINGS.
             </h2>
             <p className="text-white/40 text-lg sm:text-xl font-medium leading-relaxed max-w-xl">
               An independent label for experimental music, founded in 1996 as a home for Maarten's most personal work and archival releases.
