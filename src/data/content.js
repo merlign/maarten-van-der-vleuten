@@ -24,7 +24,7 @@ export const LATEST_RELEASES = [
         title: "A Forest / Love Will Tear Us Apart", 
         year: "2026", 
         label: "Signum", 
-        cat: "SIG042",
+        cat: "SIGNDIG261",
         imageUrl: "/aforest.jpg", 
         link: "https://maartenvandervleuten.bandcamp.com/album/a-forest-love-will-tear-us-apart" 
     },
@@ -32,7 +32,7 @@ export const LATEST_RELEASES = [
         title: "Yungya E.P.", 
         year: "2026", 
         label: "Signum", 
-        cat: "SIG043",
+        cat: "SIGNDIG266",
         imageUrl: "/yungya.jpg", 
         link: "https://maartenvandervleuten.bandcamp.com/album/yungya-e-p-2026" 
     }
