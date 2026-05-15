@@ -31,7 +31,6 @@ export const Navbar = () => {
     }, [isMenuOpen]);
     
     const links = [
-        { name: 'Archive', path: '/archive' },
         { name: 'Signum', path: '/signum' },
         { name: 'Press', path: '/press' },
         { name: 'Contact', path: '/contact' },
@@ -126,7 +125,6 @@ export const Footer = () => (
                 <div className="space-y-8">
                     <h3 className="text-[11px] font-bold uppercase tracking-[0.4em] text-signal">Navigation</h3>
                     <ul className="space-y-4 text-xs font-bold text-black/40 uppercase tracking-widest">
-                        <li><Link to="/archive" className="hover:text-black transition-colors">Archive</Link></li>
                         <li><Link to="/contact" className="hover:text-black transition-colors">Contact</Link></li>
                     </ul>
                 </div>

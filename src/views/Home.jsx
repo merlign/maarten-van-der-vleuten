@@ -22,7 +22,7 @@ export const HomeView = () => (
               Electronic music and sound design. Based in the Netherlands, active since 1987. From early techno to cinematic soundscapes and experimental recordings.
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
-              <Link to="/archive" className="px-8 py-4 bg-black text-white rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-signal transition-all shadow-xl active:scale-95">Archive</Link>
+              <Link to="/signum" className="px-8 py-4 bg-black text-white rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-signal transition-all shadow-xl active:scale-95">Signum Records</Link>
               <Link to="/contact" className="px-8 py-4 border-2 border-black text-black rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-black hover:text-white transition-all active:scale-95">Contact</Link>
             </div>
             <div className="flex gap-8 pt-4 items-center">
