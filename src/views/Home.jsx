@@ -19,7 +19,7 @@ export const HomeView = () => (
               MAARTEN <br/> <span className="text-signal lg:text-black">VAN DER</span> <br className="hidden lg:block"/> <span className="text-signal">VLEUTEN.</span>
             </h1>
             <p className="text-black/50 text-base sm:text-lg lg:text-xl leading-relaxed max-w-xl font-medium italic">
-              Electronic music and sound design. Based in the Netherlands, active since 1987. From early techno to cinematic soundscapes and experimental recordings.
+              Electronic music and sound design. Currently evolving—more content coming soon. Based in the Netherlands, active since 1987.
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
               <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="px-10 py-5 bg-black text-white rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-signal transition-all shadow-xl active:scale-95 leading-none">Visit Bandcamp Shop</a>
