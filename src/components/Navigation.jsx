@@ -31,8 +31,6 @@ export const Navbar = () => {
     }, [isMenuOpen]);
     
     const links = [
-        { name: 'Signum', path: '/signum' },
-        { name: 'Press', path: '/press' },
         { name: 'Contact', path: '/contact' },
     ];
 

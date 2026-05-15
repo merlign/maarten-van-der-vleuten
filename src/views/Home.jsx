@@ -22,7 +22,7 @@ export const HomeView = () => (
               Electronic music and sound design. Based in the Netherlands, active since 1987. From early techno to cinematic soundscapes and experimental recordings.
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
-              <Link to="/signum" className="px-8 py-4 bg-black text-white rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-signal transition-all shadow-xl active:scale-95">Signum Records</Link>
+              <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-black text-white rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-signal transition-all shadow-xl active:scale-95">Bandcamp Shop</a>
               <Link to="/contact" className="px-8 py-4 border-2 border-black text-black rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-black hover:text-white transition-all active:scale-95">Contact</Link>
             </div>
             <div className="flex gap-8 pt-4 items-center">
@@ -71,35 +71,28 @@ export const HomeView = () => (
       </div>
     </section>
 
-
-    {/* SIGNUM TEASER */}
+    {/* SIGNUM INFO SECTION */}
     <section className="py-24 sm:py-32 bg-black text-white relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
           <div className="lg:col-span-5 order-2 lg:order-1">
-            <div className="aspect-square bg-white/5 border border-white/10 rounded-[3rem] flex flex-col items-center justify-center p-12 text-center group hover:bg-white/10 transition-colors shadow-2xl backdrop-blur-2xl">
+            <div className="aspect-square bg-white/5 border border-white/10 rounded-[3rem] flex flex-col items-center justify-center p-12 text-center shadow-2xl backdrop-blur-2xl">
                <span className="text-[10px] font-black text-signal uppercase tracking-[0.4em] mb-4">Vught, NL</span>
                <p className="text-sm font-black uppercase italic text-white/20 mb-10">[ Signum Recordings ]</p>
                <div className="w-20 h-px bg-white/20" />
             </div>
           </div>
-          <div className="lg:col-span-7 order-1 lg:order-2 space-y-12">
+          <div className="lg:col-span-7 order-1 lg:order-2 space-y-10">
             <p className="text-[11px] font-bold text-signal uppercase tracking-[0.6em] italic leading-none">About the Label</p>
             <h2 className="text-4xl sm:text-5xl lg:text-7xl uppercase tracking-tighter leading-[0.95]">
               SIGNUM <br/> RECORDINGS.
             </h2>
-            <div className="space-y-10">
-              <p className="text-white/40 text-lg sm:text-xl font-medium leading-relaxed max-w-xl">
-                An independent label for experimental music, founded in 1996 as a home for Maarten's most personal work.
-              </p>
-              <Link to="/signum" className="inline-flex px-10 py-5 bg-white text-black font-black uppercase tracking-widest text-[11px] rounded-full hover:bg-signal hover:text-white transition-all shadow-2xl active:scale-95">
-                Explore The Label
-              </Link>
-            </div>
+            <p className="text-white/40 text-lg sm:text-xl font-medium leading-relaxed max-w-xl">
+              An independent label for experimental music, founded in 1996 as a home for Maarten's most personal work and archival releases.
+            </p>
           </div>
         </div>
       </div>
-      {/* Background Graphic */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none select-none">
         <span className="text-[40vw] font-black italic">SIGNUM</span>
       </div>
