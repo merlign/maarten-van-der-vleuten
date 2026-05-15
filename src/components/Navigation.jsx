@@ -51,7 +51,7 @@ export const Navbar = () => {
                         </li>
                     ))}
                     <li>
-                        <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="px-7 py-3 rounded-full text-[11px] font-bold tracking-widest bg-black text-white hover:bg-signal transition-all shadow-lg active:scale-95 leading-none">SHOP</a>
+                        <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-full text-[14px] font-bold tracking-widest bg-black text-white hover:bg-signal transition-all shadow-lg active:scale-95 leading-none">SHOP</a>
                     </li>
                 </ul>
 
