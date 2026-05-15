@@ -19,7 +19,7 @@ export const SOCIAL_LINKS = {
 };
 
 export const LATEST_RELEASES = [
-    { title: "Distilled Works", year: "2024", label: "Signum", imageUrl: null },
+    { title: "Distilled Works", year: "2024", label: "Signum", imageUrl: null, status: "COMING UP..." },
     { title: "Systematic Registry 2", year: "2023", label: "Signum", imageUrl: null },
     { title: "The Scars Remain", year: "2010", label: "ToneFloat", imageUrl: null }
 ];

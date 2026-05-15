@@ -14,7 +14,7 @@ export const HomeView = () => (
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <header className="order-1 lg:order-1 space-y-10">
-            <p className="text-[11px] font-bold text-signal uppercase tracking-[0.8em]">Composer</p>
+            <p className="text-[11px] font-bold text-signal uppercase tracking-[0.8em]">Composer & Producer</p>
             <h1 className="text-5xl sm:text-7xl lg:text-8xl text-black leading-[0.85] tracking-tighter uppercase">
               MAARTEN <br/> <span className="text-signal lg:text-black">VAN DER</span> <br className="hidden lg:block"/> <span className="text-signal">VLEUTEN.</span>
             </h1>
@@ -54,15 +54,20 @@ export const HomeView = () => (
         </header>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {LATEST_RELEASES.map((item, i) => (
-            <article key={i} className="bg-white p-10 rounded-[2.5rem] border border-black/5 shadow-xl hover:shadow-2xl transition-all group">
+            <article key={i} className="bg-white p-10 rounded-[2.5rem] border border-black/5 shadow-xl hover:shadow-2xl transition-all group relative overflow-hidden">
                <div className="aspect-square bg-offwhite rounded-2xl mb-8 flex items-center justify-center relative overflow-hidden">
-                  <Disc className="w-16 h-16 text-black/5 group-hover:scale-110 transition-transform group-hover:rotate-12" />
+                  <Disc className={cn("w-16 h-16 text-black/5 group-hover:scale-110 transition-transform group-hover:rotate-12", item.status && "opacity-10")} />
                   <div className="absolute top-6 right-6 px-3 py-1 bg-black text-white text-[10px] font-black rounded-full italic">{item.year}</div>
+                  {item.status && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-[10px] font-black text-signal uppercase tracking-[0.4em] bg-white/90 px-4 py-2 rounded-full shadow-sm">{item.status}</span>
+                    </div>
+                  )}
                </div>
                <h3 className="text-xl uppercase tracking-tighter mb-2 leading-tight">{item.title}</h3>
                <p className="text-[11px] font-bold text-black/30 uppercase tracking-[0.2em] mb-8">{item.label} Recordings</p>
-               <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="w-full py-4 bg-black text-white rounded-full text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-signal transition-colors shadow-lg active:scale-95">
-                  Buy on Bandcamp <ExternalLink className="w-3 h-3" />
+               <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className={cn("w-full py-4 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-3 transition-colors shadow-lg active:scale-95", item.status ? "bg-black/5 text-black/40 cursor-default" : "bg-black text-white hover:bg-signal")}>
+                  {item.status ? "Soon on Bandcamp" : "Buy on Bandcamp"} <ExternalLink className="w-3 h-3" />
                </a>
             </article>
           ))}

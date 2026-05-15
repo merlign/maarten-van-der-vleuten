@@ -30,7 +30,9 @@ export const Navbar = () => {
         return () => { document.body.style.overflow = 'unset'; };
     }, [isMenuOpen]);
     
-    const links = [];
+    const links = [
+        { name: 'Contact', path: '/contact' },
+    ];
 
     return (
         <header className="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-black/5">
