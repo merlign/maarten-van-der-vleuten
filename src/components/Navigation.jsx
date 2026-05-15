@@ -8,9 +8,9 @@ import { SpotifyIcon, DiscogsIcon, InstagramIcon } from './BrandIcons';
 const LegacyBanner = () => (
   <aside className="bg-signal text-white py-2.5 px-6 text-center relative z-[60] w-full border-b border-white/10">
     <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-4">
-      <p className="text-[11px] font-bold uppercase tracking-[0.2em]">Viewing the legacy archive?</p>
+      <p className="text-[11px] font-bold uppercase tracking-[0.2em]">Looking for the legacy website?</p>
       <a href={SOCIAL_LINKS.legacy} target="_blank" rel="noopener noreferrer" className="text-[11px] font-black uppercase tracking-[0.2em] underline underline-offset-4 flex items-center gap-2 hover:opacity-80 transition-opacity">
-        Legacy Website (Archive Only — Do Not Order) <ExternalLink className="w-3 h-3" />
+        Visit Archive (No longer updated — Do Not Order) <ExternalLink className="w-3 h-3" />
       </a>
     </div>
   </aside>
