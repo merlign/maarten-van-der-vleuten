@@ -54,7 +54,7 @@ export const HomeView = () => (
           </a>
         </header>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {LATEST_RELEASES.map((item, i) => (
+          {LATEST_RELEASES.slice(0, 3).map((item, i) => (
             <article key={i} className="bg-white p-10 rounded-[2.5rem] border border-black/5 shadow-xl hover:shadow-2xl transition-all group relative overflow-hidden flex flex-col h-full">
               <div className="aspect-square bg-offwhite rounded-2xl mb-8 flex items-center justify-center relative overflow-hidden shrink-0">
                 {item.imageUrl ? (
