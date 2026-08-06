@@ -1,5 +1,5 @@
 import React from 'react';
-import { Disc, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { SEO, PageHeader, PageWrapper } from '../components/Layout';
 import { SIGNUM_RECORDINGS_CONTENT, SOCIAL_LINKS } from '../data/content';
 
@@ -11,8 +11,8 @@ export const SignumView = () => (
             subtitle={`EST. ${SIGNUM_RECORDINGS_CONTENT.origin}`}
         >
             <div className="mt-12 group flex items-center gap-8">
-                <div className="aspect-square w-24 sm:w-32 bg-offwhite rounded-full border border-black/5 flex items-center justify-center relative overflow-hidden">
-                    <Disc className="w-10 h-10 text-black/10 group-hover:text-signal/20 transition-colors animate-spin-slow" />
+                <div className="aspect-square w-24 sm:w-32 bg-black rounded-full border border-black/5 flex items-center justify-center relative overflow-hidden">
+                    <img src="/signum-logo.jpg" alt="Signum Recordings" className="w-16 sm:w-20 h-auto" />
                 </div>
                 <div className="space-y-1">
                     <p className="text-[10px] font-black text-black/20 uppercase tracking-[0.4em] italic">Vught, NL</p>

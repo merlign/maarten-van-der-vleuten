@@ -15,7 +15,7 @@ export const SOCIAL_LINKS = {
     bandcamp: "https://maartenvandervleuten.bandcamp.com/",
     discogs: "https://www.discogs.com/artist/28749-Maarten-van-der-Vleuten",
     instagram: "https://www.instagram.com/maartenvdvleuten/",
-    legacy: "http://oud.maartenvandervleuten.com/main.htm"
+    legacy: "http://archief.maartenvandervleuten.com/main.htm"
 };
 
 export const LATEST_RELEASES = [

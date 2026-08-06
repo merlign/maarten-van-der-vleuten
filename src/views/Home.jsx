@@ -102,7 +102,7 @@ export const HomeView = () => (
           <div className="lg:col-span-5 order-2 lg:order-1">
             <div className="aspect-square bg-white/5 border border-white/10 rounded-[3rem] flex flex-col items-center justify-center p-12 text-center shadow-2xl backdrop-blur-2xl">
               <span className="text-[10px] font-black text-signal uppercase tracking-[0.4em] mb-4">Vught, NL</span>
-              <p className="text-sm font-black uppercase italic text-white/20 mb-10">[ Signum Recordings ]</p>
+              <img src="/signum-logo.jpg" alt="Signum Recordings" className="w-32 sm:w-40 h-auto mb-10" />
               <div className="w-20 h-px bg-white/20" />
             </div>
           </div>
