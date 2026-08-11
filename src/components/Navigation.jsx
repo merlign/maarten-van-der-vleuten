@@ -186,6 +186,12 @@ export const Footer = () => (
                     </div>
                 </div>
             </div>
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-10 border-t border-black/5 text-[11px] font-mono uppercase tracking-[0.1em] text-black/30">
+                <p>&copy; Maarten van der Vleuten {new Date().getFullYear()}</p>
+                <a href="https://www.merlign.com" target="_blank" rel="noopener noreferrer" className="hover:text-signal transition-colors">
+                    Website by Merlign
+                </a>
+            </div>
         </div>
     </footer>
 );
