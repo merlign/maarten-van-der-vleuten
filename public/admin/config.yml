@@ -1,0 +1,72 @@
+backend:
+  name: github
+  repo: merlign/maarten-van-der-vleuten
+  branch: main
+  base_url: https://maarten-van-der-vleuten.vercel.app
+  auth_endpoint: api/auth
+
+locale: "nl"
+site_url: https://maarten-van-der-vleuten.vercel.app
+display_url: https://maarten-van-der-vleuten.vercel.app
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "releases"
+    label: "Releases"
+    icon: "disc"
+    files:
+      - name: "releases"
+        label: "Releases"
+        file: "src/content/releases.json"
+        description: "Alle muziekreleases. Bovenaan de lijst = bovenaan de website. Sleep een release naar een andere plek in de lijst om de volgorde te wijzigen."
+        fields:
+          - label: "Releases"
+            name: "items"
+            widget: "list"
+            summary: "{{title}} ({{year}})"
+            fields:
+              - { label: "Titel", name: "title", widget: "string", hint: "De naam van de release." }
+              - { label: "Jaar", name: "year", widget: "string", hint: "Bijvoorbeeld: 2026" }
+              - { label: "Label", name: "label", widget: "string", default: "Signum" }
+              - { label: "Catalogusnummer", name: "cat", widget: "string", required: false, hint: "Bijvoorbeeld: SIGN263 (mag leeg blijven)" }
+              - { label: "Hoesfoto", name: "imageUrl", widget: "image", required: false, hint: "Sleep hier een foto naartoe, of klik om te kiezen." }
+              - { label: "Link naar Bandcamp", name: "link", widget: "string", required: false, hint: "Volledige link naar de releasepagina op Bandcamp. Mag leeg blijven als 'Binnenkort te koop' is aangevinkt." }
+              - { label: "Binnenkort te koop (Coming Soon)", name: "comingSoon", widget: "boolean", default: false, hint: "Vink aan als deze release nog niet uit is." }
+              - { label: "Verkrijgbaar op vinyl", name: "vinyl", widget: "boolean", default: false }
+              - { label: "Verkrijgbaar digitaal", name: "digital", widget: "boolean", default: false }
+
+  - name: "news"
+    label: "Nieuws & Optredens"
+    icon: "megaphone"
+    files:
+      - name: "news"
+        label: "Nieuws & Optredens"
+        file: "src/content/news.json"
+        description: "Nieuwsberichten en optredens. Een optreden verdwijnt automatisch van de homepage zodra de datum voorbij is (blijft wel zichtbaar op de nieuwspagina). Bovenaan de lijst = bovenaan de website."
+        fields:
+          - label: "Berichten"
+            name: "items"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - label: "Soort bericht"
+                name: "type"
+                widget: "select"
+                default: "news"
+                options:
+                  - { label: "Nieuws", value: "news" }
+                  - { label: "Optreden (Event)", value: "event" }
+                hint: "Kies 'Optreden' voor een gig of show — daar hoort een datum bij."
+              - { label: "Titel", name: "title", widget: "string" }
+              - label: "Datum"
+                name: "date"
+                widget: "datetime"
+                date_format: "YYYY-MM-DD"
+                time_format: false
+                required: false
+                hint: "Bij een Optreden: verplicht. Zodra deze datum voorbij is, verdwijnt het optreden automatisch van de homepage."
+              - { label: "Locatie", name: "venue", widget: "string", required: false, hint: "Alleen invullen bij een Optreden, bijvoorbeeld: Amsterdam" }
+              - { label: "Tekst", name: "description", widget: "text", required: false }
+              - { label: "Link (tickets of artikel)", name: "link", widget: "string", required: false, hint: "Bijvoorbeeld een ticketlink bij een optreden." }

@@ -2,6 +2,8 @@
  * Maarten van der Vleuten | Official Website Registry
  * Centralized data store for all biographical, archival, and contact content.
  */
+import releasesData from '../content/releases.json';
+import newsData from '../content/news.json';
 
 export const SITE_METADATA = {
     url: "https://maartenvandervleuten.eu",
@@ -26,51 +28,14 @@ export const SHOP_LINKS = [
     { name: "Merch", href: SOCIAL_LINKS.merch }
 ];
 
-export const RELEASES = [
-    { title: "Fire them liars", year: "2026", label: "Signum", cat: "SIGN263", imageUrl: "/ftl.jpg", comingSoon: true, vinyl: true, digital: false },
-    {
-        title: "A Forest / Love Will Tear Us Apart",
-        year: "2026",
-        label: "Signum",
-        cat: "SIGNDIG261",
-        imageUrl: "/aforest.jpg",
-        link: "https://maartenvandervleuten.bandcamp.com/album/a-forest-love-will-tear-us-apart",
-        vinyl: false,
-        digital: true
-    },
-    {
-        title: "Yungya E.P.",
-        year: "2026",
-        label: "Signum",
-        cat: "SIGNDIG266",
-        imageUrl: "/yungya.jpg",
-        link: "https://maartenvandervleuten.bandcamp.com/album/yungya-e-p-2026",
-        vinyl: false,
-        digital: true
-    }
-];
+export const RELEASES = releasesData.items;
 
 export const NEWS_LABELS = {
     news: "News",
     event: "Event"
 };
 
-export const NEWS = [
-    {
-        type: "event",
-        title: "Giegling & Noclubs",
-        date: "2026-08-16",
-        venue: "Amsterdam",
-        description: "Playing a set from 10:00 to 12:00.",
-        link: "https://www.giegling.net/tickets/giegling-noclubs-amsterdam2026"
-    },
-    {
-        type: "news",
-        title: "New Website Live",
-        date: "2026-08-11",
-        description: "The new official website for Maarten van der Vleuten is now live, with a fresh look and a growing catalogue of releases. You'll find a link to the legacy website at the top of every page."
-    }
-];
+export const NEWS = newsData.items;
 
 // Events are automatically hidden from the homepage once their date has passed.
 // News items (and events without a date) are always eligible.
