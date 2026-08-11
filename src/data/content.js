@@ -57,6 +57,14 @@ export const NEWS_LABELS = {
 
 export const NEWS = [
     {
+        type: "event",
+        title: "Giegling & Noclubs",
+        date: "2026-08-16",
+        venue: "Amsterdam",
+        description: "Playing a set from 10:00 to 12:00.",
+        link: "https://www.giegling.net/tickets/giegling-noclubs-amsterdam2026"
+    },
+    {
         type: "news",
         title: "New Website Live",
         date: "2026-08-11",
