@@ -9,11 +9,14 @@ const formatDate = (dateStr) => {
 };
 
 export const NewsCard = ({ item }) => (
-    <article className="bg-white p-10 rounded-[2.5rem] border border-black/5 shadow-xl hover:shadow-2xl transition-all flex flex-col h-full">
+    <article className={cn(
+        "bg-white p-10 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all flex flex-col h-full",
+        item.type === "event" ? "border-2 border-signal" : "border border-black/5"
+    )}>
         <div className="flex items-center gap-4 mb-6">
             <span className={cn(
                 "text-[10px] font-black uppercase tracking-[0.3em] px-3 py-1 rounded-full",
-                item.type === "event" ? "bg-signal/10 text-signal" : "bg-black/5 text-black/40"
+                item.type === "event" ? "bg-signal text-white shadow-md" : "bg-black/5 text-black/40"
             )}>
                 {NEWS_LABELS[item.type] || NEWS_LABELS.news}
             </span>
