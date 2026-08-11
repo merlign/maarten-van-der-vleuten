@@ -19,14 +19,16 @@ export const SOCIAL_LINKS = {
 };
 
 export const RELEASES = [
-    { title: "Fire them liars", year: "2026", label: "Signum", cat: "SIGN263", imageUrl: "/ftl.jpg", comingSoon: true },
+    { title: "Fire them liars", year: "2026", label: "Signum", cat: "SIGN263", imageUrl: "/ftl.jpg", comingSoon: true, vinyl: true, digital: false },
     {
         title: "A Forest / Love Will Tear Us Apart",
         year: "2026",
         label: "Signum",
         cat: "SIGNDIG261",
         imageUrl: "/aforest.jpg",
-        link: "https://maartenvandervleuten.bandcamp.com/album/a-forest-love-will-tear-us-apart"
+        link: "https://maartenvandervleuten.bandcamp.com/album/a-forest-love-will-tear-us-apart",
+        vinyl: false,
+        digital: true
     },
     {
         title: "Yungya E.P.",
@@ -34,7 +36,9 @@ export const RELEASES = [
         label: "Signum",
         cat: "SIGNDIG266",
         imageUrl: "/yungya.jpg",
-        link: "https://maartenvandervleuten.bandcamp.com/album/yungya-e-p-2026"
+        link: "https://maartenvandervleuten.bandcamp.com/album/yungya-e-p-2026",
+        vinyl: false,
+        digital: true
     }
 ];
 
