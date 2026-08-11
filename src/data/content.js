@@ -18,23 +18,23 @@ export const SOCIAL_LINKS = {
     legacy: "http://archief.maartenvandervleuten.com/main.htm"
 };
 
-export const LATEST_RELEASES = [
-    { title: "Fire them liars", year: "2026", label: "Signum", cat: "SIGN263", imageUrl: "/ftl.jpg", status: "COMING UP..." },
-    { 
-        title: "A Forest / Love Will Tear Us Apart", 
-        year: "2026", 
-        label: "Signum", 
+export const RELEASES = [
+    { title: "Fire them liars", year: "2026", label: "Signum", cat: "SIGN263", imageUrl: "/ftl.jpg", comingSoon: true },
+    {
+        title: "A Forest / Love Will Tear Us Apart",
+        year: "2026",
+        label: "Signum",
         cat: "SIGNDIG261",
-        imageUrl: "/aforest.jpg", 
-        link: "https://maartenvandervleuten.bandcamp.com/album/a-forest-love-will-tear-us-apart" 
+        imageUrl: "/aforest.jpg",
+        link: "https://maartenvandervleuten.bandcamp.com/album/a-forest-love-will-tear-us-apart"
     },
-    { 
-        title: "Yungya E.P.", 
-        year: "2026", 
-        label: "Signum", 
+    {
+        title: "Yungya E.P.",
+        year: "2026",
+        label: "Signum",
         cat: "SIGNDIG266",
-        imageUrl: "/yungya.jpg", 
-        link: "https://maartenvandervleuten.bandcamp.com/album/yungya-e-p-2026" 
+        imageUrl: "/yungya.jpg",
+        link: "https://maartenvandervleuten.bandcamp.com/album/yungya-e-p-2026"
     }
 ];
 

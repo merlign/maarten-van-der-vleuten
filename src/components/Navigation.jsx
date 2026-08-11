@@ -31,6 +31,7 @@ export const Navbar = () => {
     }, [isMenuOpen]);
     
     const links = [
+        { name: 'Releases', path: '/releases' },
         { name: 'Contact', path: '/contact' },
     ];
 
