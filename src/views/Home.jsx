@@ -70,7 +70,7 @@ export const HomeView = () => (
             </div>
           </div>
           <div className="lg:col-span-7 order-1 lg:order-2 space-y-10">
-            <p className="text-[11px] font-bold text-signal uppercase tracking-[0.6em] italic leading-none">About the Label</p>
+            <p className="text-[11px] font-bold text-white uppercase tracking-[0.6em] italic leading-none">About the Label</p>
             <h2 className="text-4xl sm:text-5xl lg:text-7xl uppercase tracking-tighter leading-[0.95]">
               SIGNUM <br /> RECORDINGS.
             </h2>
@@ -79,9 +79,6 @@ export const HomeView = () => (
             </p>
           </div>
         </div>
-      </div>
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none select-none">
-        <span className="text-[40vw] font-black italic">SIGNUM</span>
       </div>
     </section>
   </PageWrapper>

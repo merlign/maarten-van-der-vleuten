@@ -33,6 +33,7 @@ export const Navbar = () => {
 
     const links = [
         { name: 'Releases', path: '/releases' },
+        { name: 'Signum Recordings', href: 'https://www.discogs.com/label/6741-Signum-Recordings', external: true },
         { name: 'Contact', path: '/contact' },
     ];
 
@@ -47,9 +48,15 @@ export const Navbar = () => {
                 <ul className="hidden lg:flex items-center gap-8 font-display">
                     {links.map((link) => (
                         <li key={link.name}>
-                            <Link to={link.path} className={cn("text-[14px] font-bold uppercase tracking-[0.2em] transition-all hover:text-signal", location.pathname === link.path ? "text-signal" : "text-black/60")}>
-                                {link.name}
-                            </Link>
+                            {link.external ? (
+                                <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-[14px] font-bold uppercase tracking-[0.2em] transition-all hover:text-signal text-black/60">
+                                    {link.name}
+                                </a>
+                            ) : (
+                                <Link to={link.path} className={cn("text-[14px] font-bold uppercase tracking-[0.2em] transition-all hover:text-signal", location.pathname === link.path ? "text-signal" : "text-black/60")}>
+                                    {link.name}
+                                </Link>
+                            )}
                         </li>
                     ))}
                     <li
@@ -103,17 +110,30 @@ export const Navbar = () => {
                     <ul className="flex flex-col gap-6 font-display">
                         {links.map((link) => (
                             <li key={link.name}>
-                                <Link 
-                                    to={link.path} 
-                                    onClick={() => setIsMenuOpen(false)} 
-                                    className={cn(
-                                        "text-4xl sm:text-5xl font-medium border-b border-black/5 pb-4 flex justify-between items-center transition-colors italic tracking-tighter",
-                                        location.pathname === link.path ? "text-signal" : "text-black"
-                                    )}
-                                >
-                                    {link.name}
-                                    <ArrowRight className={cn("w-6 h-6 transition-opacity", location.pathname === link.path ? "opacity-100" : "opacity-10")} />
-                                </Link>
+                                {link.external ? (
+                                    <a
+                                        href={link.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onClick={() => setIsMenuOpen(false)}
+                                        className="text-4xl sm:text-5xl font-medium border-b border-black/5 pb-4 flex justify-between items-center transition-colors italic tracking-tighter text-black"
+                                    >
+                                        {link.name}
+                                        <ExternalLink className="w-6 h-6 opacity-10" />
+                                    </a>
+                                ) : (
+                                    <Link
+                                        to={link.path}
+                                        onClick={() => setIsMenuOpen(false)}
+                                        className={cn(
+                                            "text-4xl sm:text-5xl font-medium border-b border-black/5 pb-4 flex justify-between items-center transition-colors italic tracking-tighter",
+                                            location.pathname === link.path ? "text-signal" : "text-black"
+                                        )}
+                                    >
+                                        {link.name}
+                                        <ArrowRight className={cn("w-6 h-6 transition-opacity", location.pathname === link.path ? "opacity-100" : "opacity-10")} />
+                                    </Link>
+                                )}
                             </li>
                         ))}
                     </ul>
@@ -152,7 +172,7 @@ export const Footer = () => (
         <div className="max-w-6xl mx-auto flex flex-col gap-20">
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
                 <div className="lg:col-span-2 space-y-10">
-                    <h2 className="text-4xl font-black uppercase tracking-tighter italic">MAARTEN <br/> VAN DER VLEUTEN</h2>
+                    <img src="/logo_png.png" alt="Maarten van der Vleuten" className="h-8 w-auto" />
                     <p className="text-black/40 text-[12px] font-mono uppercase tracking-[0.1em] leading-relaxed max-w-sm">
                         Composer and musician. Active in the Dutch electronic underground since 1987.
                     </p>
