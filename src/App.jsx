@@ -8,6 +8,7 @@ import { Navbar, Footer } from './components/Navigation';
 // Views
 import { HomeView } from './views/Home';
 import { ReleasesView } from './views/Releases';
+import { NewsView } from './views/News';
 import { BiographyView } from './views/Biography';
 import { ArchiveView } from './views/Archive';
 import { SignumView } from './views/Signum';
@@ -38,6 +39,7 @@ const App = () => {
                     <Routes>
                         <Route path="/" element={<HomeView />} />
                         <Route path="/releases" element={<ReleasesView />} />
+                        <Route path="/news" element={<NewsView />} />
                         <Route path="/biography" element={<BiographyView />} />
                         <Route path="/archive" element={<ArchiveView />} />
                         <Route path="/signum" element={<SignumView />} />

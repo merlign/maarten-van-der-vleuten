@@ -50,6 +50,29 @@ export const RELEASES = [
     }
 ];
 
+export const NEWS_LABELS = {
+    news: "News",
+    event: "Event"
+};
+
+export const NEWS = [
+    {
+        type: "news",
+        title: "New Website Live",
+        date: "2026-08-11",
+        description: "The new official website for Maarten van der Vleuten is now live, with a fresh look and a growing catalogue of releases. Looking for the old site? You'll find a link to the legacy website at the top of every page."
+    }
+];
+
+// Events are automatically hidden from the homepage once their date has passed.
+// News items (and events without a date) are always eligible.
+export const isNewsItemUpcoming = (item) => {
+    if (item.type !== "event" || !item.date) return true;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return new Date(item.date) >= today;
+};
+
 export const BIOGRAPHY_ERAS = [
     { 
         id: "01", 

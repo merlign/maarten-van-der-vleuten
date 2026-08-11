@@ -5,6 +5,13 @@ import { cn } from '../lib/utils';
 import { SOCIAL_LINKS, SHOP_LINKS } from '../data/content';
 import { SpotifyIcon, DiscogsIcon, InstagramIcon } from './BrandIcons';
 
+const NAV_LINKS = [
+    { name: 'News', path: '/news' },
+    { name: 'Releases', path: '/releases' },
+    { name: 'Signum Recordings', href: 'https://www.discogs.com/label/6741-Signum-Recordings', external: true },
+    { name: 'Contact', path: '/contact' },
+];
+
 const LegacyBanner = () => (
   <aside className="bg-signal text-white py-2.5 px-6 text-center relative z-[60] w-full border-b border-white/10">
     <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -31,11 +38,7 @@ export const Navbar = () => {
         return () => { document.body.style.overflow = 'unset'; };
     }, [isMenuOpen]);
 
-    const links = [
-        { name: 'Releases', path: '/releases' },
-        { name: 'Signum Recordings', href: 'https://www.discogs.com/label/6741-Signum-Recordings', external: true },
-        { name: 'Contact', path: '/contact' },
-    ];
+    const links = NAV_LINKS.filter((link) => link.name !== 'Contact');
 
     return (
         <header className="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-black/5">
@@ -177,7 +180,25 @@ export const Footer = () => (
                         Composer and musician. Active in the Dutch electronic underground since 1987.
                     </p>
                 </div>
-                <div className="lg:col-span-2 space-y-8">
+                <div className="lg:col-span-1 space-y-8">
+                    <h3 className="text-[11px] font-bold uppercase tracking-[0.4em] text-signal">Menu</h3>
+                    <ul className="space-y-3">
+                        {NAV_LINKS.map((link) => (
+                            <li key={link.name}>
+                                {link.external ? (
+                                    <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-black/40 hover:text-signal transition-colors text-[13px] font-bold uppercase tracking-widest">
+                                        {link.name}
+                                    </a>
+                                ) : (
+                                    <Link to={link.path} className="text-black/40 hover:text-signal transition-colors text-[13px] font-bold uppercase tracking-widest">
+                                        {link.name}
+                                    </Link>
+                                )}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="lg:col-span-1 space-y-8">
                     <h3 className="text-[11px] font-bold uppercase tracking-[0.4em] text-signal">Connect</h3>
                     <div className="flex gap-6 items-center">
                         <a href={SOCIAL_LINKS.spotify} target="_blank" rel="noopener noreferrer" className="text-black/40 hover:text-signal transition-colors"><SpotifyIcon className="w-5 h-5"/></a>

@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart, ArrowRight } from 'lucide-react';
 import { SEO, PageWrapper } from '../components/Layout';
-import { RELEASES, SOCIAL_LINKS } from '../data/content';
+import { RELEASES, NEWS, isNewsItemUpcoming, SOCIAL_LINKS } from '../data/content';
 import { ReleaseCard } from '../components/ReleaseCard';
+import { NewsCard } from '../components/NewsCard';
 import { SpotifyIcon, DiscogsIcon, InstagramIcon } from '../components/BrandIcons';
 
 export const HomeView = () => (
@@ -37,6 +38,25 @@ export const HomeView = () => (
               <img src="/maarten-hero.webp" alt="Maarten van der Vleuten" className="w-full h-full object-cover object-center scale-[1.04] group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    {/* LATEST NEWS */}
+    <section className="py-24 sm:py-32 bg-white border-b border-black/5">
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
+        <header className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-10 mb-20 w-full">
+          <div className="space-y-6 text-left">
+            <h2 className="text-4xl sm:text-5xl uppercase tracking-tighter leading-[0.9]">Latest news</h2>
+          </div>
+          <Link to="/news" className="inline-flex gap-4 items-center text-[11px] font-black uppercase tracking-widest border-b-2 border-signal pb-2 hover:translate-x-2 transition-all group shrink-0">
+            View All News <ArrowRight className="w-4 h-4" />
+          </Link>
+        </header>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+          {NEWS.filter(isNewsItemUpcoming).slice(0, 2).map((item, i) => (
+            <NewsCard key={i} item={item} />
+          ))}
         </div>
       </div>
     </section>
