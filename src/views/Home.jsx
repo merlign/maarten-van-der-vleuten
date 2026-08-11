@@ -46,8 +46,7 @@ export const HomeView = () => (
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
         <header className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-10 mb-20 w-full">
           <div className="space-y-6 text-left">
-            <p className="text-[11px] font-bold text-signal uppercase tracking-[0.6em] italic leading-none">New Releases</p>
-            <h2 className="text-4xl sm:text-5xl uppercase tracking-tighter leading-[0.9]">CHECK OUT ALL THE <br className="hidden sm:block" />LATEST RELEASES</h2>
+            <h2 className="text-4xl sm:text-5xl uppercase tracking-tighter leading-[0.9]">Latest releases</h2>
           </div>
           <Link to="/releases" className="inline-flex gap-4 items-center text-[11px] font-black uppercase tracking-widest border-b-2 border-signal pb-2 hover:translate-x-2 transition-all group shrink-0">
             View All Releases <ArrowRight className="w-4 h-4" />
