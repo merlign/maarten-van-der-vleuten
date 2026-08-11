@@ -15,8 +15,16 @@ export const SOCIAL_LINKS = {
     bandcamp: "https://maartenvandervleuten.bandcamp.com/",
     discogs: "https://www.discogs.com/artist/28749-Maarten-van-der-Vleuten",
     instagram: "https://www.instagram.com/maartenvdvleuten/",
-    legacy: "http://archief.maartenvandervleuten.com/main.htm"
+    legacy: "http://archief.maartenvandervleuten.com/main.htm",
+    onDemandVinyl: "https://elasticstage.com/maartenvandervleuten",
+    merch: "https://signumrecordings.myspreadshop.nl/signum?collection=uMMGyavIdZ"
 };
+
+export const SHOP_LINKS = [
+    { name: "Bandcamp", href: SOCIAL_LINKS.bandcamp },
+    { name: "On-Demand Vinyl", href: SOCIAL_LINKS.onDemandVinyl },
+    { name: "Merch", href: SOCIAL_LINKS.merch }
+];
 
 export const RELEASES = [
     { title: "Fire them liars", year: "2026", label: "Signum", cat: "SIGN263", imageUrl: "/ftl.jpg", comingSoon: true, vinyl: true, digital: false },

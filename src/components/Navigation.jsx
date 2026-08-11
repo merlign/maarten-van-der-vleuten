@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ArrowRight, ExternalLink } from 'lucide-react';
+import { Menu, X, ArrowRight, ExternalLink, ChevronDown } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { SOCIAL_LINKS } from '../data/content';
+import { SOCIAL_LINKS, SHOP_LINKS } from '../data/content';
 import { SpotifyIcon, DiscogsIcon, InstagramIcon } from './BrandIcons';
 
 const LegacyBanner = () => (
@@ -18,6 +18,7 @@ const LegacyBanner = () => (
 
 export const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isShopOpen, setIsShopOpen] = useState(false);
     const location = useLocation();
 
     // Lock body scroll when mobile menu is open to prevent glitchy behavior
@@ -29,7 +30,7 @@ export const Navbar = () => {
         }
         return () => { document.body.style.overflow = 'unset'; };
     }, [isMenuOpen]);
-    
+
     const links = [
         { name: 'Releases', path: '/releases' },
         { name: 'Contact', path: '/contact' },
@@ -51,8 +52,36 @@ export const Navbar = () => {
                             </Link>
                         </li>
                     ))}
-                    <li>
-                        <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-full text-[14px] font-bold tracking-widest bg-black text-white hover:bg-signal transition-all shadow-lg active:scale-95 leading-none">SHOP</a>
+                    <li
+                        className="relative"
+                        onMouseEnter={() => setIsShopOpen(true)}
+                        onMouseLeave={() => setIsShopOpen(false)}
+                    >
+                        <button
+                            type="button"
+                            aria-haspopup="true"
+                            aria-expanded={isShopOpen}
+                            className="px-8 py-3 rounded-full text-[14px] font-bold tracking-widest bg-black text-white hover:bg-signal transition-all shadow-lg leading-none flex items-center gap-2 cursor-default"
+                        >
+                            SHOP <ChevronDown className={cn("w-3.5 h-3.5 transition-transform", isShopOpen && "rotate-180")} />
+                        </button>
+                        {isShopOpen && (
+                            <div className="absolute right-0 top-full w-56 pt-3">
+                                <div className="bg-white rounded-2xl border border-black/5 shadow-2xl overflow-hidden py-2 animate-in fade-in slide-in-from-top-2 duration-150">
+                                    {SHOP_LINKS.map((item) => (
+                                        <a
+                                            key={item.name}
+                                            href={item.href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center justify-between px-5 py-3 text-[13px] font-bold uppercase tracking-widest text-black/70 hover:text-signal hover:bg-offwhite transition-colors"
+                                        >
+                                            {item.name} <ExternalLink className="w-3.5 h-3.5 opacity-40" />
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                     </li>
                 </ul>
 
@@ -90,15 +119,22 @@ export const Navbar = () => {
                     </ul>
 
                     <div className="mt-auto pt-16 flex flex-col gap-8 shrink-0 font-display">
-                        <a 
-                            href={SOCIAL_LINKS.bandcamp} 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className="w-full py-5 bg-black text-white text-center rounded-full text-[11px] font-bold tracking-widest uppercase flex items-center justify-center gap-3 active:bg-signal transition-colors"
-                        >
-                            BANDCAMP SHOP <ExternalLink className="w-3 h-3"/>
-                        </a>
-                        
+                        <div className="space-y-3">
+                            <p className="text-[11px] font-bold uppercase tracking-[0.4em] text-black/30 mb-1">Shop</p>
+                            {SHOP_LINKS.map((item) => (
+                                <a
+                                    key={item.name}
+                                    href={item.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="w-full py-5 bg-black text-white text-center rounded-full text-[11px] font-bold tracking-widest uppercase flex items-center justify-center gap-3 active:bg-signal transition-colors"
+                                >
+                                    {item.name} <ExternalLink className="w-3 h-3"/>
+                                </a>
+                            ))}
+                        </div>
+
                         <div className="flex justify-center gap-10 items-center pb-8">
                             <a href={SOCIAL_LINKS.spotify} target="_blank" rel="noopener noreferrer" className="text-black/20 hover:text-signal transition-colors"><SpotifyIcon className="w-6 h-6"/></a>
                             <a href={SOCIAL_LINKS.discogs} target="_blank" rel="noopener noreferrer" className="text-black/20 hover:text-signal transition-colors"><DiscogsIcon className="w-6 h-6"/></a>

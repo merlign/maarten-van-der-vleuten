@@ -16,7 +16,7 @@ export const HomeView = () => (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <header className="order-1 lg:order-1 space-y-10">
             <p className="text-[11px] font-bold text-signal uppercase tracking-[0.8em]">Composer & Producer</p>
-            <h1 className="text-5xl sm:text-7xl lg:text-8xl text-black leading-[0.85] tracking-tighter uppercase">
+            <h1 className="text-[40px] sm:text-[64px] lg:text-[88px] text-black leading-[0.85] tracking-tighter uppercase">
               MAARTEN <br /> <span className="text-signal lg:text-black">VAN DER</span> <br className="hidden lg:block" /> <span className="text-signal">VLEUTEN</span>
             </h1>
             <p className="text-black/50 text-base sm:text-lg lg:text-xl leading-relaxed max-w-xl font-medium italic">
