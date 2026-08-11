@@ -26,11 +26,11 @@ export const HomeView = () => (
             <div className="flex flex-wrap gap-4 pt-2">
               <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="px-10 py-5 bg-black text-white rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-signal transition-all shadow-xl active:scale-95 leading-none">Visit Bandcamp Shop</a>
             </div>
-            <div className="flex gap-8 pt-4 items-center">
-              <a href={SOCIAL_LINKS.spotify} target="_blank" rel="noopener noreferrer" className="transition-all hover:text-signal hover:scale-110" title="Spotify"><SpotifyIcon className="w-6 h-6" /></a>
-              <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="transition-all hover:text-signal hover:scale-110" title="Bandcamp"><ShoppingCart className="w-6 h-6" /></a>
-              <a href={SOCIAL_LINKS.discogs} target="_blank" rel="noopener noreferrer" className="transition-all hover:text-signal hover:scale-110" title="Discogs"><DiscogsIcon className="w-6 h-6" /></a>
-              <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="transition-all hover:text-signal hover:scale-110" title="Instagram"><InstagramIcon className="w-6 h-6" /></a>
+            <div className="flex gap-4 pt-4 items-center -ml-2">
+              <a href={SOCIAL_LINKS.spotify} target="_blank" rel="noopener noreferrer" className="p-2 transition-all hover:text-signal hover:scale-110" title="Spotify"><SpotifyIcon className="w-6 h-6" /></a>
+              <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="p-2 transition-all hover:text-signal hover:scale-110" title="Bandcamp"><ShoppingCart className="w-6 h-6" /></a>
+              <a href={SOCIAL_LINKS.discogs} target="_blank" rel="noopener noreferrer" className="p-2 transition-all hover:text-signal hover:scale-110" title="Discogs"><DiscogsIcon className="w-6 h-6" /></a>
+              <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="p-2 transition-all hover:text-signal hover:scale-110" title="Instagram"><InstagramIcon className="w-6 h-6" /></a>
             </div>
           </header>
           <div className="order-2 lg:order-2">

@@ -95,22 +95,22 @@ export const Navbar = () => {
                     </li>
                 </ul>
 
-                <button className="lg:hidden p-2 text-black" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                <button className="lg:hidden p-3 -mr-3 text-black" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                     {isMenuOpen ? <X className="w-5 h-5"/> : <Menu className="w-5 h-5"/>}
                 </button>
             </nav>
 
             {/* Robust Mobile Menu Overlay */}
             {isMenuOpen && (
-                <div 
+                <div
                     className="fixed inset-0 bg-white z-[100] flex flex-col p-8 sm:p-12 animate-in fade-in zoom-in-95 duration-300 h-[100dvh] overflow-y-auto"
                     style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
                 >
-                    <div className="flex justify-end items-center mb-16 shrink-0">
-                        <button onClick={() => setIsMenuOpen(false)} className="p-2 -mr-2"><X className="w-8 h-8 text-black" /></button>
+                    <div className="flex justify-end items-center mb-8 shrink-0">
+                        <button onClick={() => setIsMenuOpen(false)} className="p-2 -mr-2"><X className="w-7 h-7 text-black" /></button>
                     </div>
-                    
-                    <ul className="flex flex-col gap-6 font-display">
+
+                    <ul className="flex flex-col font-display">
                         {links.map((link) => (
                             <li key={link.name}>
                                 {link.external ? (
@@ -119,50 +119,52 @@ export const Navbar = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         onClick={() => setIsMenuOpen(false)}
-                                        className="text-4xl sm:text-5xl font-medium border-b border-black/5 pb-4 flex justify-between items-center transition-colors italic tracking-tighter text-black"
+                                        className="text-2xl sm:text-3xl font-medium uppercase border-b border-black/5 py-5 flex justify-between items-center transition-colors tracking-[0.04em] text-black"
                                     >
                                         {link.name}
-                                        <ExternalLink className="w-6 h-6 opacity-10" />
+                                        <ExternalLink className="w-5 h-5 opacity-10 shrink-0" />
                                     </a>
                                 ) : (
                                     <Link
                                         to={link.path}
                                         onClick={() => setIsMenuOpen(false)}
                                         className={cn(
-                                            "text-4xl sm:text-5xl font-medium border-b border-black/5 pb-4 flex justify-between items-center transition-colors italic tracking-tighter",
+                                            "text-2xl sm:text-3xl font-medium uppercase border-b border-black/5 py-5 flex justify-between items-center transition-colors tracking-[0.04em]",
                                             location.pathname === link.path ? "text-signal" : "text-black"
                                         )}
                                     >
                                         {link.name}
-                                        <ArrowRight className={cn("w-6 h-6 transition-opacity", location.pathname === link.path ? "opacity-100" : "opacity-10")} />
+                                        <ArrowRight className={cn("w-5 h-5 shrink-0 transition-opacity", location.pathname === link.path ? "opacity-100" : "opacity-10")} />
                                     </Link>
                                 )}
                             </li>
                         ))}
                     </ul>
 
-                    <div className="mt-auto pt-16 flex flex-col gap-8 shrink-0 font-display">
-                        <div className="space-y-3">
-                            <p className="text-[11px] font-bold uppercase tracking-[0.4em] text-black/30 mb-1">Shop</p>
+                    <div className="pt-2">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-black/30 pt-6 pb-1">Shop</p>
+                        <ul className="flex flex-col font-display">
                             {SHOP_LINKS.map((item) => (
-                                <a
-                                    key={item.name}
-                                    href={item.href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    onClick={() => setIsMenuOpen(false)}
-                                    className="w-full py-5 bg-black text-white text-center rounded-full text-[11px] font-bold tracking-widest uppercase flex items-center justify-center gap-3 active:bg-signal transition-colors"
-                                >
-                                    {item.name} <ExternalLink className="w-3 h-3"/>
-                                </a>
+                                <li key={item.name}>
+                                    <a
+                                        href={item.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onClick={() => setIsMenuOpen(false)}
+                                        className="text-lg font-medium uppercase tracking-[0.04em] border-b border-black/5 py-4 flex justify-between items-center text-black/60 active:text-signal transition-colors"
+                                    >
+                                        {item.name}
+                                        <ExternalLink className="w-4 h-4 opacity-30 shrink-0" />
+                                    </a>
+                                </li>
                             ))}
-                        </div>
+                        </ul>
+                    </div>
 
-                        <div className="flex justify-center gap-10 items-center pb-8">
-                            <a href={SOCIAL_LINKS.spotify} target="_blank" rel="noopener noreferrer" className="text-black/20 hover:text-signal transition-colors"><SpotifyIcon className="w-6 h-6"/></a>
-                            <a href={SOCIAL_LINKS.discogs} target="_blank" rel="noopener noreferrer" className="text-black/20 hover:text-signal transition-colors"><DiscogsIcon className="w-6 h-6"/></a>
-                            <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="text-black/20 hover:text-signal transition-colors"><InstagramIcon className="w-6 h-6"/></a>
-                        </div>
+                    <div className="flex justify-center gap-10 items-center pt-10 pb-4">
+                        <a href={SOCIAL_LINKS.spotify} target="_blank" rel="noopener noreferrer" className="p-2 text-black/20 hover:text-signal transition-colors"><SpotifyIcon className="w-6 h-6"/></a>
+                        <a href={SOCIAL_LINKS.discogs} target="_blank" rel="noopener noreferrer" className="p-2 text-black/20 hover:text-signal transition-colors"><DiscogsIcon className="w-6 h-6"/></a>
+                        <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="p-2 text-black/20 hover:text-signal transition-colors"><InstagramIcon className="w-6 h-6"/></a>
                     </div>
                 </div>
             )}
@@ -200,10 +202,10 @@ export const Footer = () => (
                 </div>
                 <div className="lg:col-span-1 space-y-8">
                     <h3 className="text-[11px] font-bold uppercase tracking-[0.4em] text-signal">Connect</h3>
-                    <div className="flex gap-6 items-center">
-                        <a href={SOCIAL_LINKS.spotify} target="_blank" rel="noopener noreferrer" className="text-black/40 hover:text-signal transition-colors"><SpotifyIcon className="w-5 h-5"/></a>
-                        <a href={SOCIAL_LINKS.discogs} target="_blank" rel="noopener noreferrer" className="text-black/40 hover:text-signal transition-colors"><DiscogsIcon className="w-5 h-5"/></a>
-                        <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="text-black/40 hover:text-signal transition-colors"><InstagramIcon className="w-5 h-5"/></a>
+                    <div className="flex gap-2 items-center -ml-2">
+                        <a href={SOCIAL_LINKS.spotify} target="_blank" rel="noopener noreferrer" className="p-2 text-black/40 hover:text-signal transition-colors"><SpotifyIcon className="w-5 h-5"/></a>
+                        <a href={SOCIAL_LINKS.discogs} target="_blank" rel="noopener noreferrer" className="p-2 text-black/40 hover:text-signal transition-colors"><DiscogsIcon className="w-5 h-5"/></a>
+                        <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="p-2 text-black/40 hover:text-signal transition-colors"><InstagramIcon className="w-5 h-5"/></a>
                     </div>
                 </div>
             </div>
