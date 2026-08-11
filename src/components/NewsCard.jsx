@@ -45,7 +45,7 @@ export const NewsCard = ({ item }) => (
 
         {item.link && (
             <a href={item.link} target="_blank" rel="noopener noreferrer" className="mt-auto inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-black hover:text-signal transition-colors">
-                More Info <ExternalLink className="w-3 h-3" />
+                {item.type === "event" ? "More Info" : "Read Full Article"} <ExternalLink className="w-3 h-3" />
             </a>
         )}
     </article>
