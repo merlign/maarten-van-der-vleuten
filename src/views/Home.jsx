@@ -100,10 +100,8 @@ export const HomeView = () => (
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
           <div className="lg:col-span-5 order-2 lg:order-1">
-            <div className="aspect-square bg-white/5 border border-white/10 rounded-[3rem] flex flex-col items-center justify-center p-12 text-center shadow-2xl backdrop-blur-2xl">
-              <span className="text-[10px] font-black text-signal uppercase tracking-[0.4em] mb-4">Vught, NL</span>
-              <img src="/signum-logo.jpg" alt="Signum Recordings" className="w-32 sm:w-40 h-auto mb-10" />
-              <div className="w-20 h-px bg-white/20" />
+            <div className="aspect-square bg-white/5 border border-white/10 rounded-[3rem] shadow-2xl backdrop-blur-2xl overflow-hidden">
+              <img src="/signum-logo.jpg" alt="Signum Recordings" className="w-full h-full object-cover" />
             </div>
           </div>
           <div className="lg:col-span-7 order-1 lg:order-2 space-y-10">
