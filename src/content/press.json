@@ -1,0 +1,9 @@
+{
+  "intro": "Media nodes for press, festivals, and independent curators. For custom signal inquiries, contact the studio directly.",
+  "assets": [
+    { "title": "Story Set", "size": "Biography (NL/EN) & History", "link": "/press/mvdv_biography.pdf" },
+    { "title": "Visual Assets", "size": "High-Resolution Photos", "link": "/press/portraits.zip" },
+    { "title": "Identity Marks", "size": "Logos (SVG/PNG)", "link": "/press/logos.zip" },
+    { "title": "Complete Pack", "size": "Full Press Kit (.ZIP)", "link": "/press/full_kit.zip" }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "items": [
+    { "title": "Metamorphism", "year": "1991", "label": "Djax-Up-Beats", "alias": "Flux" },
+    { "title": "Moonwater", "year": "1992", "label": "Apollo", "alias": "In-Existence" },
+    { "title": "The Bio-Terminal", "year": "1993", "label": "ESP", "alias": "Dj Zero-T" },
+    { "title": "Amenity", "year": "1994", "label": "Djax-Up-Beats", "alias": "Flux" },
+    { "title": "The Art of Frequency", "year": "1996", "label": "Signum", "alias": "Vandervleuten" },
+    { "title": "Private Rituals", "year": "1998", "label": "In-Existence", "alias": "In-Existence" },
+    { "title": "Passiflora", "year": "1998", "label": "Signum", "alias": "Vandervleuten" },
+    { "title": "Laiad", "year": "2002", "label": "Signum", "alias": "In-Existence" },
+    { "title": "Vow Of Silence", "year": "2005", "label": "ToneFloat", "alias": "In-Existence" },
+    { "title": "De Verkenningen", "year": "2006", "label": "Signum", "alias": "In-Existence" },
+    { "title": "High Intolerance...", "year": "2008", "label": "ToneFloat", "alias": "MVDV" },
+    { "title": "ECT For Piano", "year": "2009", "label": "Signum", "alias": "MVDV" },
+    { "title": "The Scars Remain", "year": "2010", "label": "ToneFloat", "alias": "MVDV" },
+    { "title": "Are You Worthy?", "year": "2012", "label": "ToneFloat", "alias": "MVDV" },
+    { "title": "Vught Distillations", "year": "2015", "label": "MVDV", "alias": "MVDV" },
+    { "title": "I Break The Waves", "year": "2018", "label": "ToneFloat", "alias": "MVDV" },
+    { "title": "Systematically Declassified", "year": "2020", "label": "Signum", "alias": "MVDV" },
+    { "title": "Archived Signal Vol 1", "year": "2023", "label": "MVDV", "alias": "MVDV" },
+    { "title": "Systematic Registry 2", "year": "2023", "label": "Signum", "alias": "MVDV" },
+    { "title": "Distilled Works", "year": "2024", "label": "Signum", "alias": "MVDV" }
+  ]
+}

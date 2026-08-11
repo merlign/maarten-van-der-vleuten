@@ -1,0 +1,27 @@
+{
+  "origin": "1996 / Vught, NL",
+  "philosophy": {
+    "title": "Music Philosophy",
+    "text": "Signum Recordings was founded by Maarten van der Vleuten in 1996. It serves as an independent label for experimental electronic music that operates outside of mainstream commercial trends. The label focuses on sound quality and artistic integrity, releasing music that is both thoughtful and impactful."
+  },
+  "sections": [
+    {
+      "title": "Exploring New Sounds",
+      "text": "From its very first release, Signum has focused on electronic music that doesn't fit into standard categories. The label has released everything from industrial techno to experimental acoustic sounds. Every Signum release represents a new step in Maarten's musical evolution."
+    },
+    {
+      "title": "The Archive",
+      "text": "Based in Vught, the label is also home to the 'Systematically Declassified' series—a project dedicated to releasing Maarten's vast archive of music. This process involves carefully selecting and mastering older recordings to ensure they meet modern standards while keeping their original character."
+    },
+    {
+      "title": "Releases",
+      "text": "Signum has a history of special, limited edition releases. Whether it was rare CDs in the nineties or modern digital albums, the focus is always on providing a high-quality listening experience. The label continues to find new ways to share music directly with the audience without compromise."
+    }
+  ],
+  "keyReleases": [
+    { "title": "The Art Of Frequency", "year": "1996", "id": "SIG001" },
+    { "title": "Passiflora", "year": "1998", "id": "SIG004" },
+    { "title": "Laiad", "year": "2002", "id": "SIG010" },
+    { "title": "Systematically Declassified", "year": "2020", "id": "SIG040" }
+  ]
+}

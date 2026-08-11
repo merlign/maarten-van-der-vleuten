@@ -1,7 +1,7 @@
 import React from 'react';
 import { Disc } from 'lucide-react';
 import { SEO, PageHeader, PageWrapper } from '../components/Layout';
-import { BIOGRAPHY_ERAS, ALIAS_LIST } from '../data/content';
+import { BIOGRAPHY_ERAS, BIOGRAPHY_ALIAS_INTRO, ALIAS_LIST } from '../data/content';
 
 export const BiographyView = () => (
   <PageWrapper>
@@ -52,7 +52,7 @@ export const BiographyView = () => (
                 <span className="text-[12px] font-black text-signal uppercase tracking-[0.4em] italic leading-none block">Alias Registry</span>
                 <h2 className="text-5xl sm:text-6xl uppercase tracking-tighter leading-tight">THE NAMES.</h2>
                 <p className="text-black/50 text-lg font-medium leading-relaxed italic max-w-xl">
-                    Maarten has released music under more than 20 different artist names over the years.
+                    {BIOGRAPHY_ALIAS_INTRO}
                 </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-12 lg:gap-y-16">

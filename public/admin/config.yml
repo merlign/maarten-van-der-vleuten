@@ -70,3 +70,129 @@ collections:
               - { label: "Locatie", name: "venue", widget: "string", required: false, hint: "Alleen invullen bij een Optreden, bijvoorbeeld: Amsterdam" }
               - { label: "Tekst", name: "description", widget: "text", required: false }
               - { label: "Link (tickets of artikel)", name: "link", widget: "string", required: false, hint: "Bijvoorbeeld een ticketlink bij een optreden." }
+
+  - name: "pages"
+    label: "Pagina's"
+    icon: "page"
+    files:
+      - name: "home"
+        label: "Homepage"
+        file: "src/content/home.json"
+        description: "De tekst en foto bovenaan de homepage."
+        fields:
+          - { label: "Introductietekst", name: "heroText", widget: "text", hint: "De korte tekst naast je foto bovenaan de homepage." }
+          - { label: "Foto", name: "heroPhoto", widget: "image", hint: "De grote foto bovenaan de homepage." }
+          - { label: "Tekst over Signum Recordings", name: "signumBlurb", widget: "text", hint: "Korte tekst in het zwarte blok over het label." }
+
+      - name: "contact"
+        label: "Contact-pagina"
+        file: "src/content/contact.json"
+        description: "De korte omschrijvingen onder elk kanaal op de contactpagina. De links zelf pas je aan bij 'Instellingen'."
+        fields:
+          - { label: "Omschrijving bij Spotify", name: "spotifyDesc", widget: "string" }
+          - { label: "Omschrijving bij Bandcamp", name: "bandcampDesc", widget: "string" }
+          - { label: "Omschrijving bij Discogs", name: "discogsDesc", widget: "string" }
+          - { label: "Omschrijving bij Instagram", name: "instagramDesc", widget: "string" }
+
+      - name: "biography"
+        label: "Biografie-pagina"
+        file: "src/content/biography.json"
+        description: "De tijdlijn met periodes en de lijst met artiestennamen (aliassen)."
+        fields:
+          - label: "Periodes"
+            name: "eras"
+            widget: "list"
+            summary: "{{years}} — {{title}}"
+            fields:
+              - { label: "Volgnummer", name: "id", widget: "string", hint: "Bijvoorbeeld: 01, 02, 03..." }
+              - { label: "Jaren", name: "years", widget: "string", hint: "Bijvoorbeeld: 1987—1991" }
+              - { label: "Titel", name: "title", widget: "string" }
+              - label: "Tekstblokken"
+                name: "description"
+                widget: "list"
+                hint: "Elk tekstblok wordt een aparte alinea."
+                field: { label: "Alinea", name: "paragraph", widget: "text" }
+              - label: "Bekende releases uit deze periode"
+                name: "releases"
+                widget: "list"
+                field: { label: "Release", name: "release", widget: "string" }
+          - { label: "Introtekst bij aliassen", name: "aliasIntro", widget: "string" }
+          - label: "Artiestennamen (aliassen)"
+            name: "aliases"
+            widget: "list"
+            field: { label: "Naam", name: "alias", widget: "string" }
+
+      - name: "archive"
+        label: "Archief-pagina"
+        file: "src/content/archive.json"
+        description: "Het volledige overzicht van releases sinds 1987."
+        fields:
+          - label: "Releases"
+            name: "items"
+            widget: "list"
+            summary: "{{title}} ({{year}})"
+            fields:
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Jaar", name: "year", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Artiestennaam (alias)", name: "alias", widget: "string" }
+
+      - name: "press"
+        label: "Pers-pagina"
+        file: "src/content/press.json"
+        description: "De perskit-pagina met downloadbare bestanden."
+        fields:
+          - { label: "Introductietekst", name: "intro", widget: "text" }
+          - label: "Downloads"
+            name: "assets"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Omschrijving", name: "size", widget: "string", hint: "Bijvoorbeeld: Hoge-resolutiefoto's" }
+              - { label: "Link naar bestand", name: "link", widget: "string" }
+
+      - name: "signum"
+        label: "Signum Recordings-pagina"
+        file: "src/content/signum.json"
+        description: "De tekst op de Signum Recordings-pagina."
+        fields:
+          - { label: "Ondertitel (jaar / locatie)", name: "origin", widget: "string", hint: "Bijvoorbeeld: 1996 / Vught, NL" }
+          - label: "Filosofie"
+            name: "philosophy"
+            widget: "object"
+            fields:
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Tekst", name: "text", widget: "text" }
+          - label: "Tekstblokken"
+            name: "sections"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Tekst", name: "text", widget: "text" }
+          - label: "Belangrijkste releases"
+            name: "keyReleases"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Jaar", name: "year", widget: "string" }
+              - { label: "Catalogusnummer", name: "id", widget: "string" }
+
+  - name: "settings"
+    label: "Instellingen"
+    icon: "settings"
+    files:
+      - name: "settings"
+        label: "Links & Social Media"
+        file: "src/content/settings.json"
+        description: "De links die overal op de website gebruikt worden (menu, footer, contactpagina, shop-knop)."
+        fields:
+          - { label: "Spotify", name: "spotify", widget: "string" }
+          - { label: "Bandcamp", name: "bandcamp", widget: "string" }
+          - { label: "Discogs", name: "discogs", widget: "string" }
+          - { label: "Instagram", name: "instagram", widget: "string" }
+          - { label: "Oude website", name: "legacy", widget: "string", hint: "De link naar de oude/archief-website, bovenaan de site." }
+          - { label: "On-Demand Vinyl", name: "onDemandVinyl", widget: "string" }
+          - { label: "Merch-shop", name: "merch", widget: "string" }

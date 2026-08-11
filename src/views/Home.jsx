@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart, ArrowRight } from 'lucide-react';
 import { SEO, PageWrapper } from '../components/Layout';
-import { RELEASES, NEWS, isNewsItemUpcoming, SOCIAL_LINKS } from '../data/content';
+import { RELEASES, NEWS, isNewsItemUpcoming, SOCIAL_LINKS, HOME_CONTENT } from '../data/content';
 import { ReleaseCard } from '../components/ReleaseCard';
 import { NewsCard } from '../components/NewsCard';
 import { SpotifyIcon, DiscogsIcon, InstagramIcon } from '../components/BrandIcons';
@@ -21,7 +21,7 @@ export const HomeView = () => (
               MAARTEN <br /> <span className="text-signal lg:text-black">VAN DER</span> <br className="hidden lg:block" /> <span className="text-signal">VLEUTEN</span>
             </h1>
             <p className="text-black/50 text-base sm:text-lg lg:text-xl leading-relaxed max-w-xl font-medium italic">
-              Electronic music composer and producer. This site is constantly evolving, more content coming soon. Based in the Netherlands, active since 1987.
+              {HOME_CONTENT.heroText}
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
               <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="px-10 py-5 bg-black text-white rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-signal transition-all shadow-xl active:scale-95 leading-none">Visit Bandcamp Shop</a>
@@ -35,7 +35,7 @@ export const HomeView = () => (
           </header>
           <div className="order-2 lg:order-2">
             <div className="aspect-[4/5] lg:aspect-[3/4] w-full max-w-lg mx-auto bg-offwhite rounded-[2.5rem] lg:rounded-[4rem] overflow-hidden shadow-xl relative group">
-              <img src="/maarten-hero.webp" alt="Maarten van der Vleuten" className="w-full h-full object-cover object-center scale-[1.04] group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
+              <img src={HOME_CONTENT.heroPhoto} alt="Maarten van der Vleuten" className="w-full h-full object-cover object-center scale-[1.04] group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
             </div>
           </div>
         </div>
@@ -95,7 +95,7 @@ export const HomeView = () => (
               SIGNUM <br /> RECORDINGS.
             </h2>
             <p className="text-white/40 text-lg sm:text-xl font-medium leading-relaxed max-w-xl">
-              An independent label for experimental music, founded in 1996 as a home for Maarten's most personal work and archival releases.
+              {HOME_CONTENT.signumBlurb}
             </p>
           </div>
         </div>

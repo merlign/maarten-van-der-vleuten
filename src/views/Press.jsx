@@ -2,7 +2,7 @@ import React from 'react';
 import { Download, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SEO, PageHeader, PageWrapper } from '../components/Layout';
-import { PRESS_ASSETS } from '../data/content';
+import { PRESS_ASSETS, PRESS_INTRO } from '../data/content';
 
 export const PressView = () => (
     <PageWrapper>
@@ -11,7 +11,7 @@ export const PressView = () => (
         <section className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 py-24 space-y-24">
             <header className="flex flex-col sm:flex-row justify-between items-end gap-10">
                 <p className="max-w-2xl text-black/50 text-lg sm:text-xl font-medium leading-relaxed italic border-l-4 border-signal pl-8">
-                    Media nodes for press, festivals, and independent curators. For custom signal inquiries, contact the studio directly.
+                    {PRESS_INTRO}
                 </p>
                 <Link to="/archive" className="flex items-center gap-4 text-[11px] font-black uppercase tracking-widest border-b border-black pb-1 hover:text-signal hover:border-signal transition-all">
                     View Full Archive <ArrowRight className="w-3 h-3" />

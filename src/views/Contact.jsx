@@ -1,7 +1,7 @@
 import React from 'react';
 import { ShoppingCart } from 'lucide-react';
 import { SEO, PageHeader, PageWrapper } from '../components/Layout';
-import { SOCIAL_LINKS } from '../data/content';
+import { SOCIAL_LINKS, CONTACT_CONTENT } from '../data/content';
 import { SpotifyIcon, DiscogsIcon, InstagramIcon } from '../components/BrandIcons';
 
 export const ContactView = () => (
@@ -11,10 +11,10 @@ export const ContactView = () => (
         <section className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 py-24 sm:py-32">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12">
                 {[
-                    { label: "Spotify", icon: SpotifyIcon, link: SOCIAL_LINKS.spotify, desc: "Listen to the catalogue" },
-                    { label: "Bandcamp", icon: ShoppingCart, link: SOCIAL_LINKS.bandcamp, desc: "Order architectural releases" },
-                    { label: "Discogs", icon: DiscogsIcon, link: SOCIAL_LINKS.discogs, desc: "View the complete credit registry" },
-                    { label: "Instagram", icon: InstagramIcon, link: SOCIAL_LINKS.instagram, desc: "Visual updates and process" }
+                    { label: "Spotify", icon: SpotifyIcon, link: SOCIAL_LINKS.spotify, desc: CONTACT_CONTENT.spotifyDesc },
+                    { label: "Bandcamp", icon: ShoppingCart, link: SOCIAL_LINKS.bandcamp, desc: CONTACT_CONTENT.bandcampDesc },
+                    { label: "Discogs", icon: DiscogsIcon, link: SOCIAL_LINKS.discogs, desc: CONTACT_CONTENT.discogsDesc },
+                    { label: "Instagram", icon: InstagramIcon, link: SOCIAL_LINKS.instagram, desc: CONTACT_CONTENT.instagramDesc }
                 ].map((item, i) => (
                     <a 
                         key={i} 
