@@ -10,7 +10,13 @@ CMS.registerPreviewStyle('https://fonts.googleapis.com/css2?family=Poiret+One&fa
 
 CMS.registerPreviewTemplate('releases', ReleasesPreview);
 CMS.registerPreviewTemplate('news', NewsPreview);
-CMS.registerPreviewTemplate('pages', PagesPreview);
 CMS.registerPreviewTemplate('settings', SettingsPreview);
+
+// The "pages" collection is a `files` collection with multiple files, and
+// Decap requires one registerPreviewTemplate call per file name (not one
+// per collection) in that case — PagesPreview dispatches internally by slug.
+['home', 'contact', 'biography', 'archive', 'press', 'signum'].forEach((slug) => {
+    CMS.registerPreviewTemplate(slug, PagesPreview);
+});
 
 CMS.init();
