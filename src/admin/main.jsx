@@ -15,7 +15,7 @@ CMS.registerPreviewTemplate('settings', SettingsPreview);
 // The "pages" collection is a `files` collection with multiple files, and
 // Decap requires one registerPreviewTemplate call per file name (not one
 // per collection) in that case — PagesPreview dispatches internally by slug.
-['home', 'contact', 'biography', 'archive', 'press', 'signum'].forEach((slug) => {
+['home', 'contact', 'signum'].forEach((slug) => {
     CMS.registerPreviewTemplate(slug, PagesPreview);
 });
 
