@@ -1,6 +1,15 @@
 {
   "items": [
-    { "title": "Fire them liars", "year": "2026", "label": "Signum", "cat": "SIGN263", "imageUrl": "/ftl.jpg", "comingSoon": true, "vinyl": true, "digital": false },
+    {
+      "title": "Fire them liars",
+      "year": "2026",
+      "label": "Signum",
+      "cat": "SIGN263",
+      "imageUrl": "/ftl.jpg",
+      "comingSoon": true,
+      "vinyl": true,
+      "digital": false
+    },
     {
       "title": "A Forest / Love Will Tear Us Apart",
       "year": "2026",

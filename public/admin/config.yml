@@ -33,9 +33,9 @@ collections:
               - { label: "Catalogusnummer", name: "cat", widget: "string", required: false, hint: "Bijvoorbeeld: SIGN263 (mag leeg blijven)" }
               - { label: "Hoesfoto", name: "imageUrl", widget: "image", required: false, hint: "Sleep hier een foto naartoe, of klik om te kiezen." }
               - { label: "Link naar Bandcamp", name: "link", widget: "string", required: false, hint: "Volledige link naar de releasepagina op Bandcamp. Mag leeg blijven als 'Binnenkort te koop' is aangevinkt." }
-              - { label: "Binnenkort te koop (Coming Soon)", name: "comingSoon", widget: "boolean", default: false, hint: "Vink aan als deze release nog niet uit is." }
-              - { label: "Verkrijgbaar op vinyl", name: "vinyl", widget: "boolean", default: false }
-              - { label: "Verkrijgbaar digitaal", name: "digital", widget: "boolean", default: false }
+              - { label: "Binnenkort te koop (Coming Soon)", name: "comingSoon", widget: "boolean", default: false, required: false, hint: "Vink aan als deze release nog niet uit is." }
+              - { label: "Verkrijgbaar op vinyl", name: "vinyl", widget: "boolean", default: false, required: false }
+              - { label: "Verkrijgbaar digitaal", name: "digital", widget: "boolean", default: false, required: false }
 
   - name: "news"
     label: "Nieuws & Optredens"
