@@ -1,34 +1,37 @@
 {
   "items": [
     {
-      "title": "Fire them liars",
-      "year": "2026",
+      "vinyl": true,
+      "imageUrl": "/ftl.jpg",
       "label": "Signum",
       "cat": "SIGN263",
-      "imageUrl": "/ftl.jpg",
-      "comingSoon": true,
-      "vinyl": true,
-      "digital": false
+      "digital": true,
+      "title": "Fire them liars",
+      "link": "https://maartenvandervleuten.bandcamp.com/album/fire-them-liars-2026",
+      "comingSoon": false,
+      "year": "2026"
     },
     {
-      "title": "A Forest / Love Will Tear Us Apart",
-      "year": "2026",
+      "vinyl": false,
+      "imageUrl": "/aforest.jpg",
       "label": "Signum",
       "cat": "SIGNDIG261",
-      "imageUrl": "/aforest.jpg",
+      "digital": true,
+      "title": "A Forest / Love Will Tear Us Apart",
       "link": "https://maartenvandervleuten.bandcamp.com/album/a-forest-love-will-tear-us-apart",
-      "vinyl": false,
-      "digital": true
+      "comingSoon": false,
+      "year": "2026"
     },
     {
-      "title": "Yungya E.P.",
-      "year": "2026",
+      "vinyl": false,
+      "imageUrl": "/yungya.jpg",
       "label": "Signum",
       "cat": "SIGNDIG266",
-      "imageUrl": "/yungya.jpg",
+      "digital": true,
+      "title": "Yungya E.P.",
       "link": "https://maartenvandervleuten.bandcamp.com/album/yungya-e-p-2026",
-      "vinyl": false,
-      "digital": true
+      "comingSoon": false,
+      "year": "2026"
     }
   ]
 }
