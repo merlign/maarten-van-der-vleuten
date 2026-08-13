@@ -1,6 +1,17 @@
 {
   "items": [
     {
+      "vinyl": false,
+      "imageUrl": "https://f4.bcbits.com/img/a3560552206_1x1_700.avif",
+      "label": "Signum",
+      "cat": "SIGN266",
+      "digital": true,
+      "title": "The Great Crossing",
+      "link": "https://maartenvandervleuten.bandcamp.com/album/the-great-crossing-2026",
+      "comingSoon": false,
+      "year": "2026"
+    },
+    {
       "vinyl": true,
       "imageUrl": "/ftl.jpg",
       "label": "Signum",
