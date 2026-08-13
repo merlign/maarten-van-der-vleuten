@@ -1,8 +1,7 @@
 import React from 'react';
-import { ShoppingCart } from 'lucide-react';
 import { SEO, PageHeader, PageWrapper } from '../components/Layout';
 import { SOCIAL_LINKS, CONTACT_CONTENT } from '../data/content';
-import { SpotifyIcon, DiscogsIcon, InstagramIcon } from '../components/BrandIcons';
+import { SpotifyIcon, DiscogsIcon, BandcampIcon, InstagramIcon } from '../components/BrandIcons';
 
 export const ContactView = () => (
     <PageWrapper>
@@ -12,7 +11,7 @@ export const ContactView = () => (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12">
                 {[
                     { label: "Spotify", icon: SpotifyIcon, link: SOCIAL_LINKS.spotify, desc: CONTACT_CONTENT.spotifyDesc },
-                    { label: "Bandcamp", icon: ShoppingCart, link: SOCIAL_LINKS.bandcamp, desc: CONTACT_CONTENT.bandcampDesc },
+                    { label: "Bandcamp", icon: BandcampIcon, link: SOCIAL_LINKS.bandcamp, desc: CONTACT_CONTENT.bandcampDesc },
                     { label: "Discogs", icon: DiscogsIcon, link: SOCIAL_LINKS.discogs, desc: CONTACT_CONTENT.discogsDesc },
                     { label: "Instagram", icon: InstagramIcon, link: SOCIAL_LINKS.instagram, desc: CONTACT_CONTENT.instagramDesc }
                 ].map((item, i) => (

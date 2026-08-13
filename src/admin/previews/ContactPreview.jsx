@@ -1,11 +1,10 @@
 import React from 'react';
-import { ShoppingCart } from 'lucide-react';
-import { SpotifyIcon, DiscogsIcon, InstagramIcon } from '../../components/BrandIcons';
+import { SpotifyIcon, DiscogsIcon, BandcampIcon, InstagramIcon } from '../../components/BrandIcons';
 
 export const ContactPreview = ({ data }) => {
     const items = [
         { label: 'Spotify', icon: SpotifyIcon, desc: data.spotifyDesc },
-        { label: 'Bandcamp', icon: ShoppingCart, desc: data.bandcampDesc },
+        { label: 'Bandcamp', icon: BandcampIcon, desc: data.bandcampDesc },
         { label: 'Discogs', icon: DiscogsIcon, desc: data.discogsDesc },
         { label: 'Instagram', icon: InstagramIcon, desc: data.instagramDesc }
     ];

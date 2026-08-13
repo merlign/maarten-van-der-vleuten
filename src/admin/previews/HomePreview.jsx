@@ -1,9 +1,9 @@
 import React from 'react';
-import { ShoppingCart, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { RELEASES, NEWS, isNewsItemUpcoming, SOCIAL_LINKS } from '../../data/content';
 import { ReleaseCard } from '../../components/ReleaseCard';
 import { NewsCard } from '../../components/NewsCard';
-import { SpotifyIcon, DiscogsIcon, InstagramIcon } from '../../components/BrandIcons';
+import { SpotifyIcon, DiscogsIcon, BandcampIcon, InstagramIcon } from '../../components/BrandIcons';
 import { resolveImage } from '../previewUtils';
 
 export const HomePreview = ({ data, getAsset }) => (
@@ -25,7 +25,7 @@ export const HomePreview = ({ data, getAsset }) => (
                         </div>
                         <div className="flex gap-4 pt-4 items-center -ml-2">
                             <a href={SOCIAL_LINKS.spotify} target="_blank" rel="noopener noreferrer" className="p-2 transition-all hover:text-signal hover:scale-110" title="Spotify"><SpotifyIcon className="w-6 h-6" /></a>
-                            <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="p-2 transition-all hover:text-signal hover:scale-110" title="Bandcamp"><ShoppingCart className="w-6 h-6" /></a>
+                            <a href={SOCIAL_LINKS.bandcamp} target="_blank" rel="noopener noreferrer" className="p-2 transition-all hover:scale-110" title="Bandcamp"><BandcampIcon className="w-6 h-6" /></a>
                             <a href={SOCIAL_LINKS.discogs} target="_blank" rel="noopener noreferrer" className="p-2 transition-all hover:text-signal hover:scale-110" title="Discogs"><DiscogsIcon className="w-6 h-6" /></a>
                             <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="p-2 transition-all hover:text-signal hover:scale-110" title="Instagram"><InstagramIcon className="w-6 h-6" /></a>
                         </div>
