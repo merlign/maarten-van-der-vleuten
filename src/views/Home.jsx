@@ -12,10 +12,10 @@ export const HomeView = () => (
     <SEO title="Official Site" description="Official website of Maarten van der Vleuten." path="/" />
 
     {/* HERO SECTION */}
-    <section className="pt-24 sm:pt-32 lg:pt-40 pb-20 w-full border-b border-black/5 bg-white overflow-hidden">
+    <section className="pt-24 sm:pt-32 lg:pt-10 pb-20 lg:pb-8 w-full border-b border-black/5 bg-white overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          <header className="order-1 lg:order-1 space-y-10">
+          <header className="order-1 lg:order-1 space-y-10 lg:space-y-6">
             <p className="text-[11px] font-bold text-signal uppercase tracking-[0.8em]">Composer & Producer</p>
             <h1 className="text-[40px] sm:text-[64px] lg:text-[88px] text-black leading-[0.85] tracking-tighter uppercase">
               MAARTEN <br /> <span className="text-signal lg:text-black">VAN DER</span> <br className="hidden lg:block" /> <span className="text-signal">VLEUTEN</span>
@@ -34,7 +34,7 @@ export const HomeView = () => (
             </div>
           </header>
           <div className="order-2 lg:order-2">
-            <div className="aspect-[4/5] lg:aspect-[3/4] w-full max-w-lg mx-auto bg-offwhite rounded-[2.5rem] lg:rounded-[4rem] overflow-hidden shadow-xl relative group">
+            <div className="aspect-[4/5] lg:aspect-[3/4] w-full max-w-lg lg:max-w-md mx-auto bg-offwhite rounded-[2.5rem] lg:rounded-[4rem] overflow-hidden shadow-xl relative group">
               <img src={HOME_CONTENT.heroPhoto} alt="Maarten van der Vleuten" className="w-full h-full object-cover object-center scale-[1.04] group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
             </div>
           </div>
