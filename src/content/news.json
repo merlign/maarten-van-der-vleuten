@@ -1,6 +1,14 @@
 {
   "items": [
     {
+      "type": "news",
+      "date": "2026-08-20",
+      "venue": "",
+      "link": "https://www.concertzender.nl/programma/de_nacht_hedendaags_899837/",
+      "description": "In de 203e aflevering van Contemporary Music Night start de Concertzender met een twintigdelige reeks rond mijn complete muzikale archief. In deze eerste aflevering hoor je mijn allereerste werk als The Noise Architect en M.A.W.A. Inc. uit de periode 1985–1989, opgedragen aan Bob Rusche †.",
+      "title": "Mijn Muzikale Archief #1 (1985–1987)"
+    },
+    {
       "type": "event",
       "title": "Giegling & Noclubs",
       "date": "2026-08-16",
@@ -10,17 +18,9 @@
     },
     {
       "type": "news",
-      "title": "New Website Live",
+      "title": "New website live",
       "date": "2026-08-11",
-      "description": "The new official website for Maarten van der Vleuten is now live, with a fresh look and a growing catalogue of releases. You'll find a link to the legacy website at the top of every page."
-    },
-    {
-      "type": "news",
-      "date": "2026-08-20",
-      "venue": "",
-      "link": "https://www.concertzender.nl/programma/de_nacht_hedendaags_899837/",
-      "description": "In de 203e aflevering van Contemporary Music Night start de Concertzender met een twintigdelige reeks rond mijn complete muzikale archief. In deze eerste aflevering hoor je mijn allereerste werk als The Noise Architect en M.A.W.A. Inc. uit de periode 1985–1989, opgedragen aan Bob Rusche †.",
-      "title": "Mijn Muzikale Archief #1 (1985–1987)"
+      "description": "My new official website is now live, with a fresh look and a growing catalogue of releases! You'll find a link to the legacy website at the top of every page."
     }
   ]
 }
