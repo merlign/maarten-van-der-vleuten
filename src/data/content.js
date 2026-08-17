@@ -37,13 +37,21 @@ export const NEWS_LABELS = {
 
 export const NEWS = newsData.items;
 
-// Events are automatically hidden from the homepage once their date has passed.
+// Events stay visible on the homepage through the day after their date,
+// then move to the archive (still visible on the full /news page).
 // News items (and events without a date) are always eligible.
+const toLocalDateString = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+};
+
 export const isNewsItemUpcoming = (item) => {
     if (item.type !== "event" || !item.date) return true;
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    return new Date(item.date) >= today;
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    return item.date.slice(0, 10) >= toLocalDateString(yesterday);
 };
 
 export const HOME_CONTENT = homeData;
