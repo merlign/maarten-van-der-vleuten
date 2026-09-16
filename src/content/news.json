@@ -2,6 +2,12 @@
   "items": [
     {
       "type": "news",
+      "title": "MY MUSICAL DIARY #3 (1988-1992)",
+      "description": "In this episode of Concertzender's Contemporary Music Night, I present part three of the twenty-part series showcasing my complete musical archive as a Dutch composer, producer, and Signum Recordings label owner (aka The Noise Architect, M.A.W.A. Inc., Major Malfunction, and many others). Tonight, I bring you selection of my works created between 1988 and 1992.",
+      "link": "https://www.concertzender.nl/programma/de_nacht_hedendaags_903623/"
+    },
+    {
+      "type": "news",
       "title": "Limited Edition Lathe Cuts: The Great Crossing",
       "date": "2026-08-24",
       "description": "A limited edition of 25 professionally manufactured lathe cuts of The Great Crossing is now available on my Bandcamp page, including full-color artwork. Shipping starts on September 1st.\n\nThis is the first in a series of upcoming new releases in which I move into a slightly different musical direction. As an experiment, I will have small batches of on-demand lathe cuts made for these projects.",
@@ -35,12 +41,6 @@
       "title": "New website live",
       "date": "",
       "description": "My new official website is now live, with a fresh look and a growing catalogue of releases! You'll find a link to the legacy website at the top of every page."
-    },
-    {
-      "type": "news",
-      "title": "MY MUSICAL DIARY #3 (1988-1992)",
-      "description": "In this episode of Concertzender's Contemporary Music Night, I present part three of the twenty-part series showcasing my complete musical archive as a Dutch composer, producer, and Signum Recordings label owner (aka The Noise Architect, M.A.W.A. Inc., Major Malfunction, and many others). Tonight, I bring you selection of my works created between 1988 and 1992.",
-      "link": "https://www.concertzender.nl/programma/de_nacht_hedendaags_903623/"
     }
   ]
 }
